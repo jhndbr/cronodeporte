@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700;1,900&family=Oswald:wght@500;600;700&family=Teko:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-white: #FAFAFA;
+  --color-gray: #939599;
+  --color-lightgray: #CDCDCF;
+  --color-turquoise: #2BCFCE;
+  --color-coral: #EC4D25;
+  --color-dark: #0E1015;
+}
+
+body {
+  color: #1A1E24;
+  background: #FAFAFA;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hard Sports Typography */
+.font-sport {
+  font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+}
+
+.font-display {
+  font-family: 'Teko', 'Barlow Condensed', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAFAFA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CDCDCF;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #939599;
+}
+
+/* UFC Rejas / Octagon Chain-link Fence Texture (SVG Grid) */
+.ufc-cage-mesh {
+  background-color: #0E1015;
+  background-image: 
+    linear-gradient(45deg, rgba(205, 205, 207, 0.08) 25%, transparent 25%), 
+    linear-gradient(-45deg, rgba(205, 205, 207, 0.08) 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, rgba(205, 205, 207, 0.08) 75%), 
+    linear-gradient(-45deg, transparent 75%, rgba(205, 205, 207, 0.08) 75%),
+    radial-gradient(ellipse at center, rgba(43, 207, 206, 0.12) 0%, rgba(236, 77, 37, 0.08) 50%, rgba(14, 16, 21, 0.95) 100%);
+  background-size: 28px 28px, 28px 28px, 28px 28px, 28px 28px, 100% 100%;
+}
+
+.ufc-cage-metal-overlay {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+/* Angled Sports Cuts */
+.sports-skew {
+  transform: skewX(-8deg);
+}
+
+.sports-unskew {
+  transform: skewX(8deg);
+}
+
+.sports-clip-corner {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.sports-clip-badge {
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+/* Sports Glow Effects */
+.glow-coral {
+  box-shadow: 0 0 30px -4px rgba(236, 77, 37, 0.35);
+}
+
+.glow-turquoise {
+  box-shadow: 0 0 30px -4px rgba(43, 207, 206, 0.35);
+}
+
+.glow-gold {
+  box-shadow: 0 0 25px -5px rgba(229, 169, 60, 0.3);
+}
+
+.octagon-pattern {
+  background-color: #FAFAFA;
+  background-image: radial-gradient(#CDCDCF 1.2px, transparent 1.2px);
+  background-size: 20px 20px;
+}
+
