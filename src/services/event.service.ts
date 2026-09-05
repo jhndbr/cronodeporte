@@ -66,9 +66,9 @@ export class EventService {
    * Obtiene los rankings oficiales de UFC
    */
   async getUfcRankings(): Promise<UfcRankingsCategory[]> {
-    const adapter = this.getUfcAdapter();
-    if (!adapter) return [];
-    return adapter.getRankings();
+    const { RankingsService } = await import('../modules/rankings/rankings.service');
+    const { categories } = await RankingsService.getInstance().getRankings();
+    return categories;
   }
 
   /**

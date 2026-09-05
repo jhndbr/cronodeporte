@@ -1,154 +1,175 @@
-import { ISportDataProvider } from '../../core/ports/data-provider';
+import fs from 'fs/promises';
+import path from 'path';
+import { ISportRepository, SyncMetadata } from '@/core/ports/repository';
 import {
   Event,
-  Organization,
-  UfcRankingsCategory,
-  UfcNewsArticle,
   UfcCalendarItem,
-} from '../../core/domain/types';
-import { EspnMmaClient } from './espn-mma.client';
-import { EspnMmaNormalizer } from './espn-mma.normalizer';
-import { FileSportRepository } from '@/infra/storage/file-sport-repository';
-import { DataSyncService } from '@/modules/sync/data-sync.service';
+  UfcNewsArticle,
+  UfcRankingsCategory,
+} from '@/core/domain/types';
+import { UFC_OFFICIAL_RANKINGS } from '@/modules/rankings/ufc-official-rankings.data';
 
-/**
- * Adaptador de UFC que orquesta el cliente de red (EspnMmaClient),
- * el normalizador de dominio desacoplado (EspnMmaNormalizer)
- * y el repositorio de persistencia local (FileSportRepository).
- */
-export class EspnUfcAdapter implements ISportDataProvider {
-  readonly sportSlug = 'mma';
-  readonly organizationSlug = 'ufc';
+export class FileSportRepository implements ISportRepository {
+  private static instance: FileSportRepository;
+  private readonly storageDir: string;
 
-  private readonly client: EspnMmaClient;
-  private readonly normalizer: EspnMmaNormalizer;
-  private readonly repo: FileSportRepository;
-  private readonly syncService: DataSyncService;
-
-  constructor() {
-    this.client = new EspnMmaClient();
-    this.normalizer = new EspnMmaNormalizer();
-    this.repo = FileSportRepository.getInstance();
-    this.syncService = DataSyncService.getInstance();
+  private constructor() {
+    this.storageDir = path.join(process.cwd(), 'data', 'sports-store');
   }
 
-  public getOrganization(): Organization {
-    return {
-      id: 'org-ufc',
-      sportSlug: 'mma',
-      name: 'Ultimate Fighting Championship',
-      shortName: 'UFC',
-      slug: 'ufc',
-      logoUrl: 'https://a.espncdn.com/i/teamlogos/leagues/500/mma.png',
-      country: 'United States',
-      websiteUrl: 'https://www.ufc.com',
-    };
-  }
-
-  /**
-   * Obtiene eventos próximos desde el repositorio persistido.
-   * Si los datos tienen más de 2-3 días, dispara la actualización en background.
-   */
-  async getUpcomingEvents(): Promise<Event[]> {
-    this.syncService.triggerBackgroundSyncIfDue();
-
-    const persisted = await this.repo.getEvents();
-    if (persisted && persisted.length > 0) {
-      return persisted;
+  public static getInstance(): FileSportRepository {
+    if (!FileSportRepository.instance) {
+      FileSportRepository.instance = new FileSportRepository();
     }
+    return FileSportRepository.instance;
+  }
 
-    // Si aún no hay nada en disco, ejecuta sincronización inicial
+  private async ensureStorageDir(): Promise<void> {
     try {
-      const raw = await this.client.fetchScoreboard('ufc');
-      const normalized = this.normalizer.normalizeEvents(raw);
-      if (normalized.length > 0) {
-        await this.repo.saveEvents(normalized);
-        return normalized;
-      }
-    } catch (err) {
-      console.warn('[EspnUfcAdapter] Error fetching live events, using fallback:', err);
+      await fs.mkdir(this.storageDir, { recursive: true });
+    } catch {
+      // Ignorar si ya existe
     }
-
-    return this.getFallbackEvents();
   }
 
-  /**
-   * Obtiene el calendario de eventos
-   */
-  async getCalendarEvents(): Promise<UfcCalendarItem[]> {
-    this.syncService.triggerBackgroundSyncIfDue();
+  private getFilePath(filename: string): string {
+    return path.join(this.storageDir, filename);
+  }
 
-    const persisted = await this.repo.getCalendar();
-    if (persisted && persisted.length > 0) {
-      return persisted;
-    }
+  private async readJsonFile<T>(filename: string, defaultValue: T): Promise<T> {
+    await this.ensureStorageDir();
+    const filePath = this.getFilePath(filename);
 
     try {
-      const raw = await this.client.fetchScoreboard('ufc');
-      const normalized = this.normalizer.normalizeCalendar(raw);
-      if (normalized.length > 0) {
-        await this.repo.saveCalendar(normalized);
-        return normalized;
-      }
-    } catch (err) {
-      console.warn('[EspnUfcAdapter] Error fetching calendar, using fallback:', err);
+      const data = await fs.readFile(filePath, 'utf-8');
+      return JSON.parse(data) as T;
+    } catch {
+      // Si el archivo no existe o está corrupto, guardamos y retornamos el valor inicial
+      await this.writeJsonFile(filename, defaultValue);
+      return defaultValue;
     }
-
-    return this.getFallbackCalendar();
   }
 
-  /**
-   * Obtiene rankings oficiales
-   */
+  private async writeJsonFile<T>(filename: string, data: T): Promise<void> {
+    await this.ensureStorageDir();
+    const filePath = this.getFilePath(filename);
+    const tempPath = `${filePath}.tmp.${Date.now()}`;
+
+    try {
+      const jsonContent = JSON.stringify(data, null, 2);
+      await fs.writeFile(tempPath, jsonContent, 'utf-8');
+      await fs.rename(tempPath, filePath);
+    } catch (err) {
+      console.error(`[FileSportRepository] Error writing file ${filename}:`, err);
+      // Fallback a escritura directa si rename falla en algún sistema de archivos
+      try {
+        await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
+      } catch (directErr) {
+        console.error(`[FileSportRepository] Critical write failure ${filename}:`, directErr);
+      }
+    }
+  }
+
+  // --- EVENTOS ---
+
+  async getEvents(): Promise<Event[]> {
+    return this.readJsonFile<Event[]>('events.json', this.getDefaultSeedEvents());
+  }
+
+  async saveEvents(events: Event[]): Promise<void> {
+    if (!events || events.length === 0) return;
+    await this.writeJsonFile('events.json', events);
+  }
+
+  // --- CALENDARIO ---
+
+  async getCalendar(): Promise<UfcCalendarItem[]> {
+    return this.readJsonFile<UfcCalendarItem[]>('calendar.json', this.getDefaultSeedCalendar());
+  }
+
+  async saveCalendar(items: UfcCalendarItem[]): Promise<void> {
+    if (!items || items.length === 0) return;
+    await this.writeJsonFile('calendar.json', items);
+  }
+
+  // --- NOTICIAS ---
+
+  async getNews(): Promise<UfcNewsArticle[]> {
+    return this.readJsonFile<UfcNewsArticle[]>('news.json', this.getDefaultSeedNews());
+  }
+
+  async saveNews(articles: UfcNewsArticle[]): Promise<void> {
+    if (!articles || articles.length === 0) return;
+    await this.writeJsonFile('news.json', articles);
+  }
+
+  // --- RANKINGS ---
+
   async getRankings(): Promise<UfcRankingsCategory[]> {
-    return this.repo.getRankings();
+    return this.readJsonFile<UfcRankingsCategory[]>('rankings.json', UFC_OFFICIAL_RANKINGS);
   }
 
-  /**
-   * Obtiene noticias
-   */
-  async getNews(limit: number = 8): Promise<UfcNewsArticle[]> {
-    this.syncService.triggerBackgroundSyncIfDue();
+  async saveRankings(categories: UfcRankingsCategory[]): Promise<void> {
+    if (!categories || categories.length === 0) return;
+    await this.writeJsonFile('rankings.json', categories);
+  }
 
-    const persisted = await this.repo.getNews();
-    if (persisted && persisted.length > 0) {
-      return persisted.slice(0, limit);
-    }
+  // --- METADATOS DE SINCRONIZACIÓN ---
+
+  async getSyncMetadata(): Promise<SyncMetadata | null> {
+    await this.ensureStorageDir();
+    const filePath = this.getFilePath('sync-metadata.json');
 
     try {
-      const raw = await this.client.fetchNews('ufc', limit);
-      const normalized = this.normalizer.normalizeNews(raw, limit);
-      if (normalized.length > 0) {
-        await this.repo.saveNews(normalized);
-        return normalized;
-      }
-    } catch (err) {
-      console.warn('[EspnUfcAdapter] Error fetching news, using fallback:', err);
+      const data = await fs.readFile(filePath, 'utf-8');
+      return JSON.parse(data) as SyncMetadata;
+    } catch {
+      return null;
     }
-
-    return this.getFallbackNews().slice(0, limit);
   }
 
-  /**
-   * Obtiene el detalle de un evento por ID o slug
-   */
-  async getEventDetails(eventIdOrSlug: string): Promise<Event | null> {
-    const allEvents = await this.getUpcomingEvents();
-    return (
-      allEvents.find(
-        (e) => e.id === eventIdOrSlug || e.slug === eventIdOrSlug || e.externalSource?.externalId === eventIdOrSlug
-      ) || null
-    );
+  async saveSyncMetadata(meta: SyncMetadata): Promise<void> {
+    await this.writeJsonFile('sync-metadata.json', meta);
   }
 
-  // --- MÉTODOS DE FALLBACK PARA COMPATIBILIDAD ---
+  // --- PERFILES DETALLADOS E HISTORIAL DE PELEADORES ---
 
-  getFallbackEvents(): Event[] {
+  async getFighterProfile(id: string): Promise<import('@/core/domain/types').FighterDetailedProfile | null> {
+    const fightersDir = path.join(this.storageDir, 'fighters');
+    try {
+      await fs.mkdir(fightersDir, { recursive: true });
+      const filePath = path.join(fightersDir, `${id}.json`);
+      const data = await fs.readFile(filePath, 'utf-8');
+      return JSON.parse(data);
+    } catch {
+      return null;
+    }
+  }
+
+  async saveFighterProfile(profile: import('@/core/domain/types').FighterDetailedProfile): Promise<void> {
+    const fightersDir = path.join(this.storageDir, 'fighters');
+    await fs.mkdir(fightersDir, { recursive: true });
+    const filePath = path.join(fightersDir, `${profile.id}.json`);
+    await fs.writeFile(filePath, JSON.stringify(profile, null, 2), 'utf-8');
+  }
+
+  // --- SEEDS INICIALES (Fallback seguro en caso de inicio sin internet) ---
+
+  private getDefaultSeedEvents(): Event[] {
     return [
       {
         id: 'ufc-fn-hooker-parnasse',
         organizationSlug: 'ufc',
-        organization: this.getOrganization(),
+        organization: {
+          id: 'org-ufc',
+          sportSlug: 'mma',
+          name: 'Ultimate Fighting Championship',
+          shortName: 'UFC',
+          slug: 'ufc',
+          logoUrl: 'https://a.espncdn.com/i/teamlogos/leagues/500/mma.png',
+          country: 'United States',
+          websiteUrl: 'https://www.ufc.com',
+        },
         sportSlug: 'mma',
         name: 'UFC Fight Night: Hooker vs. Parnasse',
         shortName: 'UFC Fight Night',
@@ -243,7 +264,7 @@ export class EspnUfcAdapter implements ISportDataProvider {
     ];
   }
 
-  getFallbackCalendar(): UfcCalendarItem[] {
+  private getDefaultSeedCalendar(): UfcCalendarItem[] {
     return [
       { id: 'cal-fn-paris', label: 'UFC Fight Night: Hooker vs. Parnasse', startDate: '2026-09-05T19:00:00.000Z', isPPV: false, isFightNight: true, isContenderSeries: false, location: 'Accor Arena, Paris' },
       { id: 'cal-noche-ufc', label: 'Noche UFC: Silva vs. Delgado', startDate: '2026-09-12T21:00:00.000Z', isPPV: false, isFightNight: true, isContenderSeries: false, location: 'Sphere, Las Vegas' },
@@ -254,11 +275,7 @@ export class EspnUfcAdapter implements ISportDataProvider {
     ];
   }
 
-  getFallbackRankings(): UfcRankingsCategory[] {
-    return this.repo.getRankings() as unknown as UfcRankingsCategory[];
-  }
-
-  getFallbackNews(): UfcNewsArticle[] {
+  private getDefaultSeedNews(): UfcNewsArticle[] {
     return [
       {
         id: 'news-1',
@@ -278,6 +295,15 @@ export class EspnUfcAdapter implements ISportDataProvider {
         sourceUrl: 'https://www.espn.com/mma/',
         category: 'UFC PPV',
       },
+      {
+        id: 'news-3',
+        headline: 'Rankings Oficiales UFC: Movimientos destacados en el Libra por Libra',
+        description: 'Islam Makhachev consolida el puesto #1 del mundo seguido de cerca por Alex Pereira y Jon Jones tras la última actualización del panel oficial.',
+        publishedAt: new Date(Date.now() - 3600000 * 12).toISOString(),
+        imageUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80',
+        sourceUrl: 'https://www.espn.com/mma/',
+        category: 'Rankings',
+      }
     ];
   }
 }

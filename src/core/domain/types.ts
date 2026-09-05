@@ -78,6 +78,55 @@ export interface FighterStats {
   significantStrikesLandedPerMin?: number;
 }
 
+export interface PastFight {
+  id: string;
+  eventName: string;
+  eventDate: string;
+  opponentId?: string;
+  opponentName: string;
+  opponentAvatarUrl?: string;
+  isWinner: boolean;
+  method: string;        // 'KO/TKO', 'Submission', 'Decision - Unanimous', etc.
+  methodDetail?: string;  // 'Punches', 'Rear Naked Choke', etc.
+  round?: number;
+  time?: string;
+}
+
+export interface FighterDetailedProfile {
+  id: string;
+  displayName: string;
+  nickname?: string;
+  avatarUrl?: string;
+  country?: string;
+  countryFlagCode?: string;
+  weightClass?: string;
+  gender?: 'MALE' | 'FEMALE';
+  height?: string;
+  weight?: string;
+  reach?: string;
+  stance?: string;
+  age?: number;
+  gym?: string;
+  record: {
+    wins: number;
+    losses: number;
+    draws: number;
+    koWins?: number;
+    koLosses?: number;
+    subWins?: number;
+    subLosses?: number;
+    decWins?: number;
+    decLosses?: number;
+  };
+  stats?: {
+    strikingAccuracy?: number;
+    significantStrikesPerMin?: number;
+    takedownDefense?: number;
+    takedownAccuracy?: number;
+  };
+  recentFights: PastFight[];
+}
+
 export interface TeamStats {
   played: number;
   won: number;

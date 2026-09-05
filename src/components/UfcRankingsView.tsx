@@ -1,90 +1,138 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Trophy, Award, TrendingUp, TrendingDown, Minus, ShieldCheck, ChevronRight, User, Globe } from 'lucide-react';
+import { Trophy, Award, TrendingUp, TrendingDown, Minus, ShieldCheck, Sparkles } from 'lucide-react';
 import { UfcRankingsCategory } from '../core/domain/types';
+import { FighterAvatar } from './FighterAvatar';
 
 interface UfcRankingsViewProps {
   rankings: UfcRankingsCategory[];
 }
 
 export function UfcRankingsView({ rankings }: UfcRankingsViewProps) {
+  const [selectedGender, setSelectedGender] = useState<'MALE' | 'FEMALE'>('MALE');
+  
+  // Categorías filtradas por género
+  const genderCategories = rankings.filter((r) => r.gender === selectedGender);
+
   const [selectedSlug, setSelectedSlug] = useState<string>(
     rankings[0]?.slug || 'pound-for-pound'
   );
 
-  const currentCategory = rankings.find((r) => r.slug === selectedSlug) || rankings[0];
+  // Asegurar que si cambiamos de género y la categoría no existe en el nuevo género, se seleccione la primera
+  const currentCategory =
+    genderCategories.find((r) => r.slug === selectedSlug) ||
+    genderCategories[0] ||
+    rankings[0];
 
   if (!rankings || rankings.length === 0) return null;
 
   return (
-    <section id="rankings" className="space-y-6 pt-4">
+    <section id="rankings" className="space-y-5 pt-2">
       {/* Section Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#CDCDCF] pb-4">
-        <div className="flex items-center space-x-3">
-          <div className="p-2.5 rounded-lg bg-[#E5A93C] text-black shadow-md shadow-[#E5A93C]/30 sports-skew">
-            <Trophy className="w-6 h-6 sports-unskew" />
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#CDCDCF] pb-3">
+        <div className="flex items-center space-x-2.5">
+          <div className="p-2 rounded-lg bg-[#E5A93C] text-black">
+            <Trophy className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-3xl sm:text-4xl font-black text-[#0E1015] uppercase tracking-tight font-display">
-                RANKINGS OFICIALES UFC
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0E1015] uppercase tracking-tight font-display">
+                Rankings Oficiales UFC
               </h2>
-              <span className="px-2 py-0.5 rounded bg-[#0E1015] text-[#2BCFCE] font-sport font-black text-xs uppercase tracking-wider sports-skew">
-                <span className="sports-unskew">PANEL OFICIAL ESPN</span>
+              <span className="hidden sm:inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-sport font-black uppercase tracking-wider">
+                <Sparkles className="w-3 h-3" />
+                <span>2025/2026</span>
               </span>
             </div>
-            <p className="text-xs font-sport font-bold text-[#939599] uppercase tracking-widest block -mt-1">
-              Clasificación mundial por divisiones de peso • Campeones y contendientes Top 10
+            <p className="text-xs font-sport text-[#939599] uppercase tracking-wider">
+              Panel oficial de medios y panelistas de UFC • Top 15 por división
             </p>
           </div>
+        </div>
+
+        {/* Gender Toggle Selector */}
+        <div className="flex items-center space-x-1 bg-[#F2F3F5] p-1 rounded-lg border border-[#CDCDCF]">
+          <button
+            onClick={() => {
+              setSelectedGender('MALE');
+              setSelectedSlug('pound-for-pound');
+            }}
+            className={`px-3.5 py-1 rounded font-sport font-bold text-xs uppercase tracking-wider transition-colors ${
+              selectedGender === 'MALE'
+                ? 'bg-[#0E1015] text-[#2BCFCE]'
+                : 'text-[#939599] hover:text-[#0E1015]'
+            }`}
+          >
+            Masculino ({rankings.filter((r) => r.gender === 'MALE').length})
+          </button>
+          <button
+            onClick={() => {
+              setSelectedGender('FEMALE');
+              setSelectedSlug('women-pound-for-pound');
+            }}
+            className={`px-3.5 py-1 rounded font-sport font-bold text-xs uppercase tracking-wider transition-colors ${
+              selectedGender === 'FEMALE'
+                ? 'bg-[#0E1015] text-[#EC4D25]'
+                : 'text-[#939599] hover:text-[#0E1015]'
+            }`}
+          >
+            Femenino ({rankings.filter((r) => r.gender === 'FEMALE').length})
+          </button>
         </div>
       </div>
 
       {/* Division Selector Filter Bar */}
-      <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-thin">
-        {rankings.map((cat) => (
-          <button
-            key={cat.id || cat.slug}
-            onClick={() => setSelectedSlug(cat.slug)}
-            className={`px-4 py-2 rounded-lg font-sport font-black text-xs sm:text-sm uppercase tracking-wider whitespace-nowrap transition-all sports-skew flex items-center space-x-1.5 ${
-              selectedSlug === cat.slug
-                ? 'bg-[#0E1015] text-[#2BCFCE] shadow-md shadow-black/20 border-2 border-[#2BCFCE]'
-                : 'bg-white text-[#0E1015] hover:bg-[#EAECEF] border border-[#CDCDCF]'
-            }`}
-          >
-            {cat.isP4P && <Award className="w-3.5 h-3.5 text-[#E5A93C] sports-unskew" />}
-            <span className="sports-unskew">{cat.name}</span>
-          </button>
-        ))}
+      <div className="flex items-center space-x-1.5 overflow-x-auto pb-1">
+        {genderCategories.map((cat) => {
+          const isSelected = currentCategory?.slug === cat.slug;
+          return (
+            <button
+              key={cat.id || cat.slug}
+              onClick={() => setSelectedSlug(cat.slug)}
+              className={`px-3 py-1.5 rounded font-sport font-bold text-xs uppercase tracking-wider whitespace-nowrap transition-colors flex items-center space-x-1 border ${
+                isSelected
+                  ? cat.isP4P
+                    ? 'bg-[#E5A93C] text-black border-[#E5A93C]'
+                    : 'bg-[#0E1015] text-[#2BCFCE] border-[#0E1015]'
+                  : 'bg-white text-[#0E1015] hover:bg-[#F2F3F5] border-[#CDCDCF]'
+              }`}
+            >
+              {cat.isP4P && <Award className="w-3.5 h-3.5" />}
+              <span>{cat.name}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Category Content Area */}
       {currentCategory && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Champion Banner Card (if division has a champion) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+          {/* Champion Banner Card */}
           {currentCategory.champion && (
-            <div className="lg:col-span-4 bg-gradient-to-b from-[#1E170A] via-[#151821] to-[#0E1015] rounded-2xl border-2 border-[#E5A93C] p-6 shadow-xl text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#E5A93C]/20 rounded-full blur-2xl pointer-events-none" />
+            <div className="lg:col-span-4 bg-[#0E1015] rounded-2xl border border-[#E5A93C]/40 p-6 shadow-lg text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#E5A93C]/10 rounded-full blur-3xl pointer-events-none" />
 
               <div className="flex items-center justify-between mb-4">
-                <span className="px-3 py-1 rounded bg-[#E5A93C] text-black font-sport font-black text-xs uppercase tracking-widest sports-skew flex items-center space-x-1 shadow-md">
-                  <Trophy className="w-3.5 h-3.5 sports-unskew" />
-                  <span className="sports-unskew">CAMPEÓN VIGENTE</span>
+                <span className="px-3 py-1 rounded bg-[#E5A93C] text-black font-sport font-black text-xs uppercase tracking-wider flex items-center space-x-1.5">
+                  <Trophy className="w-3.5 h-3.5" />
+                  <span>CAMPEÓN UFC</span>
                 </span>
                 {currentCategory.champion.defenses !== undefined && (
-                  <span className="text-xs font-sport font-bold text-[#E5A93C] uppercase tracking-wider">
-                    {currentCategory.champion.defenses} Defensas
+                  <span className="text-xs font-sport font-black text-[#E5A93C] uppercase tracking-wider bg-black/40 px-2.5 py-1 rounded border border-[#E5A93C]/20">
+                    {currentCategory.champion.defenses} {currentCategory.champion.defenses === 1 ? 'Defensa' : 'Defensas'}
                   </span>
                 )}
               </div>
 
-              <div className="flex flex-col items-center text-center my-4">
-                <div className="relative w-36 h-36 rounded-2xl p-1 bg-gradient-to-b from-[#E5A93C] to-[#5C3F08] border-2 border-[#E5A93C] overflow-hidden shadow-xl shadow-[#E5A93C]/20 sports-skew mb-4">
-                  <img
-                    src={currentCategory.champion.headshotUrl || 'https://a.espncdn.com/i/headshots/mma/players/full/default.png'}
-                    alt={currentCategory.champion.displayName}
-                    className="w-full h-full object-cover object-top sports-unskew"
+              <div className="flex flex-col items-center text-center my-3">
+                <div className="relative mb-4">
+                  <FighterAvatar
+                    src={currentCategory.champion.headshotUrl}
+                    name={currentCategory.champion.displayName}
+                    side="CHAMPION"
+                    size="2xl"
+                    className="ring-2 ring-[#E5A93C]/60"
                   />
                 </div>
 
@@ -97,13 +145,13 @@ export function UfcRankingsView({ rankings }: UfcRankingsViewProps) {
                 </h3>
 
                 {currentCategory.champion.nickname && (
-                  <p className="text-xs text-[#E5A93C] font-sport font-bold italic tracking-wider mt-0.5">
-                    "{currentCategory.champion.nickname}"
+                  <p className="text-sm text-[#E5A93C] font-sport font-semibold italic mt-1">
+                    &ldquo;{currentCategory.champion.nickname}&rdquo;
                   </p>
                 )}
 
-                <div className="mt-3 inline-flex items-center space-x-2 px-3.5 py-1 rounded-md bg-white/10 border border-white/10 text-xs font-sport text-[#CDCDCF] font-bold">
-                  <span>RÉCORD: <b className="text-white">{currentCategory.champion.recordSummary}</b></span>
+                <div className="mt-3 inline-flex items-center space-x-2 px-3.5 py-1 rounded-lg bg-white/8 text-xs font-sport text-[#CDCDCF] font-bold border border-white/10">
+                  <span>Récord: <b className="text-white">{currentCategory.champion.recordSummary}</b></span>
                   {currentCategory.champion.countryCode && (
                     <span>• {currentCategory.champion.countryCode}</span>
                   )}
@@ -112,24 +160,25 @@ export function UfcRankingsView({ rankings }: UfcRankingsViewProps) {
             </div>
           )}
 
-          {/* Ranked Contenders Grid (#1 to #10) */}
-          <div className={`${currentCategory.champion ? 'lg:col-span-8' : 'lg:col-span-12'} space-y-2.5`}>
-            <div className="flex items-center justify-between px-4 py-2 bg-[#EAECEF] rounded-lg border border-[#CDCDCF] text-xs font-sport font-black text-[#939599] uppercase tracking-wider">
+          {/* Ranked Contenders Grid */}
+          <div className={`${currentCategory.champion ? 'lg:col-span-8' : 'lg:col-span-12'} space-y-2`}>
+            {/* Cabecera de la tabla */}
+            <div className="flex items-center justify-between px-4 py-2 bg-[#F2F3F5] rounded-lg border border-[#CDCDCF] text-xs font-sport font-black text-[#939599] uppercase tracking-wider">
               <span className="w-12">RANGO</span>
-              <span className="flex-1">PELEADOR / CONTENDIENTE</span>
+              <span className="flex-1">PELEADOR</span>
               <span className="w-24 text-center">RÉCORD</span>
               <span className="w-16 text-right">TENDENCIA</span>
             </div>
 
-            <div className="space-y-2">
+            {/* Lista de Peleadores */}
+            <div className="space-y-1.5">
               {currentCategory.fighters.map((f) => {
-                const isTop3 = f.rank <= 3;
+                const isP4PChampion = f.isChampion && currentCategory.isP4P;
+
                 return (
                   <div
                     key={f.fighterId || f.displayName}
-                    className={`flex items-center justify-between px-4 py-3 rounded-xl border-2 transition-all bg-white hover:border-[#2BCFCE] shadow-sm ${
-                      isTop3 ? 'border-[#CDCDCF]' : 'border-[#EAECEF]'
-                    }`}
+                    className="flex items-center justify-between px-4 py-2.5 rounded-xl border border-[#CDCDCF]/80 transition-colors bg-white hover:bg-[#FAFAFA]"
                   >
                     {/* Rank Number */}
                     <div className="w-12 flex items-center">
@@ -148,43 +197,47 @@ export function UfcRankingsView({ rankings }: UfcRankingsViewProps) {
                       </span>
                     </div>
 
-                    {/* Fighter Name, Headshot & Country */}
+                    {/* Fighter Name, Avatar */}
                     <div className="flex-1 flex items-center space-x-3 min-w-0 pr-2">
-                      <div className="relative shrink-0 w-12 h-12 rounded-lg p-0.5 bg-[#EAECEF] border border-[#CDCDCF] overflow-hidden">
-                        <img
-                          src={f.headshotUrl || 'https://a.espncdn.com/i/headshots/mma/players/full/default.png'}
-                          alt={f.displayName}
-                          className="w-full h-full object-cover object-top"
-                        />
-                      </div>
+                      <FighterAvatar
+                        src={f.headshotUrl}
+                        name={f.displayName}
+                        size="sm"
+                        side={f.isChampion ? 'CHAMPION' : 'NEUTRAL'}
+                      />
 
                       <div className="min-w-0">
                         <div className="flex items-center space-x-2">
-                          <h4 className="text-base font-black text-[#0E1015] font-display uppercase tracking-wide truncate">
+                          <h4 className="text-sm sm:text-base font-black text-[#0E1015] font-display uppercase tracking-wide truncate">
                             {f.displayName}
                           </h4>
-                          {f.isChampion && (
-                            <span className="px-1.5 py-0.2 rounded bg-[#E5A93C] text-black font-black text-[9px] font-sport uppercase">
-                              CINTURÓN
+                          {isP4PChampion && (
+                            <span className="px-1.5 py-0.5 rounded bg-[#E5A93C] text-black font-black text-[9px] font-sport uppercase">
+                              CAMPEÓN
+                            </span>
+                          )}
+                          {f.countryCode && (
+                            <span className="text-[10px] text-[#939599] font-sport font-bold">
+                              {f.countryCode}
                             </span>
                           )}
                         </div>
                         {f.nickname && (
                           <p className="text-xs text-[#939599] font-sport italic truncate">
-                            "{f.nickname}"
+                            &ldquo;{f.nickname}&rdquo;
                           </p>
                         )}
                       </div>
                     </div>
 
                     {/* Record */}
-                    <div className="w-24 text-center font-sport font-black text-xs text-[#0E1015]">
+                    <div className="w-24 text-center font-sport font-bold text-xs text-[#0E1015]">
                       {f.recordSummary}
                     </div>
 
                     {/* Trend */}
                     <div className="w-16 flex items-center justify-end font-sport font-black text-xs">
-                      {f.trend?.includes('+') || f.trend === '1' ? (
+                      {f.trend?.includes('+') ? (
                         <span className="inline-flex items-center text-emerald-600 space-x-0.5">
                           <TrendingUp className="w-3.5 h-3.5" />
                           <span>{f.trend}</span>

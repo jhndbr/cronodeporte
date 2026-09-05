@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
-import { X, Trophy, Shield, Zap, Target, Swords } from 'lucide-react';
-import { Match, MatchParticipant, FighterStats } from '../core/domain/types';
+import React, { useState } from 'react';
+import { X, Swords } from 'lucide-react';
+import { Match, FighterStats } from '../core/domain/types';
+import { FighterAvatar } from './FighterAvatar';
+import { FighterHistoryModal } from './FighterHistoryModal';
 
 interface TaleOfTheTapeModalProps {
   match: Match;
@@ -11,6 +13,8 @@ interface TaleOfTheTapeModalProps {
 }
 
 export function TaleOfTheTapeModal({ match, isOpen, onClose }: TaleOfTheTapeModalProps) {
+  const [selectedFighter, setSelectedFighter] = useState<{ id: string; name: string } | null>(null);
+
   if (!isOpen) return null;
 
   const red = match.participants.find((p) => p.side === 'RED_CORNER');
@@ -18,116 +22,122 @@ export function TaleOfTheTapeModal({ match, isOpen, onClose }: TaleOfTheTapeModa
 
   if (!red || !blue) return null;
 
-  const redStats = red.participant.stats as FighterStats;
-  const blueStats = blue.participant.stats as FighterStats;
+  const redStats = red.participant.stats as FighterStats | undefined;
+  const blueStats = blue.participant.stats as FighterStats | undefined;
 
   const redGym = red.participant.affiliations[0]?.affiliation;
   const blueGym = blue.participant.affiliations[0]?.affiliation;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-[#0E1015] border-2 border-[#CDCDCF] rounded-3xl shadow-2xl overflow-hidden text-white">
+      <div className="relative w-full max-w-xl bg-[#0E1015] border border-[#282E3E] rounded-3xl shadow-2xl overflow-hidden text-white">
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-[#282E3E] bg-black/50">
-          <div className="flex items-center space-x-2.5">
-            <div className="p-1.5 rounded bg-[#EC4D25] text-white sports-skew">
-              <Swords className="w-4 h-4 sports-unskew" />
+        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#282E3E] bg-black/40">
+          <div className="flex items-center space-x-2">
+            <div className="p-1 rounded bg-[#EC4D25] text-white sports-skew">
+              <Swords className="w-3.5 h-3.5 sports-unskew" />
             </div>
-            <h3 className="text-xl font-black text-white uppercase tracking-wider font-display">
-              TALE OF THE TAPE • COMPARATIVA OFICIAL
+            <h3 className="text-lg font-black text-white uppercase tracking-wider font-display">
+              Tale of the Tape
             </h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#939599] hover:text-white hover:bg-white/10 transition-colors"
+            className="p-1 rounded-lg text-[#939599] hover:text-white hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6">
+        <div className="p-5 sm:p-6 space-y-5">
           {/* Fighters Face-Off Header */}
-          <div className="grid grid-cols-3 items-center gap-4">
+          <div className="grid grid-cols-3 items-center gap-3">
             {/* Red Fighter */}
-            <div className="text-center space-y-2">
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-xl p-1 bg-gradient-to-b from-[#EC4D25] to-[#451408] border-2 border-[#EC4D25] overflow-hidden shadow-lg shadow-[#EC4D25]/30 sports-skew">
-                <img
-                  src={red.participant.avatarUrl || 'https://a.espncdn.com/i/headshots/mma/players/full/default.png'}
-                  alt={red.participant.displayName}
-                  className="w-full h-full object-cover object-top sports-unskew"
-                />
-              </div>
+            <div
+              onClick={() => setSelectedFighter({ id: red.participant.id, name: red.participant.displayName })}
+              className="text-center space-y-1.5 flex flex-col items-center cursor-pointer group"
+              title={`Ver historial completo de ${red.participant.displayName}`}
+            >
+              <FighterAvatar
+                src={red.participant.avatarUrl}
+                name={red.participant.displayName}
+                country={red.participant.country || red.participant.affiliations?.[0]?.affiliation?.country}
+                side="RED_CORNER"
+                size="lg"
+              />
               <div>
                 <span className="text-[10px] font-black text-[#EC4D25] uppercase font-sport tracking-wider block">
-                  ESQUINA ROJA
+                  ROJA
                 </span>
-                <p className="text-base sm:text-lg font-black text-white font-display uppercase tracking-wide leading-tight">
+                <p className="text-sm sm:text-base font-black text-white font-display uppercase tracking-wide leading-tight truncate max-w-[130px] group-hover:underline group-hover:text-[#EC4D25] transition-colors">
                   {red.participant.displayName}
                 </p>
                 {red.participant.nickname && (
-                  <p className="text-xs text-[#EC4D25] font-sport font-bold italic">"{red.participant.nickname}"</p>
+                  <p className="text-[11px] text-[#EC4D25] font-sport font-semibold italic truncate max-w-[130px]">"{red.participant.nickname}"</p>
                 )}
-                <p className="text-xs font-sport text-[#939599]">{redGym?.name || 'Independiente'}</p>
               </div>
             </div>
 
             {/* VS Badge */}
             <div className="text-center">
-              <div className="inline-block px-3 py-1 rounded bg-white/10 border border-white/10 text-xs font-sport font-black text-white uppercase tracking-wider">
+              <div className="inline-block px-2.5 py-0.5 rounded bg-white/10 text-[11px] font-sport font-bold text-white uppercase tracking-wider">
                 {match.weightClass || 'Catchweight'}
               </div>
-              <p className="text-3xl font-black text-white my-1 font-display uppercase tracking-widest">VS</p>
-              <div className="text-[11px] font-sport font-bold text-[#939599] uppercase tracking-wider">
-                {match.roundsMax} RONDAS {match.isTitleFight ? '• CINTURÓN' : ''}
+              <p className="text-2xl font-black text-white my-0.5 font-display uppercase tracking-widest">VS</p>
+              <div className="text-[10px] font-sport text-[#939599] uppercase">
+                {match.roundsMax} Rondas
               </div>
             </div>
 
             {/* Blue Fighter */}
-            <div className="text-center space-y-2">
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-xl p-1 bg-gradient-to-b from-[#2BCFCE] to-[#0A3D3C] border-2 border-[#2BCFCE] overflow-hidden shadow-lg shadow-[#2BCFCE]/30 sports-skew">
-                <img
-                  src={blue.participant.avatarUrl || 'https://a.espncdn.com/i/headshots/mma/players/full/default.png'}
-                  alt={blue.participant.displayName}
-                  className="w-full h-full object-cover object-top sports-unskew"
-                />
-              </div>
+            <div
+              onClick={() => setSelectedFighter({ id: blue.participant.id, name: blue.participant.displayName })}
+              className="text-center space-y-1.5 flex flex-col items-center cursor-pointer group"
+              title={`Ver historial completo de ${blue.participant.displayName}`}
+            >
+              <FighterAvatar
+                src={blue.participant.avatarUrl}
+                name={blue.participant.displayName}
+                country={blue.participant.country || blue.participant.affiliations?.[0]?.affiliation?.country}
+                side="BLUE_CORNER"
+                size="lg"
+              />
               <div>
                 <span className="text-[10px] font-black text-[#2BCFCE] uppercase font-sport tracking-wider block">
-                  ESQUINA AZUL
+                  AZUL
                 </span>
-                <p className="text-base sm:text-lg font-black text-white font-display uppercase tracking-wide leading-tight">
+                <p className="text-sm sm:text-base font-black text-white font-display uppercase tracking-wide leading-tight truncate max-w-[130px] group-hover:underline group-hover:text-[#2BCFCE] transition-colors">
                   {blue.participant.displayName}
                 </p>
                 {blue.participant.nickname && (
-                  <p className="text-xs text-[#2BCFCE] font-sport font-bold italic">"{blue.participant.nickname}"</p>
+                  <p className="text-[11px] text-[#2BCFCE] font-sport font-semibold italic truncate max-w-[130px]">"{blue.participant.nickname}"</p>
                 )}
-                <p className="text-xs font-sport text-[#939599]">{blueGym?.name || 'Independiente'}</p>
               </div>
             </div>
           </div>
 
           {/* Comparison Metrics */}
-          <div className="space-y-2.5 pt-4 border-t border-[#282E3E]">
+          <div className="space-y-1.5 pt-3 border-t border-[#282E3E]">
             <MetricRow
-              label="Récord Oficial"
+              label="Récord"
               redValue={`${redStats?.wins ?? 0}-${redStats?.losses ?? 0}-${redStats?.draws ?? 0}`}
               blueValue={`${blueStats?.wins ?? 0}-${blueStats?.losses ?? 0}-${blueStats?.draws ?? 0}`}
             />
             <MetricRow
               label="Altura"
-              redValue={redStats?.height || 'N/A'}
-              blueValue={blueStats?.height || 'N/A'}
+              redValue={redStats?.height || '-'}
+              blueValue={blueStats?.height || '-'}
             />
             <MetricRow
               label="Peso"
-              redValue={redStats?.weight || 'N/A'}
-              blueValue={blueStats?.weight || 'N/A'}
+              redValue={redStats?.weight || '-'}
+              blueValue={blueStats?.weight || '-'}
             />
             <MetricRow
               label="Alcance"
-              redValue={redStats?.reach || 'N/A'}
-              blueValue={blueStats?.reach || 'N/A'}
+              redValue={redStats?.reach || '-'}
+              blueValue={blueStats?.reach || '-'}
             />
             <MetricRow
               label="Guardia"
@@ -135,19 +145,26 @@ export function TaleOfTheTapeModal({ match, isOpen, onClose }: TaleOfTheTapeModa
               blueValue={blueStats?.stance || 'Orthodox'}
             />
             <MetricRow
-              label="Gimnasio / Camp"
+              label="Gimnasio"
               redValue={redGym?.name || 'Independiente'}
               blueValue={blueGym?.name || 'Independiente'}
             />
             <MetricRow
-              label="Momio Moneyline"
-              redValue={red.currentOdd ? `${red.currentOdd.american} (${red.currentOdd.decimal}x)` : 'N/A'}
-              blueValue={blue.currentOdd ? `${blue.currentOdd.american} (${blue.currentOdd.decimal}x)` : 'N/A'}
+              label="Momio"
+              redValue={red.currentOdd ? `${red.currentOdd.american} (${red.currentOdd.decimal}x)` : '-'}
+              blueValue={blue.currentOdd ? `${blue.currentOdd.american} (${blue.currentOdd.decimal}x)` : '-'}
               highlight
             />
           </div>
         </div>
       </div>
+
+      <FighterHistoryModal
+        fighterId={selectedFighter?.id || null}
+        fighterName={selectedFighter?.name}
+        isOpen={!!selectedFighter}
+        onClose={() => setSelectedFighter(null)}
+      />
     </div>
   );
 }
@@ -165,16 +182,15 @@ function MetricRow({
 }) {
   return (
     <div
-      className={`grid grid-cols-3 items-center py-2.5 px-3 rounded-lg text-xs font-sport ${
-        highlight ? 'bg-white/10 border border-white/20 font-black' : 'bg-black/40 border border-white/5'
+      className={`grid grid-cols-3 items-center py-2 px-3 rounded-lg text-xs font-sport ${
+        highlight ? 'bg-white/10 border border-white/10 font-bold' : 'bg-black/30'
       }`}
     >
-      <div className="text-left font-black text-[#EC4D25] text-sm truncate">{redValue}</div>
-      <div className="text-center font-bold uppercase tracking-wider text-[#CDCDCF]">
+      <div className="text-left font-bold text-[#EC4D25] text-xs truncate">{redValue}</div>
+      <div className="text-center font-semibold uppercase tracking-wider text-[#939599] text-[11px]">
         {label}
       </div>
-      <div className="text-right font-black text-[#2BCFCE] text-sm truncate">{blueValue}</div>
+      <div className="text-right font-bold text-[#2BCFCE] text-xs truncate">{blueValue}</div>
     </div>
   );
 }
-

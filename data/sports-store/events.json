@@ -1,0 +1,4743 @@
+[
+  {
+    "id": "ufc-event-600059993",
+    "organizationSlug": "ufc",
+    "organization": {
+      "id": "org-ufc",
+      "sportSlug": "mma",
+      "name": "Ultimate Fighting Championship",
+      "shortName": "UFC",
+      "slug": "ufc",
+      "logoUrl": "https://a.espncdn.com/i/teamlogos/leagues/500/mma.png",
+      "country": "United States",
+      "websiteUrl": "https://www.ufc.com"
+    },
+    "sportSlug": "mma",
+    "name": "UFC Fight Night: Hooker vs. Parnasse",
+    "shortName": "UFC Fight Night",
+    "slug": "ufc-fight-night-hooker-vs-parnasse",
+    "startDate": "2026-09-05T16:00Z",
+    "status": "SCHEDULED",
+    "venueName": "Accor Arena",
+    "city": "Paris",
+    "country": "France",
+    "matches": [
+      {
+        "id": "bout-401913130",
+        "eventId": "ufc-event-600059993",
+        "title": "Sofia Montenegro vs Delphine Benouaich",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 0,
+        "weightClass": "Flyweight (125 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T16:00Z",
+        "victoryDetails": "Sat, September 5th at 12:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-5308770",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Sofia",
+              "lastName": "Montenegro",
+              "displayName": "Sofia Montenegro",
+              "nickname": "La Bruja",
+              "slug": "sofia-montenegro",
+              "country": "ar",
+              "countryFlagCode": "ar",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5308770.png",
+              "gender": "FEMALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-alfa-team",
+                    "name": "Alfa Team",
+                    "slug": "alfa-team",
+                    "type": "TRAINING_CAMP",
+                    "country": "Argentina"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 6,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 6\"",
+                "weight": "125 lbs",
+                "reach": "67.5\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 44,
+                "significantStrikesLandedPerMin": 4.27,
+                "takedownDefense": 25
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+120",
+              "decimal": 2.2
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5345643",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Delphine",
+              "lastName": "Benouaich",
+              "displayName": "Delphine Benouaich",
+              "slug": "delphine-benouaich",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5345643.png",
+              "gender": "FEMALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 7,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 3\"",
+                "weight": "115 lbs",
+                "reach": "63\"",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-142",
+              "decimal": 1.7
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401902948",
+        "eventId": "ufc-event-600059993",
+        "title": "Luis Felipe Dias vs Matthieu Letho Duclos",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 1,
+        "weightClass": "Middleweight (185 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T16:00Z",
+        "victoryDetails": "Sat, September 5th at 12:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4693161",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Luis",
+              "lastName": "Felipe Dias",
+              "displayName": "Luis Felipe Dias",
+              "slug": "luis-felipe-dias",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4693161.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-parana-vale-tudo",
+                    "name": "Parana Vale Tudo",
+                    "slug": "parana-vale-tudo",
+                    "type": "TRAINING_CAMP",
+                    "country": "Brazil"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 18,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 11\"",
+                "weight": "185 lbs",
+                "reach": "74\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 52,
+                "significantStrikesLandedPerMin": 2.86,
+                "takedownDefense": 57
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+100",
+              "decimal": 2
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5013686",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Matthieu",
+              "lastName": "Letho Duclos",
+              "displayName": "Matthieu Letho Duclos",
+              "slug": "matthieu-letho-duclos",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5013686.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-woirin-team-elite",
+                    "name": "Woirin Team Elite",
+                    "slug": "woirin-team-elite",
+                    "type": "TRAINING_CAMP",
+                    "country": "France"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 10,
+                "losses": 3,
+                "draws": 0,
+                "height": "6' 3\"",
+                "weight": "185 lbs",
+                "reach": "77\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 40,
+                "significantStrikesLandedPerMin": 3.93
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-120",
+              "decimal": 1.83
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401911287",
+        "eventId": "ufc-event-600059993",
+        "title": "Nora Cornolle vs Klaudia Syguła",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 2,
+        "weightClass": "Featherweight (145 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T16:00Z",
+        "victoryDetails": "Sat, September 5th at 12:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4916974",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Nora",
+              "lastName": "Cornolle",
+              "displayName": "Nora Cornolle",
+              "slug": "nora-cornolle",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4916974.png",
+              "gender": "FEMALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-us-metro-bizot",
+                    "name": "US Metro Bizot",
+                    "slug": "us-metro-bizot",
+                    "type": "TRAINING_CAMP",
+                    "country": "France"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 9,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 7\"",
+                "weight": "136 lbs",
+                "reach": "67\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 64,
+                "significantStrikesLandedPerMin": 2.73,
+                "takedownDefense": 11
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5122175",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Klaudia",
+              "lastName": "Syguła",
+              "displayName": "Klaudia Syguła",
+              "slug": "klaudia-sygua",
+              "country": "pl",
+              "countryFlagCode": "pl",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5122175.png",
+              "gender": "FEMALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-ankos-mma",
+                    "name": "Ankos MMA",
+                    "slug": "ankos-mma",
+                    "type": "TRAINING_CAMP",
+                    "country": "Poland"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 8,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 8\"",
+                "weight": "136 lbs",
+                "reach": "69\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 53,
+                "significantStrikesLandedPerMin": 7.27,
+                "takedownDefense": 13
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401914474",
+        "eventId": "ufc-event-600059993",
+        "title": "Michael Aljarouj vs Fabia Sintes",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 3,
+        "weightClass": "Bantamweight (135 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T16:00Z",
+        "victoryDetails": "Sat, September 5th at 12:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-5142304",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Michael",
+              "lastName": "Aljarouj",
+              "displayName": "Michael Aljarouj",
+              "nickname": "The Soldier",
+              "slug": "michael-aljarouj",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5142304.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-old-school-academy",
+                    "name": "Old School Academy",
+                    "slug": "old-school-academy",
+                    "type": "TRAINING_CAMP",
+                    "country": "France"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 13,
+                "losses": 3,
+                "draws": 0,
+                "height": "5' 5\"",
+                "weight": "126 lbs",
+                "reach": "66\"",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-120",
+              "decimal": 1.83
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5401055",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Fabia",
+              "lastName": "Sintes",
+              "displayName": "Fabia Sintes",
+              "nickname": "El Potro Menorquin",
+              "slug": "fabia-sintes",
+              "country": "es",
+              "countryFlagCode": "es",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5401055.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-levium-armorum-team",
+                    "name": "Levium Armorum Team",
+                    "slug": "levium-armorum-team",
+                    "type": "TRAINING_CAMP",
+                    "country": "Spain"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 11,
+                "losses": 3,
+                "draws": 0,
+                "height": "5' 7\"",
+                "weight": "125 lbs",
+                "reach": "65\"",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+100",
+              "decimal": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401916275",
+        "eventId": "ufc-event-600059993",
+        "title": "Nathaniel Wood vs Pavel Andrusca",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 4,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T16:00Z",
+        "victoryDetails": "Sat, September 5th at 12:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3950354",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Nathaniel",
+              "lastName": "Wood",
+              "displayName": "Nathaniel Wood",
+              "nickname": "The Last Kingsman",
+              "slug": "nathaniel-wood",
+              "country": "gb",
+              "countryFlagCode": "gb",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3950354.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-great-britain-top-team",
+                    "name": "Great Britain Top Team",
+                    "slug": "great-britain-top-team",
+                    "type": "TRAINING_CAMP",
+                    "country": "England"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 23,
+                "losses": 6,
+                "draws": 0,
+                "height": "5' 6\"",
+                "weight": "146 lbs",
+                "reach": "69\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 56,
+                "significantStrikesLandedPerMin": 5.64,
+                "takedownDefense": 49
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-290",
+              "decimal": 1.34
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5445620",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Pavel",
+              "lastName": "Andrusca",
+              "displayName": "Pavel Andrusca",
+              "slug": "pavel-andrusca",
+              "country": "md",
+              "countryFlagCode": "md",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5445620.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 8,
+                "losses": 0,
+                "draws": 0,
+                "height": "5' 8\"",
+                "weight": "145 lbs",
+                "reach": "66\"",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+235",
+              "decimal": 3.35
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401911288",
+        "eventId": "ufc-event-600059993",
+        "title": "Modestas Bukauskas vs Oumar Sy",
+        "segment": "PRELIMS",
+        "orderIndex": 5,
+        "weightClass": "Light Heavyweight (205 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T16:00Z",
+        "victoryDetails": "Sat, September 5th at 12:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4279621",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Modestas",
+              "lastName": "Bukauskas",
+              "displayName": "Modestas Bukauskas",
+              "nickname": "The Baltic Gladiator",
+              "slug": "modestas-bukauskas",
+              "country": "lt",
+              "countryFlagCode": "lt",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4279621.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-gintas-combat",
+                    "name": "Gintas Combat",
+                    "slug": "gintas-combat",
+                    "type": "TRAINING_CAMP",
+                    "country": "Lithuania"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 20,
+                "losses": 7,
+                "draws": 0,
+                "height": "6' 3\"",
+                "weight": "205 lbs",
+                "reach": "76\"",
+                "stance": "Switch",
+                "strikingAccuracy": 47,
+                "significantStrikesLandedPerMin": 3.14,
+                "takedownDefense": 67
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+195",
+              "decimal": 2.95
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5074120",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Oumar",
+              "lastName": "Sy",
+              "displayName": "Oumar Sy",
+              "slug": "oumar-sy",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5074120.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-american-top-team",
+                    "name": "American Top Team",
+                    "slug": "american-top-team",
+                    "type": "TRAINING_CAMP",
+                    "country": "France"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 12,
+                "losses": 2,
+                "draws": 0,
+                "height": "6' 4\"",
+                "weight": "206 lbs",
+                "reach": "83\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 49,
+                "significantStrikesLandedPerMin": 3.41,
+                "takedownDefense": 35
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-238",
+              "decimal": 1.42
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401875227",
+        "eventId": "ufc-event-600059993",
+        "title": "Ryan Spann vs Mario Pinto",
+        "segment": "PRELIMS",
+        "orderIndex": 6,
+        "weightClass": "Heavyweight (265 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T16:00Z",
+        "victoryDetails": "Sat, September 5th at 12:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3887606",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Ryan",
+              "lastName": "Spann",
+              "displayName": "Ryan Spann",
+              "nickname": "Superman",
+              "slug": "ryan-spann",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3887606.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-fortis-mma",
+                    "name": "Fortis MMA",
+                    "slug": "fortis-mma",
+                    "type": "TRAINING_CAMP",
+                    "country": "USA"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 24,
+                "losses": 11,
+                "draws": 0,
+                "height": "6' 5\"",
+                "weight": "255 lbs",
+                "reach": "79\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 41,
+                "significantStrikesLandedPerMin": 3.11,
+                "takedownDefense": 35
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+275",
+              "decimal": 3.75
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5218817",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Mario",
+              "lastName": "Pinto",
+              "displayName": "Mario Pinto",
+              "slug": "mario-pinto",
+              "country": "pt",
+              "countryFlagCode": "pt",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5218817.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-fightzone-london",
+                    "name": "FightZone London",
+                    "slug": "fightzone-london",
+                    "type": "TRAINING_CAMP",
+                    "country": "Portugal"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 12,
+                "losses": 0,
+                "draws": 0,
+                "height": "6' 5\"",
+                "weight": "252 lbs",
+                "reach": "79\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 82,
+                "significantStrikesLandedPerMin": 2.85,
+                "takedownDefense": 26
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-345",
+              "decimal": 1.29
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401902947",
+        "eventId": "ufc-event-600059993",
+        "title": "Morgan Charrière vs Felipe Lima",
+        "segment": "PRELIMS",
+        "orderIndex": 7,
+        "weightClass": "Featherweight (145 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T16:00Z",
+        "victoryDetails": "Sat, September 5th at 12:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4324622",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Morgan",
+              "lastName": "Charrière",
+              "displayName": "Morgan Charrière",
+              "nickname": "The Last Pirate",
+              "slug": "morgan-charrire",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4324622.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-team-chapa-quente",
+                    "name": "Team Chapa Quente",
+                    "slug": "team-chapa-quente",
+                    "type": "TRAINING_CAMP",
+                    "country": "France"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 21,
+                "losses": 12,
+                "draws": 1,
+                "height": "5' 8\"",
+                "weight": "145 lbs",
+                "reach": "69\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 55,
+                "significantStrikesLandedPerMin": 4.02,
+                "takedownDefense": 47
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+170",
+              "decimal": 2.7
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5101694",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Felipe",
+              "lastName": "Lima",
+              "displayName": "Felipe Lima",
+              "nickname": "Jungle Boy",
+              "slug": "felipe-lima",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5101694.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-allstars-training-center",
+                    "name": "Allstars Training Center",
+                    "slug": "allstars-training-center",
+                    "type": "TRAINING_CAMP",
+                    "country": "Brazil"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 14,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 6\"",
+                "weight": "145 lbs",
+                "reach": "68\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 52,
+                "significantStrikesLandedPerMin": 2.86,
+                "takedownDefense": 27
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-205",
+              "decimal": 1.49
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401911289",
+        "eventId": "ufc-event-600059993",
+        "title": "Muhammad Naimov vs Losene Keita",
+        "segment": "PRELIMS",
+        "orderIndex": 8,
+        "weightClass": "Featherweight (145 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T19:00Z",
+        "victoryDetails": "Sat, September 5th at 3:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4690540",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Muhammad",
+              "lastName": "Naimov",
+              "displayName": "Muhammad Naimov",
+              "nickname": "Hillman",
+              "slug": "muhammad-naimov",
+              "country": "tj",
+              "countryFlagCode": "tj",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4690540.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-elevation-fight-team",
+                    "name": "Elevation Fight Team",
+                    "slug": "elevation-fight-team",
+                    "type": "TRAINING_CAMP",
+                    "country": "Tajikistan"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 13,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 9\"",
+                "weight": "145 lbs",
+                "reach": "70\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 52,
+                "significantStrikesLandedPerMin": 2.51,
+                "takedownDefense": 30
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+310",
+              "decimal": 4.1
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5192314",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Losene",
+              "lastName": "Keita",
+              "displayName": "Losene Keita",
+              "nickname": "Black Panther",
+              "slug": "losene-keita",
+              "country": "be",
+              "countryFlagCode": "be",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5192314.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-lamiro-fight-club",
+                    "name": "Lamiro Fight Club",
+                    "slug": "lamiro-fight-club",
+                    "type": "TRAINING_CAMP",
+                    "country": "Belgium"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 16,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 7\"",
+                "weight": "145 lbs",
+                "reach": "72\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 44,
+                "significantStrikesLandedPerMin": 3.47
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-395",
+              "decimal": 1.25
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401898007",
+        "eventId": "ufc-event-600059993",
+        "title": "Trevor Peek vs Kurtis Campbell",
+        "segment": "MAIN_CARD",
+        "orderIndex": 9,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T19:00Z",
+        "victoryDetails": "Sat, September 5th at 3:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-5048900",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Trevor",
+              "lastName": "Peek",
+              "displayName": "Trevor Peek",
+              "slug": "trevor-peek",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5048900.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-agoge-combatives",
+                    "name": "Agoge Combatives",
+                    "slug": "agoge-combatives",
+                    "type": "TRAINING_CAMP",
+                    "country": "USA"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 9,
+                "losses": 3,
+                "draws": 0,
+                "height": "5' 9\"",
+                "weight": "146 lbs",
+                "reach": "70\"",
+                "stance": "Switch",
+                "strikingAccuracy": 58,
+                "significantStrikesLandedPerMin": 4.39,
+                "takedownDefense": 50
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+310",
+              "decimal": 4.1
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5310075",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Kurtis",
+              "lastName": "Campbell",
+              "displayName": "Kurtis Campbell",
+              "nickname": "The Pink Panther",
+              "slug": "kurtis-campbell",
+              "country": "gb",
+              "countryFlagCode": "gb",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5310075.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-mma-academy-liverpool",
+                    "name": "MMA Academy Liverpool",
+                    "slug": "mma-academy-liverpool",
+                    "type": "TRAINING_CAMP",
+                    "country": "England"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 8,
+                "losses": 1,
+                "draws": 0,
+                "height": "5' 9\"",
+                "weight": "146 lbs",
+                "reach": "72\"",
+                "stance": "Switch",
+                "strikingAccuracy": 46,
+                "significantStrikesLandedPerMin": 3.5,
+                "takedownDefense": 40
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-395",
+              "decimal": 1.25
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401914473",
+        "eventId": "ufc-event-600059993",
+        "title": "Punahele Soriano vs Daniil Donchenko",
+        "segment": "MAIN_CARD",
+        "orderIndex": 10,
+        "weightClass": "Welterweight (170 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T19:00Z",
+        "victoryDetails": "Sat, September 5th at 3:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4423214",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Punahele",
+              "lastName": "Soriano",
+              "displayName": "Punahele Soriano",
+              "nickname": "Puna",
+              "slug": "punahele-soriano",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4423214.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-xtreme-couture",
+                    "name": "Xtreme Couture",
+                    "slug": "xtreme-couture",
+                    "type": "TRAINING_CAMP",
+                    "country": "USA"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 13,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 11\"",
+                "weight": "170 lbs",
+                "reach": "72.5\"",
+                "stance": "Southpaw",
+                "strikingAccuracy": 64,
+                "significantStrikesLandedPerMin": 4.42,
+                "takedownDefense": 52
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+195",
+              "decimal": 2.95
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5289841",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Daniil",
+              "lastName": "Donchenko",
+              "displayName": "Daniil Donchenko",
+              "slug": "daniil-donchenko",
+              "country": "ua",
+              "countryFlagCode": "ua",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5289841.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-tiger-muay-thai",
+                    "name": "Tiger Muay Thai",
+                    "slug": "tiger-muay-thai",
+                    "type": "TRAINING_CAMP",
+                    "country": "Ukraine"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 15,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 11\"",
+                "weight": "170 lbs",
+                "reach": "71\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 63,
+                "significantStrikesLandedPerMin": 8.07,
+                "takedownDefense": 33
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-238",
+              "decimal": 1.42
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401898006",
+        "eventId": "ufc-event-600059993",
+        "title": "Michael Page vs Nursulton Ruziboev",
+        "segment": "MAIN_CARD",
+        "orderIndex": 11,
+        "weightClass": "Middleweight (185 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T19:00Z",
+        "victoryDetails": "Sat, September 5th at 3:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3022067",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Michael",
+              "lastName": "Page",
+              "displayName": "Michael Page",
+              "nickname": "Venom",
+              "slug": "michael-page",
+              "country": "gb",
+              "countryFlagCode": "gb",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3022067.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-london-shootfighters",
+                    "name": "London Shootfighters",
+                    "slug": "london-shootfighters",
+                    "type": "TRAINING_CAMP",
+                    "country": "Global"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 25,
+                "losses": 3,
+                "draws": 0,
+                "height": "6' 3\"",
+                "weight": "185 lbs",
+                "reach": "79\"",
+                "stance": "Switch",
+                "strikingAccuracy": 65,
+                "significantStrikesLandedPerMin": 2.28,
+                "takedownDefense": 17
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-205",
+              "decimal": 1.49
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4422103",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Nursulton",
+              "lastName": "Ruziboev",
+              "displayName": "Nursulton Ruziboev",
+              "nickname": "Black",
+              "slug": "nursulton-ruziboev",
+              "country": "uz",
+              "countryFlagCode": "uz",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4422103.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-shahrixon-mma",
+                    "name": "Shahrixon MMA",
+                    "slug": "shahrixon-mma",
+                    "type": "TRAINING_CAMP",
+                    "country": "Uzbekistan"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 37,
+                "losses": 9,
+                "draws": 2,
+                "height": "6' 5\"",
+                "weight": "186 lbs",
+                "reach": "76\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 53,
+                "significantStrikesLandedPerMin": 2.38,
+                "takedownDefense": 80
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+170",
+              "decimal": 2.7
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401911286",
+        "eventId": "ufc-event-600059993",
+        "title": "Farés Ziam vs Axel Sola",
+        "segment": "MAIN_CARD",
+        "orderIndex": 12,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": true,
+        "roundsMax": 3,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T19:00Z",
+        "victoryDetails": "Sat, September 5th at 3:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4083018",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Farés",
+              "lastName": "Ziam",
+              "displayName": "Farés Ziam",
+              "nickname": "Smile Killer",
+              "slug": "fars-ziam",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4083018.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-kill-cliff-fc",
+                    "name": "Kill Cliff FC",
+                    "slug": "kill-cliff-fc",
+                    "type": "TRAINING_CAMP",
+                    "country": "France"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 18,
+                "losses": 5,
+                "draws": 0,
+                "height": "6' 1\"",
+                "weight": "155 lbs",
+                "reach": "75\"",
+                "stance": "Orthodox",
+                "strikingAccuracy": 64,
+                "significantStrikesLandedPerMin": 2.68,
+                "takedownDefense": 43
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-155",
+              "decimal": 1.65
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5245078",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Axel",
+              "lastName": "Sola",
+              "displayName": "Axel Sola",
+              "slug": "axel-sola",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5245078.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-boxing-squad",
+                    "name": "Boxing Squad",
+                    "slug": "boxing-squad",
+                    "type": "TRAINING_CAMP",
+                    "country": "France"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 12,
+                "losses": 1,
+                "draws": 1,
+                "height": "6' 0\"",
+                "weight": "155 lbs",
+                "reach": "74\"",
+                "stance": "Southpaw",
+                "strikingAccuracy": 56,
+                "significantStrikesLandedPerMin": 4.5,
+                "takedownDefense": 36
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+130",
+              "decimal": 2.3
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401875226",
+        "eventId": "ufc-event-600059993",
+        "title": "Dan Hooker vs Salahdine Parnasse",
+        "segment": "MAIN_CARD",
+        "orderIndex": 13,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": true,
+        "isCoMain": false,
+        "roundsMax": 5,
+        "status": "SCHEDULED",
+        "scheduledTime": "2026-09-05T19:00Z",
+        "victoryDetails": "Sat, September 5th at 3:00 PM EDT",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3109135",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Dan",
+              "lastName": "Hooker",
+              "displayName": "Dan Hooker",
+              "nickname": "The Hangman",
+              "slug": "dan-hooker",
+              "country": "nz",
+              "countryFlagCode": "nz",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3109135.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-city-kickboxing",
+                    "name": "City Kickboxing",
+                    "slug": "city-kickboxing",
+                    "type": "TRAINING_CAMP",
+                    "country": "New Zealand"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 24,
+                "losses": 14,
+                "draws": 0,
+                "height": "6' 0\"",
+                "weight": "155 lbs",
+                "reach": "75\"",
+                "stance": "Switch",
+                "strikingAccuracy": 56,
+                "significantStrikesLandedPerMin": 4.82,
+                "takedownDefense": 33
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "+425",
+              "decimal": 5.25
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4312859",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Salahdine",
+              "lastName": "Parnasse",
+              "displayName": "Salahdine Parnasse",
+              "slug": "salahdine-parnasse",
+              "country": "fr",
+              "countryFlagCode": "fr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4312859.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-atch-academy",
+                    "name": "Atch Academy",
+                    "slug": "atch-academy",
+                    "type": "TRAINING_CAMP",
+                    "country": "France"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 23,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "73\"",
+                "stance": "Southpaw"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": true,
+            "currentOdd": {
+              "american": "-575",
+              "decimal": 1.17
+            }
+          }
+        ]
+      }
+    ],
+    "externalSource": {
+      "provider": "espn",
+      "externalId": "600059993",
+      "lastSyncedAt": "2026-09-04T22:56:15.029Z"
+    }
+  },
+  {
+    "id": "ufc-event-600044733",
+    "organizationSlug": "ufc",
+    "organization": {
+      "id": "org-ufc",
+      "sportSlug": "mma",
+      "name": "Ultimate Fighting Championship",
+      "shortName": "UFC",
+      "slug": "ufc",
+      "logoUrl": "https://a.espncdn.com/i/teamlogos/leagues/500/mma.png",
+      "country": "United States",
+      "websiteUrl": "https://www.ufc.com"
+    },
+    "sportSlug": "mma",
+    "name": "UFC 308: Topuria vs. Holloway",
+    "shortName": "UFC 308",
+    "slug": "ufc-308-topuria-vs-holloway",
+    "startDate": "2024-10-26T14:00Z",
+    "status": "FINISHED",
+    "venueName": "Etihad Arena",
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "matches": [
+      {
+        "id": "bout-401730463",
+        "eventId": "ufc-event-600044733",
+        "title": "Carlos Leal vs Rinat Fakhretdinov",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 0,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T14:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4712980",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3146349",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Carlos",
+              "lastName": "Leal",
+              "displayName": "Carlos Leal",
+              "slug": "carlos-leal",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3146349.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 23,
+                "losses": 7,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4712980",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Rinat",
+              "lastName": "Fakhretdinov",
+              "displayName": "Rinat Fakhretdinov",
+              "slug": "rinat-fakhretdinov",
+              "country": "ru",
+              "countryFlagCode": "ru",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4712980.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 24,
+                "losses": 1,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401720687",
+        "eventId": "ufc-event-600044733",
+        "title": "Bruno Silva vs Ismail Naurdiev",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 1,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T14:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4412813",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4333158",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Bruno",
+              "lastName": "Silva",
+              "displayName": "Bruno Silva",
+              "slug": "bruno-silva",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4333158.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 23,
+                "losses": 13,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4412813",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Ismail",
+              "lastName": "Naurdiev",
+              "displayName": "Ismail Naurdiev",
+              "slug": "ismail-naurdiev",
+              "country": "at",
+              "countryFlagCode": "at",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4412813.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 25,
+                "losses": 8,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401720688",
+        "eventId": "ufc-event-600044733",
+        "title": "Victor Hugo vs Farid Basharat",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 2,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T14:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-5016786",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4293183",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Victor",
+              "lastName": "Hugo",
+              "displayName": "Victor Hugo",
+              "slug": "victor-hugo",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4293183.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 26,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5016786",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Farid",
+              "lastName": "Basharat",
+              "displayName": "Farid Basharat",
+              "slug": "farid-basharat",
+              "country": "gb",
+              "countryFlagCode": "gb",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5016786.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 16,
+                "losses": 0,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401730769",
+        "eventId": "ufc-event-600044733",
+        "title": "Chris Barnett vs Kennedy Nzechukwu",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 3,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T14:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4245094",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-2960757",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Chris",
+              "lastName": "Barnett",
+              "displayName": "Chris Barnett",
+              "slug": "chris-barnett",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/2960757.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 23,
+                "losses": 10,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4245094",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Kennedy",
+              "lastName": "Nzechukwu",
+              "displayName": "Kennedy Nzechukwu",
+              "slug": "kennedy-nzechukwu",
+              "country": "ng",
+              "countryFlagCode": "ng",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4245094.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 14,
+                "losses": 7,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401702547",
+        "eventId": "ufc-event-600044733",
+        "title": "Abus Magomedov vs Brunno Ferreira",
+        "segment": "PRELIMS",
+        "orderIndex": 4,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T14:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-3077822",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3077822",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Abus",
+              "lastName": "Magomedov",
+              "displayName": "Abus Magomedov",
+              "slug": "abus-magomedov",
+              "country": "de",
+              "countryFlagCode": "de",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3077822.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 29,
+                "losses": 7,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5077131",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Brunno",
+              "lastName": "Ferreira",
+              "displayName": "Brunno Ferreira",
+              "slug": "brunno-ferreira",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5077131.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 15,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401711589",
+        "eventId": "ufc-event-600044733",
+        "title": "Mateusz Rębecki vs Myktybek Orolbai",
+        "segment": "PRELIMS",
+        "orderIndex": 5,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T14:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4689965",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4689965",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Mateusz",
+              "lastName": "Rębecki",
+              "displayName": "Mateusz Rębecki",
+              "slug": "mateusz-rbecki",
+              "country": "pl",
+              "countryFlagCode": "pl",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4689965.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 21,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5050129",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Myktybek",
+              "lastName": "Orolbai",
+              "displayName": "Myktybek Orolbai",
+              "slug": "myktybek-orolbai",
+              "country": "kg",
+              "countryFlagCode": "kg",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5050129.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 16,
+                "losses": 3,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401701574",
+        "eventId": "ufc-event-600044733",
+        "title": "Rafael Dos Anjos vs Geoff Neal",
+        "segment": "PRELIMS",
+        "orderIndex": 6,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T14:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-3111997",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-2335687",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Rafael",
+              "lastName": "Dos Anjos",
+              "displayName": "Rafael Dos Anjos",
+              "slug": "rafael-dos-anjos",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/2335687.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 32,
+                "losses": 17,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-3111997",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Geoff",
+              "lastName": "Neal",
+              "displayName": "Geoff Neal",
+              "slug": "geoff-neal",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3111997.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 16,
+                "losses": 8,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401710997",
+        "eventId": "ufc-event-600044733",
+        "title": "Ibo Aslan vs Rafael Cerqueira",
+        "segment": "PRELIMS",
+        "orderIndex": 7,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T14:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4684240",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4684240",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Ibo",
+              "lastName": "Aslan",
+              "displayName": "Ibo Aslan",
+              "slug": "ibo-aslan",
+              "country": "tr",
+              "countryFlagCode": "tr",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4684240.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 14,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5212598",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Rafael",
+              "lastName": "Cerqueira",
+              "displayName": "Rafael Cerqueira",
+              "slug": "rafael-cerqueira",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5212598.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 11,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401711588",
+        "eventId": "ufc-event-600044733",
+        "title": "Shara Magomedov vs Armen Petrosyan",
+        "segment": "MAIN_CARD",
+        "orderIndex": 8,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T18:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4421784",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4421784",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Shara",
+              "lastName": "Magomedov",
+              "displayName": "Shara Magomedov",
+              "slug": "shara-magomedov",
+              "country": "ru",
+              "countryFlagCode": "ru",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4421784.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 1,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4894791",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Armen",
+              "lastName": "Petrosyan",
+              "displayName": "Armen Petrosyan",
+              "slug": "armen-petrosyan",
+              "country": "am",
+              "countryFlagCode": "am",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4894791.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 9,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401701573",
+        "eventId": "ufc-event-600044733",
+        "title": "Dan Ige vs Lerone Murphy",
+        "segment": "MAIN_CARD",
+        "orderIndex": 9,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T18:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4576101",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4074001",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Dan",
+              "lastName": "Ige",
+              "displayName": "Dan Ige",
+              "slug": "dan-ige",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4074001.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 19,
+                "losses": 11,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4576101",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Lerone",
+              "lastName": "Murphy",
+              "displayName": "Lerone Murphy",
+              "slug": "lerone-murphy",
+              "country": "gb",
+              "countryFlagCode": "gb",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4576101.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 1,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401701289",
+        "eventId": "ufc-event-600044733",
+        "title": "Aleksandar Rakic vs Magomed Ankalaev",
+        "segment": "MAIN_CARD",
+        "orderIndex": 10,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T18:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4273399",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4079314",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Aleksandar",
+              "lastName": "Rakic",
+              "displayName": "Aleksandar Rakic",
+              "slug": "aleksandar-rakic",
+              "country": "at",
+              "countryFlagCode": "at",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4079314.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 15,
+                "losses": 6,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4273399",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Magomed",
+              "lastName": "Ankalaev",
+              "displayName": "Magomed Ankalaev",
+              "slug": "magomed-ankalaev",
+              "country": "ru",
+              "countryFlagCode": "ru",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4273399.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-gorets-fight-club",
+                    "name": "Gorets Fight Club",
+                    "slug": "gorets-fight-club",
+                    "type": "TRAINING_CAMP",
+                    "city": "Makhachkala",
+                    "country": "Russia",
+                    "headCoach": "Shamil Alibatitov"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 22,
+                "losses": 2,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401701287",
+        "eventId": "ufc-event-600044733",
+        "title": "Robert Whittaker vs Khamzat Chimaev",
+        "segment": "MAIN_CARD",
+        "orderIndex": 11,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": true,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T18:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4684751",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3009717",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Robert",
+              "lastName": "Whittaker",
+              "displayName": "Robert Whittaker",
+              "slug": "robert-whittaker",
+              "country": "au",
+              "countryFlagCode": "au",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3009717.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 28,
+                "losses": 9,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4684751",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Khamzat",
+              "lastName": "Chimaev",
+              "displayName": "Khamzat Chimaev",
+              "slug": "khamzat-chimaev",
+              "country": "ae",
+              "countryFlagCode": "ae",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4684751.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-allstars-training-center",
+                    "name": "Allstars Training Center",
+                    "slug": "allstars-training-center",
+                    "type": "TRAINING_CAMP",
+                    "city": "Stockholm",
+                    "country": "Sweden",
+                    "headCoach": "Andreas Michael"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 15,
+                "losses": 1,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401654336",
+        "eventId": "ufc-event-600044733",
+        "title": "Max Holloway vs Ilia Topuria",
+        "segment": "MAIN_CARD",
+        "orderIndex": 12,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": true,
+        "isCoMain": false,
+        "roundsMax": 5,
+        "status": "FINISHED",
+        "scheduledTime": "2024-10-26T18:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4350812",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-2614933",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Max",
+              "lastName": "Holloway",
+              "displayName": "Max Holloway",
+              "slug": "max-holloway",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/2614933.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-hawaii-elite-mma",
+                    "name": "Hawaii Elite MMA",
+                    "slug": "hawaii-elite-mma",
+                    "type": "TRAINING_CAMP",
+                    "city": "Waianae, HI",
+                    "country": "United States",
+                    "headCoach": "Ivan Flores"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 28,
+                "losses": 9,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4350812",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Ilia",
+              "lastName": "Topuria",
+              "displayName": "Ilia Topuria",
+              "slug": "ilia-topuria",
+              "country": "es",
+              "countryFlagCode": "es",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4350812.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-climent-club",
+                    "name": "Climent Club",
+                    "slug": "climent-club",
+                    "type": "TRAINING_CAMP",
+                    "city": "Alicante",
+                    "country": "Spain",
+                    "headCoach": "Jorge & Agustín Climent"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 17,
+                "losses": 1,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      }
+    ],
+    "externalSource": {
+      "provider": "espn",
+      "externalId": "600044733",
+      "lastSyncedAt": "2026-09-04T23:53:19.097Z"
+    }
+  },
+  {
+    "id": "ufc-event-600039853",
+    "organizationSlug": "ufc",
+    "organization": {
+      "id": "org-ufc",
+      "sportSlug": "mma",
+      "name": "Ultimate Fighting Championship",
+      "shortName": "UFC",
+      "slug": "ufc",
+      "logoUrl": "https://a.espncdn.com/i/teamlogos/leagues/500/mma.png",
+      "country": "United States",
+      "websiteUrl": "https://www.ufc.com"
+    },
+    "sportSlug": "mma",
+    "name": "UFC 306 – Riyadh Season Noche UFC: O’Malley vs. Dvalishvili",
+    "shortName": "UFC 306 – Riyadh Season Noche UFC",
+    "slug": "ufc-306-riyadh-season-noche-ufc-omalley-vs-dvalishvili",
+    "startDate": "2024-09-14T23:30Z",
+    "status": "FINISHED",
+    "venueName": "Sphere",
+    "city": "Las Vegas",
+    "country": "USA",
+    "matches": [
+      {
+        "id": "bout-401698906",
+        "eventId": "ufc-event-600039853",
+        "title": "Aoriqileng vs Raul Rosas Jr.",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 0,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-14T23:30Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-5088844",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4389085",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Aoriqileng",
+              "lastName": "",
+              "displayName": "Aoriqileng",
+              "slug": "aoriqileng",
+              "country": "cn",
+              "countryFlagCode": "cn",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4389085.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 26,
+                "losses": 14,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5088844",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Raul",
+              "lastName": "Rosas Jr.",
+              "displayName": "Raul Rosas Jr.",
+              "slug": "raul-rosas-jr",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5088844.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 12,
+                "losses": 1,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401715767",
+        "eventId": "ufc-event-600039853",
+        "title": "Édgar Cháirez vs Joshua Van",
+        "segment": "PRELIMS",
+        "orderIndex": 1,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T00:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-5120301",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-5076027",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Édgar",
+              "lastName": "Cháirez",
+              "displayName": "Édgar Cháirez",
+              "slug": "dgar-chirez",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5076027.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 14,
+                "losses": 6,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5120301",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Joshua",
+              "lastName": "Van",
+              "displayName": "Joshua Van",
+              "slug": "joshua-van",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5120301.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401698931",
+        "eventId": "ufc-event-600039853",
+        "title": "Ketlen Souza vs Yazmin Jauregui",
+        "segment": "PRELIMS",
+        "orderIndex": 2,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T00:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4566308",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4566308",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Ketlen",
+              "lastName": "Souza",
+              "displayName": "Ketlen Souza",
+              "slug": "ketlen-souza",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4566308.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 6,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5063403",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Yazmin",
+              "lastName": "Jauregui",
+              "displayName": "Yazmin Jauregui",
+              "slug": "yazmin-jauregui",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5063403.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 11,
+                "losses": 2,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401698929",
+        "eventId": "ufc-event-600039853",
+        "title": "Ignacio Bahamondes vs Manuel Torres",
+        "segment": "PRELIMS",
+        "orderIndex": 3,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T00:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4038116",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4038116",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Ignacio",
+              "lastName": "Bahamondes",
+              "displayName": "Ignacio Bahamondes",
+              "slug": "ignacio-bahamondes",
+              "country": "cl",
+              "countryFlagCode": "cl",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4038116.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 7,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4896616",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Manuel",
+              "lastName": "Torres",
+              "displayName": "Manuel Torres",
+              "slug": "manuel-torres",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4896616.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401613670",
+        "eventId": "ufc-event-600039853",
+        "title": "Irene Aldana vs Norma Dumont",
+        "segment": "PRELIMS",
+        "orderIndex": 4,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T00:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4418784",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3136286",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Irene",
+              "lastName": "Aldana",
+              "displayName": "Irene Aldana",
+              "slug": "irene-aldana",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3136286.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 15,
+                "losses": 8,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4418784",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Norma",
+              "lastName": "Dumont",
+              "displayName": "Norma Dumont",
+              "slug": "norma-dumont",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4418784.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 13,
+                "losses": 3,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401698928",
+        "eventId": "ufc-event-600039853",
+        "title": "Ode' Osbourne vs Ronaldo Rodríguez",
+        "segment": "MAIN_CARD",
+        "orderIndex": 5,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4685888",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4424224",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Ode'",
+              "lastName": "Osbourne",
+              "displayName": "Ode' Osbourne",
+              "slug": "ode-osbourne",
+              "country": "jm",
+              "countryFlagCode": "jm",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4424224.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 13,
+                "losses": 10,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4685888",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Ronaldo",
+              "lastName": "Rodríguez",
+              "displayName": "Ronaldo Rodríguez",
+              "slug": "ronaldo-rodrguez",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4685888.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 3,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401698927",
+        "eventId": "ufc-event-600039853",
+        "title": "Daniel Zellhuber vs Esteban Ribovics",
+        "segment": "MAIN_CARD",
+        "orderIndex": 6,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-5074131",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4863327",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Daniel",
+              "lastName": "Zellhuber",
+              "displayName": "Daniel Zellhuber",
+              "slug": "daniel-zellhuber",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4863327.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 15,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5074131",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Esteban",
+              "lastName": "Ribovics",
+              "displayName": "Esteban Ribovics",
+              "slug": "esteban-ribovics",
+              "country": "ar",
+              "countryFlagCode": "ar",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5074131.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 16,
+                "losses": 3,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401698905",
+        "eventId": "ufc-event-600039853",
+        "title": "Brian Ortega vs Diego Lopes",
+        "segment": "MAIN_CARD",
+        "orderIndex": 7,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4881999",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3045737",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Brian",
+              "lastName": "Ortega",
+              "displayName": "Brian Ortega",
+              "slug": "brian-ortega",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3045737.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 16,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4881999",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Diego",
+              "lastName": "Lopes",
+              "displayName": "Diego Lopes",
+              "slug": "diego-lopes",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4881999.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 28,
+                "losses": 8,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401698904",
+        "eventId": "ufc-event-600039853",
+        "title": "Valentina Shevchenko vs Alexa Grasso",
+        "segment": "MAIN_CARD",
+        "orderIndex": 8,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": true,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-2554705",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-2554705",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Valentina",
+              "lastName": "Shevchenko",
+              "displayName": "Valentina Shevchenko",
+              "slug": "valentina-shevchenko",
+              "country": "kg",
+              "countryFlagCode": "kg",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/2554705.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 26,
+                "losses": 4,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-3136287",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Alexa",
+              "lastName": "Grasso",
+              "displayName": "Alexa Grasso",
+              "slug": "alexa-grasso",
+              "country": "mx",
+              "countryFlagCode": "mx",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3136287.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 5,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401613669",
+        "eventId": "ufc-event-600039853",
+        "title": "Merab Dvalishvili vs Sean O'Malley",
+        "segment": "MAIN_CARD",
+        "orderIndex": 9,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": true,
+        "isCoMain": false,
+        "roundsMax": 5,
+        "status": "FINISHED",
+        "scheduledTime": "2024-09-15T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-3948572",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3948572",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Merab",
+              "lastName": "Dvalishvili",
+              "displayName": "Merab Dvalishvili",
+              "slug": "merab-dvalishvili",
+              "country": "ge",
+              "countryFlagCode": "ge",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3948572.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-serralongo-fight-team",
+                    "name": "Serra-Longo Fight Team",
+                    "slug": "serralongo-fight-team",
+                    "type": "TRAINING_CAMP",
+                    "city": "Long Island, NY",
+                    "country": "United States",
+                    "headCoach": "Ray Longo / Matt Serra"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 21,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4205093",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Sean",
+              "lastName": "O'Malley",
+              "displayName": "Sean O'Malley",
+              "slug": "sean-omalley",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4205093.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-mma-lab",
+                    "name": "MMA Lab",
+                    "slug": "mma-lab",
+                    "type": "TRAINING_CAMP",
+                    "city": "Glendale, AZ",
+                    "country": "United States",
+                    "headCoach": "Tim Welch"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 20,
+                "losses": 3,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      }
+    ],
+    "externalSource": {
+      "provider": "espn",
+      "externalId": "600039853",
+      "lastSyncedAt": "2026-09-04T23:53:19.589Z"
+    }
+  },
+  {
+    "id": "ufc-event-600041053",
+    "organizationSlug": "ufc",
+    "organization": {
+      "id": "org-ufc",
+      "sportSlug": "mma",
+      "name": "Ultimate Fighting Championship",
+      "shortName": "UFC",
+      "slug": "ufc",
+      "logoUrl": "https://a.espncdn.com/i/teamlogos/leagues/500/mma.png",
+      "country": "United States",
+      "websiteUrl": "https://www.ufc.com"
+    },
+    "sportSlug": "mma",
+    "name": "UFC 300: Pereira vs. Hill",
+    "shortName": "UFC 300",
+    "slug": "ufc-300-pereira-vs-hill",
+    "startDate": "2024-04-13T22:00Z",
+    "status": "FINISHED",
+    "venueName": "T-Mobile Arena",
+    "city": "Las Vegas",
+    "country": "USA",
+    "matches": [
+      {
+        "id": "bout-401630738",
+        "eventId": "ufc-event-600041053",
+        "title": "Cody Garbrandt vs Deiveson Figueiredo",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 0,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-13T22:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4189320",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3163637",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Cody",
+              "lastName": "Garbrandt",
+              "displayName": "Cody Garbrandt",
+              "slug": "cody-garbrandt",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3163637.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 15,
+                "losses": 8,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4189320",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Deiveson",
+              "lastName": "Figueiredo",
+              "displayName": "Deiveson Figueiredo",
+              "slug": "deiveson-figueiredo",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4189320.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 25,
+                "losses": 7,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401632019",
+        "eventId": "ufc-event-600041053",
+        "title": "Jim Miller vs King Green",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 1,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-13T22:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-2502364",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-2335718",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Jim",
+              "lastName": "Miller",
+              "displayName": "Jim Miller",
+              "slug": "jim-miller",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/2335718.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 39,
+                "losses": 19,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-2502364",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "King",
+              "lastName": "Green",
+              "displayName": "King Green",
+              "slug": "king-green",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/2502364.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 36,
+                "losses": 17,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401636110",
+        "eventId": "ufc-event-600041053",
+        "title": "Jessica Andrade vs Marina Rodriguez",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 2,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-13T22:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-3024395",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3024395",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Jessica",
+              "lastName": "Andrade",
+              "displayName": "Jessica Andrade",
+              "slug": "jessica-andrade",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3024395.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 26,
+                "losses": 15,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4379258",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Marina",
+              "lastName": "Rodriguez",
+              "displayName": "Marina Rodriguez",
+              "slug": "marina-rodriguez",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4379258.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 17,
+                "losses": 6,
+                "draws": 2,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401647436",
+        "eventId": "ufc-event-600041053",
+        "title": "Renato Moicano vs Jalin Turner",
+        "segment": "EARLY_PRELIMS",
+        "orderIndex": 3,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-13T22:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-3028863",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3028863",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Renato",
+              "lastName": "Moicano",
+              "displayName": "Renato Moicano",
+              "slug": "renato-moicano",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3028863.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 21,
+                "losses": 7,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4339490",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Jalin",
+              "lastName": "Turner",
+              "displayName": "Jalin Turner",
+              "slug": "jalin-turner",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4339490.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 16,
+                "losses": 9,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401635298",
+        "eventId": "ufc-event-600041053",
+        "title": "Sodiq Yusuff vs Diego Lopes",
+        "segment": "PRELIMS",
+        "orderIndex": 4,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T00:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4881999",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4289274",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Sodiq",
+              "lastName": "Yusuff",
+              "displayName": "Sodiq Yusuff",
+              "slug": "sodiq-yusuff",
+              "country": "ng",
+              "countryFlagCode": "ng",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4289274.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 13,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4881999",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Diego",
+              "lastName": "Lopes",
+              "displayName": "Diego Lopes",
+              "slug": "diego-lopes",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4881999.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 28,
+                "losses": 8,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401634819",
+        "eventId": "ufc-event-600041053",
+        "title": "Holly Holm vs Kayla Harrison",
+        "segment": "PRELIMS",
+        "orderIndex": 5,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T00:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4332765",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3028404",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Holly",
+              "lastName": "Holm",
+              "displayName": "Holly Holm",
+              "slug": "holly-holm",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3028404.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 15,
+                "losses": 7,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4332765",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Kayla",
+              "lastName": "Harrison",
+              "displayName": "Kayla Harrison",
+              "slug": "kayla-harrison",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4332765.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 19,
+                "losses": 1,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401622063",
+        "eventId": "ufc-event-600041053",
+        "title": "Aljamain Sterling vs Calvin Kattar",
+        "segment": "PRELIMS",
+        "orderIndex": 6,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T00:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-3031559",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3031559",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Aljamain",
+              "lastName": "Sterling",
+              "displayName": "Aljamain Sterling",
+              "slug": "aljamain-sterling",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3031559.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 26,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-3164030",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Calvin",
+              "lastName": "Kattar",
+              "displayName": "Calvin Kattar",
+              "slug": "calvin-kattar",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3164030.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 23,
+                "losses": 10,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401622061",
+        "eventId": "ufc-event-600041053",
+        "title": "Jiří Procházka vs Aleksandar Rakic",
+        "segment": "PRELIMS",
+        "orderIndex": 7,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T00:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-3156612",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-3156612",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Jiří",
+              "lastName": "Procházka",
+              "displayName": "Jiří Procházka",
+              "slug": "ji-prochzka",
+              "country": "cz",
+              "countryFlagCode": "cz",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3156612.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 32,
+                "losses": 6,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4079314",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Aleksandar",
+              "lastName": "Rakic",
+              "displayName": "Aleksandar Rakic",
+              "slug": "aleksandar-rakic",
+              "country": "at",
+              "countryFlagCode": "at",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4079314.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 15,
+                "losses": 6,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401619310",
+        "eventId": "ufc-event-600041053",
+        "title": "Cody Brundage vs Bo Nickal",
+        "segment": "MAIN_CARD",
+        "orderIndex": 8,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-5061870",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4684474",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Cody",
+              "lastName": "Brundage",
+              "displayName": "Cody Brundage",
+              "slug": "cody-brundage",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4684474.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 12,
+                "losses": 9,
+                "draws": 1,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-5061870",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Bo",
+              "lastName": "Nickal",
+              "displayName": "Bo Nickal",
+              "slug": "bo-nickal",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5061870.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 9,
+                "losses": 1,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401626640",
+        "eventId": "ufc-event-600041053",
+        "title": "Charles Oliveira vs Arman Tsarukyan",
+        "segment": "MAIN_CARD",
+        "orderIndex": 9,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4419372",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-2504169",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Charles",
+              "lastName": "Oliveira",
+              "displayName": "Charles Oliveira",
+              "slug": "charles-oliveira",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/2504169.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-chute-boxe-diego-lima",
+                    "name": "Chute Boxe Diego Lima",
+                    "slug": "chute-boxe-diego-lima",
+                    "type": "TRAINING_CAMP",
+                    "city": "São Paulo",
+                    "country": "Brazil",
+                    "headCoach": "Diego Lima"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 37,
+                "losses": 11,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4419372",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Arman",
+              "lastName": "Tsarukyan",
+              "displayName": "Arman Tsarukyan",
+              "slug": "arman-tsarukyan",
+              "country": "am",
+              "countryFlagCode": "am",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4419372.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 23,
+                "losses": 3,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401632020",
+        "eventId": "ufc-event-600041053",
+        "title": "Max Holloway vs Justin Gaethje",
+        "segment": "MAIN_CARD",
+        "orderIndex": 10,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": false,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-2614933",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-2614933",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Max",
+              "lastName": "Holloway",
+              "displayName": "Max Holloway",
+              "slug": "max-holloway",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/2614933.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-hawaii-elite-mma",
+                    "name": "Hawaii Elite MMA",
+                    "slug": "hawaii-elite-mma",
+                    "type": "TRAINING_CAMP",
+                    "city": "Waianae, HI",
+                    "country": "United States",
+                    "headCoach": "Ivan Flores"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 28,
+                "losses": 9,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-3022345",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Justin",
+              "lastName": "Gaethje",
+              "displayName": "Justin Gaethje",
+              "slug": "justin-gaethje",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/3022345.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-elevation-fight-team",
+                    "name": "Elevation Fight Team",
+                    "slug": "elevation-fight-team",
+                    "type": "TRAINING_CAMP",
+                    "city": "Denver, CO",
+                    "country": "United States",
+                    "headCoach": "Trevor Wittman"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 28,
+                "losses": 5,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401629521",
+        "eventId": "ufc-event-600041053",
+        "title": "Yan Xiaonan vs Zhang Weili",
+        "segment": "MAIN_CARD",
+        "orderIndex": 11,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": false,
+        "isCoMain": true,
+        "roundsMax": 3,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4350762",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4275487",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Yan",
+              "lastName": "Xiaonan",
+              "displayName": "Yan Xiaonan",
+              "slug": "yan-xiaonan",
+              "country": "cn",
+              "countryFlagCode": "cn",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4275487.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 19,
+                "losses": 6,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4350762",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Zhang",
+              "lastName": "Weili",
+              "displayName": "Zhang Weili",
+              "slug": "zhang-weili",
+              "country": "cn",
+              "countryFlagCode": "cn",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4350762.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 26,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      },
+      {
+        "id": "bout-401619309",
+        "eventId": "ufc-event-600041053",
+        "title": "Jamahal Hill vs Alex Pereira",
+        "segment": "MAIN_CARD",
+        "orderIndex": 12,
+        "weightClass": "Lightweight (155 lbs)",
+        "isTitleFight": false,
+        "isMainEvent": true,
+        "isCoMain": false,
+        "roundsMax": 5,
+        "status": "FINISHED",
+        "scheduledTime": "2024-04-14T02:00Z",
+        "victoryDetails": "Final",
+        "winnerId": "athlete-4705658",
+        "participants": [
+          {
+            "participant": {
+              "id": "athlete-4425355",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Jamahal",
+              "lastName": "Hill",
+              "displayName": "Jamahal Hill",
+              "slug": "jamahal-hill",
+              "country": "us",
+              "countryFlagCode": "us",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4425355.png",
+              "gender": "MALE",
+              "affiliations": [],
+              "stats": {
+                "wins": 12,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "RED_CORNER",
+            "isWinner": false,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-115",
+              "decimal": 1.87
+            }
+          },
+          {
+            "participant": {
+              "id": "athlete-4705658",
+              "sportSlug": "mma",
+              "type": "ATHLETE",
+              "firstName": "Alex",
+              "lastName": "Pereira",
+              "displayName": "Alex Pereira",
+              "slug": "alex-pereira",
+              "country": "br",
+              "countryFlagCode": "br",
+              "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4705658.png",
+              "gender": "MALE",
+              "affiliations": [
+                {
+                  "affiliation": {
+                    "id": "gym-teixeira-mma-fitness",
+                    "name": "Teixeira MMA & Fitness",
+                    "slug": "teixeira-mma-fitness",
+                    "type": "TRAINING_CAMP",
+                    "city": "Danbury, CT",
+                    "country": "United States",
+                    "headCoach": "Glover Teixeira"
+                  },
+                  "role": "Fighter",
+                  "isPrimary": true
+                }
+              ],
+              "stats": {
+                "wins": 13,
+                "losses": 4,
+                "draws": 0,
+                "height": "5' 10\"",
+                "weight": "155 lbs",
+                "reach": "72 in",
+                "stance": "Orthodox"
+              }
+            },
+            "side": "BLUE_CORNER",
+            "isWinner": true,
+            "isFavorite": false,
+            "currentOdd": {
+              "american": "-105",
+              "decimal": 1.95
+            }
+          }
+        ]
+      }
+    ],
+    "externalSource": {
+      "provider": "espn",
+      "externalId": "600041053",
+      "lastSyncedAt": "2026-09-04T23:53:20.259Z"
+    }
+  }
+]
