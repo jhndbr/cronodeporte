@@ -17,8 +17,9 @@ import {
   Activity,
   Target,
 } from 'lucide-react';
-import { FighterDetailedProfile, PastFight } from '@/core/domain/types';
+import { FighterDetailedProfile, PastFight, FighterFightPreview } from '@/core/domain/types';
 import { FighterAvatar } from './FighterAvatar';
+import { Sparkles, Brain, Bot } from 'lucide-react';
 
 interface FighterHistoryModalProps {
   fighterId: string | null;
@@ -37,9 +38,34 @@ export function FighterHistoryModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Estado para 'Cómo llega a la pelea' (IA)
+  const [aiPreview, setAiPreview] = useState<FighterFightPreview | null>(null);
+  const [loadingAi, setLoadingAi] = useState(false);
+  const [showAiModal, setShowAiModal] = useState(false);
+
+  const fetchAiPreview = async () => {
+    if (!fighterId) return;
+    setLoadingAi(true);
+    setShowAiModal(true);
+    try {
+      const cleanId = fighterId.replace('athlete-', '');
+      const res = await fetch(`/api/fighters/${cleanId}/preview`);
+      const data = await res.json();
+      if (data.success && data.data) {
+        setAiPreview(data.data);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoadingAi(false);
+    }
+  };
+
   useEffect(() => {
     if (!isOpen || !fighterId) {
       setProfile(null);
+      setAiPreview(null);
+      setShowAiModal(false);
       return;
     }
 
@@ -87,10 +113,10 @@ export function FighterHistoryModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl max-h-[92vh] flex flex-col bg-[#0E1015] border border-[#282E3E] rounded-3xl shadow-2xl overflow-hidden text-white">
+      <div className="relative w-full max-w-3xl max-h-[92vh] flex flex-col bg-black/75 border border-white/15 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden text-white">
         
         {/* Top Header Bar */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#282E3E] bg-[#12151D] shrink-0">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-white/15 bg-black/60 backdrop-blur-md shrink-0">
           <div className="flex items-center space-x-2.5">
             <div className="p-1.5 rounded-lg bg-[#EC4D25] text-white sports-skew shadow-md shadow-[#EC4D25]/30">
               <Swords className="w-4 h-4 sports-unskew" />
@@ -137,7 +163,7 @@ export function FighterHistoryModal({
           ) : (
             <>
               {/* 1. Header Profile Banner */}
-              <div className="relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-[#161B26] to-[#0E1015] border border-[#282E3E] overflow-hidden">
+              <div className="relative p-5 sm:p-6 rounded-2xl bg-black/60 border border-white/15 backdrop-blur-md overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[#EC4D25]/10 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-5">
@@ -187,26 +213,130 @@ export function FighterHistoryModal({
                     )}
                   </div>
 
-                  {/* Big Record Pill */}
-                  <div className="text-center bg-black/60 px-5 py-3.5 rounded-2xl border border-white/10 shrink-0 shadow-lg">
-                    <span className="text-[10px] uppercase font-sport font-bold text-[#939599] tracking-widest block">
-                      RÉCORD PROFESIONAL
-                    </span>
-                    <p className="text-2xl sm:text-3xl font-black text-white font-display tracking-wider">
-                      {profile.record.wins} - {profile.record.losses} - {profile.record.draws}
-                    </p>
-                    <span className="text-[10px] font-sport font-bold text-[#2BCFCE] tracking-wider uppercase">
-                      {finishRate}% Tasa de Finalización
-                    </span>
+                  {/* Big Record Pill & Botón Cómo llega a la pelea */}
+                  <div className="flex flex-col items-center sm:items-end gap-2.5 shrink-0">
+                    <div className="text-center bg-black/60 px-5 py-3.5 rounded-2xl border border-white/10 shadow-lg min-w-[170px]">
+                      <span className="text-[10px] uppercase font-sport font-bold text-[#939599] tracking-widest block">
+                        RÉCORD PROFESIONAL
+                      </span>
+                      <p className="text-2xl sm:text-3xl font-black text-white font-display tracking-wider">
+                        {profile.record.wins} - {profile.record.losses} - {profile.record.draws}
+                      </p>
+                      <span className="text-[10px] font-sport font-bold text-[#2BCFCE] tracking-wider uppercase">
+                        {finishRate}% Tasa de Finalización
+                      </span>
+                    </div>
+
+                    {/* BOTÓN CÓMO LLEGA A LA PELEA (IA) */}
+                    <button
+                      onClick={fetchAiPreview}
+                      disabled={loadingAi}
+                      className="w-full inline-flex items-center justify-center space-x-2 py-2 px-3.5 rounded-xl bg-gradient-to-r from-[#EC4D25] to-[#E5A93C] hover:opacity-95 text-white font-sport font-black text-xs uppercase tracking-wider shadow-lg shadow-[#EC4D25]/30 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+                      <span>{loadingAi ? 'Analizando con IA...' : '¿Cómo llega a la pelea?'}</span>
+                    </button>
                   </div>
                 </div>
               </div>
+
+              {/* CARD EXPANDIBLE: ANÁLISIS GENERADO CON IA (GOOGLE GEMINI) */}
+              {showAiModal && (
+                <div className="p-5 rounded-2xl bg-gradient-to-br from-black/80 to-[#12151D] border-2 border-[#EC4D25]/50 shadow-2xl backdrop-blur-md space-y-4 animate-in fade-in zoom-in-95 duration-200">
+                  <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                    <div className="flex items-center space-x-2.5">
+                      <div className="p-1.5 rounded-lg bg-[#EC4D25] text-white sports-skew shadow-md">
+                        <Brain className="w-4 h-4 sports-unskew" />
+                      </div>
+                      <div>
+                        <div className="flex items-center space-x-2">
+                          <span className="text-xs font-black font-sport uppercase text-white tracking-wider">
+                            Informe de Preparación & Momento Actual
+                          </span>
+                          <span className="text-[9px] font-black px-1.5 py-0.5 rounded bg-white/10 text-[#2BCFCE] border border-white/15 font-sport uppercase">
+                            {aiPreview?.sourceModel || 'Google Gemini AI'}
+                          </span>
+                        </div>
+                        <span className="text-[10px] text-slate-400 font-sport">
+                          Consulta semanal generada por evento • {aiPreview?.opponentName ? `vs ${aiPreview.opponentName}` : ''}
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => setShowAiModal(false)}
+                      className="p-1 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 text-xs font-sport uppercase"
+                    >
+                      Ocultar
+                    </button>
+                  </div>
+
+                  {loadingAi ? (
+                    <div className="py-8 flex flex-col items-center justify-center space-y-2 text-center">
+                      <div className="w-8 h-8 border-2 border-[#EC4D25] border-t-transparent rounded-full animate-spin" />
+                      <p className="text-xs font-sport text-slate-300">
+                        Consultando modelo de Inteligencia Artificial para {profile.displayName}...
+                      </p>
+                    </div>
+                  ) : aiPreview ? (
+                    <div className="space-y-3.5">
+                      {/* Resumen Principal */}
+                      <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sport">
+                        {aiPreview.summaryText}
+                      </p>
+
+                      {/* Factores Clave */}
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 space-y-0.5">
+                          <span className="text-[9px] font-black uppercase text-slate-400 font-sport block">Inactividad / Tiempo</span>
+                          <span className="text-xs font-bold text-[#2BCFCE] font-sport">{aiPreview.keyFactors.inactivityTime || 'Activo'}</span>
+                        </div>
+
+                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 space-y-0.5">
+                          <span className="text-[9px] font-black uppercase text-slate-400 font-sport block">Aviso / Sustitución</span>
+                          <span className="text-xs font-bold font-sport text-white">
+                            {aiPreview.keyFactors.isShortNotice ? '⚠️ Reemplazo de último llamado' : '✅ Campamento completo programado'}
+                          </span>
+                        </div>
+
+                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 space-y-0.5">
+                          <span className="text-[9px] font-black uppercase text-slate-400 font-sport block">Preparación en Gimnasio</span>
+                          <span className="text-xs font-bold text-[#E5A93C] font-sport truncate block">
+                            {aiPreview.keyFactors.campStatus || profile.gym || 'Alto Rendimiento'}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Bullets de Inteligencia */}
+                      {aiPreview.bullets && aiPreview.bullets.length > 0 && (
+                        <div className="space-y-1.5 pt-1">
+                          <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 font-sport block">
+                            Puntos Críticos del Combate:
+                          </span>
+                          <ul className="space-y-1 text-xs font-sport text-slate-300">
+                            {aiPreview.bullets.map((b, i) => (
+                              <li key={i} className="flex items-start space-x-2">
+                                <span className="text-[#EC4D25] font-black">▸</span>
+                                <span>{b}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-xs font-sport text-slate-400 text-center py-4">
+                      No se pudo generar el análisis en este momento. Inténtalo de nuevo.
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* 2. Breakdown of Wins & Losses by Method (Desglose Solicitado) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 
                 {/* Victorias por Método */}
-                <div className="p-4 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 space-y-3">
+                <div className="p-4 rounded-2xl bg-black/60 border border-emerald-500/30 backdrop-blur-md space-y-3">
                   <div className="flex items-center justify-between border-b border-emerald-500/20 pb-2">
                     <div className="flex items-center space-x-2">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400" />
@@ -220,7 +350,7 @@ export function FighterHistoryModal({
                   </div>
 
                   <div className="space-y-2 text-xs font-sport">
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-black/30">
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/10">
                       <span className="text-[#CDCDCF] flex items-center space-x-1.5">
                         <span>🥊</span>
                         <span className="font-bold">Victorias por KO/TKO:</span>
@@ -230,7 +360,7 @@ export function FighterHistoryModal({
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-black/30">
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/10">
                       <span className="text-[#CDCDCF] flex items-center space-x-1.5">
                         <span>🥋</span>
                         <span className="font-bold">Victorias por Sumisión:</span>
@@ -240,7 +370,7 @@ export function FighterHistoryModal({
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-black/30">
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/10">
                       <span className="text-[#CDCDCF] flex items-center space-x-1.5">
                         <span>⚖️</span>
                         <span className="font-bold">Victorias por Decisión:</span>
@@ -253,7 +383,7 @@ export function FighterHistoryModal({
                 </div>
 
                 {/* Derrotas por Método */}
-                <div className="p-4 rounded-2xl bg-red-950/20 border border-red-500/30 space-y-3">
+                <div className="p-4 rounded-2xl bg-black/60 border border-red-500/30 backdrop-blur-md space-y-3">
                   <div className="flex items-center justify-between border-b border-red-500/20 pb-2">
                     <div className="flex items-center space-x-2">
                       <XCircle className="w-4 h-4 text-red-400" />
@@ -267,7 +397,7 @@ export function FighterHistoryModal({
                   </div>
 
                   <div className="space-y-2 text-xs font-sport">
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-black/30">
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/10">
                       <span className="text-[#CDCDCF] flex items-center space-x-1.5">
                         <span>💥</span>
                         <span className="font-bold">Derrotas por KO/TKO:</span>
@@ -277,7 +407,7 @@ export function FighterHistoryModal({
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-black/30">
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/10">
                       <span className="text-[#CDCDCF] flex items-center space-x-1.5">
                         <span>🔒</span>
                         <span className="font-bold">Derrotas por Sumisión:</span>
@@ -287,7 +417,7 @@ export function FighterHistoryModal({
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between p-2 rounded-xl bg-black/30">
+                    <div className="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/10">
                       <span className="text-[#CDCDCF] flex items-center space-x-1.5">
                         <span>⚖️</span>
                         <span className="font-bold">Derrotas por Decisión:</span>
@@ -303,23 +433,23 @@ export function FighterHistoryModal({
 
               {/* 3. Physical Biometrics Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-                <div className="p-3 rounded-xl bg-[#12151D] border border-[#282E3E] text-center">
+                <div className="p-3 rounded-xl bg-black/60 border border-white/15 backdrop-blur-md text-center">
                   <span className="text-[10px] font-sport text-[#939599] uppercase font-bold block">Altura</span>
                   <span className="text-base font-black text-white font-sport">{profile.height || '-'}</span>
                 </div>
-                <div className="p-3 rounded-xl bg-[#12151D] border border-[#282E3E] text-center">
+                <div className="p-3 rounded-xl bg-black/60 border border-white/15 backdrop-blur-md text-center">
                   <span className="text-[10px] font-sport text-[#939599] uppercase font-bold block">Peso</span>
                   <span className="text-base font-black text-white font-sport">{profile.weight || '-'}</span>
                 </div>
-                <div className="p-3 rounded-xl bg-[#12151D] border border-[#282E3E] text-center">
+                <div className="p-3 rounded-xl bg-black/60 border border-white/15 backdrop-blur-md text-center">
                   <span className="text-[10px] font-sport text-[#939599] uppercase font-bold block">Alcance</span>
                   <span className="text-base font-black text-white font-sport">{profile.reach || '-'}</span>
                 </div>
-                <div className="p-3 rounded-xl bg-[#12151D] border border-[#282E3E] text-center">
+                <div className="p-3 rounded-xl bg-black/60 border border-white/15 backdrop-blur-md text-center">
                   <span className="text-[10px] font-sport text-[#939599] uppercase font-bold block">Guardia</span>
                   <span className="text-base font-black text-white font-sport">{profile.stance || 'Orthodox'}</span>
                 </div>
-                <div className="col-span-2 sm:col-span-1 p-3 rounded-xl bg-[#12151D] border border-[#282E3E] text-center">
+                <div className="col-span-2 sm:col-span-1 p-3 rounded-xl bg-black/60 border border-white/15 backdrop-blur-md text-center">
                   <span className="text-[10px] font-sport text-[#939599] uppercase font-bold block">Edad</span>
                   <span className="text-base font-black text-white font-sport">{profile.age ? `${profile.age} años` : '-'}</span>
                 </div>
@@ -327,7 +457,7 @@ export function FighterHistoryModal({
 
               {/* 4. Recent Form Streak */}
               {profile.recentFights && profile.recentFights.length > 0 && (
-                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-[#12151D] border border-[#282E3E]">
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-black/60 border border-white/15 backdrop-blur-md">
                   <div className="flex items-center space-x-2 text-xs font-sport font-bold text-[#CDCDCF] uppercase tracking-wider">
                     <Flame className="w-4 h-4 text-[#EC4D25]" />
                     <span>Racha de Combates Recientes:</span>
@@ -399,8 +529,8 @@ function DetailedFightCard({ fight, index }: { fight: PastFight; index: number }
     <div
       className={`relative p-4 rounded-2xl border transition-all duration-200 overflow-hidden ${
         fight.isWinner
-          ? 'bg-[#101915]/80 border-emerald-500/30 hover:border-emerald-500/60'
-          : 'bg-[#191214]/80 border-red-500/30 hover:border-red-500/60'
+          ? 'bg-black/60 border-emerald-500/35 hover:border-emerald-500/60 backdrop-blur-md'
+          : 'bg-black/60 border-red-500/35 hover:border-red-500/60 backdrop-blur-md'
       }`}
     >
       {/* Top Banner Row: Resultado + Nombre del Evento + Fecha */}

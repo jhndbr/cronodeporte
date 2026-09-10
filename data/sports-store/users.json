@@ -1,0 +1,17 @@
+[
+  {
+    "id": "usr-1789074236703-106i0",
+    "name": "jhondbr",
+    "avatarUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=jhondbr",
+    "provider": "guest",
+    "createdAt": "2026-09-10T21:03:56.703Z",
+    "stats": {
+      "totalPredictions": 17,
+      "correct": 0,
+      "incorrect": 0,
+      "pending": 17,
+      "accuracyRate": 0,
+      "totalPoints": 0
+    }
+  }
+]

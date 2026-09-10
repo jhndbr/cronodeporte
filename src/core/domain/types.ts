@@ -312,3 +312,91 @@ export interface UfcCalendarItem {
   location?: string;
   espnEventId?: string;
 }
+
+// ==========================================
+// USUARIOS, AUTENTICACIÓN Y PREDICCIONES
+// ==========================================
+
+export interface UserStats {
+  totalPredictions: number;
+  correct: number;
+  incorrect: number;
+  pending: number;
+  accuracyRate: number; // Porcentaje (0-100)
+  totalPoints: number;
+}
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  email?: string;
+  avatarUrl?: string;
+  provider: 'google' | 'guest' | 'credentials';
+  createdAt: string;
+  stats: UserStats;
+}
+
+export interface BoutPick {
+  matchId: string;
+  eventName: string;
+  eventDate?: string;
+  weightClass?: string;
+  selectedSide: 'RED_CORNER' | 'BLUE_CORNER';
+  selectedFighterId: string;
+  selectedFighterName: string;
+  opponentFighterId: string;
+  opponentFighterName: string;
+  status: 'PENDING' | 'CORRECT' | 'INCORRECT' | 'CANCELLED';
+}
+
+export type TicketType = 'SINGLE' | 'COMBO';
+
+export interface PredictionTicket {
+  id: string;
+  userId: string;
+  type: TicketType;
+  picks: BoutPick[];
+  createdAt: string;
+  status: 'PENDING' | 'WON' | 'LOST' | 'VOID';
+  pointsAwarded?: number;
+}
+
+// ==========================================
+// ANÁLISIS DE IA "¿CÓMO LLEGA A LA PELEA?"
+// ==========================================
+
+export interface FighterFightPreview {
+  id: string;
+  fighterId: string;
+  eventId: string;
+  fighterName: string;
+  opponentName: string;
+  generatedAt: string; // ISO 8601
+  sourceModel: string; // 'google-gemini' | 'gemini-1.5-flash' | 'statistical-engine'
+  summaryText: string;
+  bullets: string[];
+  readinessScore?: number; // ej. 85 / 100
+  keyFactors: {
+    inactivityTime?: string; // ej. "1 año y 2 meses"
+    campStatus?: string; // "Campamento completo en Chute Boxe"
+    isShortNotice: boolean;
+    recentStreak?: string; // "3 victorias consecutivas por KO"
+    physicalCondition?: string;
+  };
+}
+
+// ==========================================
+// NOTIFICACIONES DE LA PLATAFORMA
+// ==========================================
+
+export interface PlatformNotification {
+  id: string;
+  type: 'EVENT_STARTING' | 'NEXT_EVENT' | 'PREDICTION_RESOLVED' | 'NEWS_ALERT';
+  title: string;
+  message: string;
+  createdAt: string;
+  read: boolean;
+  linkUrl?: string;
+  metadata?: Record<string, unknown>;
+}
+

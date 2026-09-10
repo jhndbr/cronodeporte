@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Trophy, BarChart2, ShieldCheck, Flame, Maximize2 } from 'lucide-react';
+import { Trophy, BarChart2, ShieldCheck, Flame, Maximize2, Check, Sparkles } from 'lucide-react';
 import { Match } from '../core/domain/types';
 import { GymBadge } from './GymBadge';
 import { TaleOfTheTapeModal } from './TaleOfTheTapeModal';
@@ -13,9 +13,17 @@ interface BoutCardProps {
   match: Match;
   index: number;
   onOpenCareo?: () => void;
+  selectedWinnerSide?: 'RED_CORNER' | 'BLUE_CORNER' | null;
+  onSelectWinner?: (side: 'RED_CORNER' | 'BLUE_CORNER') => void;
 }
 
-export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
+export function BoutCard({
+  match,
+  index,
+  onOpenCareo,
+  selectedWinnerSide,
+  onSelectWinner,
+}: BoutCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFighter, setSelectedFighter] = useState<{ id: string; name: string } | null>(null);
 
@@ -39,11 +47,11 @@ export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
   return (
     <>
       <div
-        className={`relative rounded-xl border transition-colors duration-200 overflow-hidden ${
+        className={`relative rounded-2xl border transition-all duration-200 overflow-hidden ${
           match.isMainEvent
-            ? 'bg-[#12151D] text-white border-[#EC4D25]/40'
+            ? 'bg-[#12151D] text-white border-[#EC4D25]/40 shadow-lg'
             : match.isCoMain
-            ? 'bg-[#12151D] text-white border-[#2BCFCE]/30'
+            ? 'bg-[#12151D] text-white border-[#2BCFCE]/30 shadow-md'
             : 'bg-white text-[#1A1E24] border-[#CDCDCF] hover:border-[#939599]'
         }`}
       >
@@ -100,29 +108,30 @@ export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
             {onOpenCareo && (
               <button
                 onClick={onOpenCareo}
-                className="inline-flex items-center space-x-1 px-2.5 py-1 rounded bg-[#2BCFCE]/15 hover:bg-[#2BCFCE] text-[#0A8E8D] hover:text-[#0E1015] text-[11px] font-bold font-sport uppercase tracking-wider transition-colors"
-                title="Ver en Careo 3D Pantalla Completa"
+                className="hidden sm:inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-[#EC4D25]/15 hover:bg-[#EC4D25] text-[#EC4D25] hover:text-white border border-[#EC4D25]/30 text-[10px] font-bold tracking-wider transition-all duration-150"
+                title="Ver cara a cara 3D interactivo"
               >
                 <Maximize2 className="w-3 h-3" />
-                <span>Careo 3D</span>
+                <span>CAREO 3D</span>
               </button>
             )}
 
-            {/* Stats / Tale Modal Button */}
+            {/* Tale of the Tape Button */}
             <button
               onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center space-x-1 px-2.5 py-1 rounded bg-[#0E1015]/90 hover:bg-[#EC4D25] text-white text-[11px] font-bold font-sport uppercase tracking-wider transition-colors"
+              className="inline-flex items-center space-x-1 px-2 py-0.5 rounded bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/20 text-[#0E1015] dark:text-white border border-[#CDCDCF] dark:border-white/15 text-[10px] font-bold tracking-wider transition-all duration-150"
+              title="Comparativa Tale of the Tape"
             >
-              <BarChart2 className="w-3 h-3 text-[#2BCFCE]" />
-              <span>Stats</span>
+              <BarChart2 className="w-3 h-3" />
+              <span>STATS</span>
             </button>
           </div>
         </div>
 
-        {/* Fight Face-Off Content */}
-        <div className="p-4 sm:p-5 grid grid-cols-1 md:grid-cols-11 gap-4 items-center">
+        {/* Card Body - Grid with Participants & Prediction Buttons */}
+        <div className="p-3 sm:p-4 grid grid-cols-1 md:grid-cols-11 gap-3 sm:gap-4 items-center">
           {/* Red Corner Fighter */}
-          <div className="md:col-span-5 flex items-center space-x-3.5">
+          <div className="md:col-span-5 flex items-center space-x-3 sm:space-x-3.5">
             <FighterAvatar
               src={red.participant.avatarUrl}
               name={red.participant.displayName}
@@ -134,7 +143,7 @@ export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
 
             <div className="flex-1 min-w-0">
               <span className="text-[10px] font-black tracking-wider text-[#EC4D25] uppercase font-sport block">
-                ROJA
+                ROJO
               </span>
               <div className="flex items-center space-x-1.5">
                 <h4
@@ -145,7 +154,7 @@ export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
                   className={`text-base sm:text-lg font-black truncate font-display uppercase tracking-wide leading-none cursor-pointer hover:underline hover:text-[#EC4D25] transition-colors ${
                     match.isMainEvent || match.isCoMain ? 'text-white' : 'text-[#0E1015]'
                   }`}
-                  title={`Ver historial completo de ${red.participant.displayName}`}
+                  title={`Ver ficha e historial de ${red.participant.displayName}`}
                 >
                   {red.participant.displayName}
                 </h4>
@@ -170,16 +179,20 @@ export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
               </div>
             </div>
 
-            {/* Red Odds */}
-            {red.currentOdd && (
-              <div className="text-right shrink-0 px-2 py-1 rounded bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
-                <div className="text-xs font-sport font-black text-[#EC4D25]">
-                  {red.currentOdd.american}
-                </div>
-                <div className="text-[10px] text-[#939599] font-sport font-bold">
-                  {red.currentOdd.decimal}x
-                </div>
-              </div>
+            {/* Red Prediction Choice Button */}
+            {onSelectWinner && (
+              <button
+                onClick={() => onSelectWinner('RED_CORNER')}
+                className={`px-3 py-2 rounded-xl font-sport font-black text-xs uppercase tracking-wider transition-all flex items-center space-x-1.5 shrink-0 ${
+                  selectedWinnerSide === 'RED_CORNER'
+                    ? 'bg-[#EC4D25] text-white shadow-md shadow-[#EC4D25]/40 scale-105'
+                    : 'bg-black/5 dark:bg-white/10 text-slate-400 hover:text-white hover:bg-[#EC4D25]/20 border border-black/10 dark:border-white/10'
+                }`}
+                title={`Predecir victoria de ${red.participant.displayName}`}
+              >
+                {selectedWinnerSide === 'RED_CORNER' && <Check className="w-3.5 h-3.5" />}
+                <span>GANA</span>
+              </button>
             )}
           </div>
 
@@ -193,17 +206,21 @@ export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
           </div>
 
           {/* Blue Corner Fighter */}
-          <div className="md:col-span-5 flex items-center justify-end space-x-3.5 flex-row-reverse md:flex-row text-right md:text-left">
-            {/* Desktop Blue Odd */}
-            {blue.currentOdd && (
-              <div className="text-left shrink-0 px-2 py-1 rounded bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hidden md:block">
-                <div className="text-xs font-sport font-black text-[#0A8E8D]">
-                  {blue.currentOdd.american}
-                </div>
-                <div className="text-[10px] text-[#939599] font-sport font-bold">
-                  {blue.currentOdd.decimal}x
-                </div>
-              </div>
+          <div className="md:col-span-5 flex items-center justify-end space-x-3 sm:space-x-3.5 flex-row-reverse md:flex-row text-right md:text-left">
+            {/* Blue Prediction Choice Button */}
+            {onSelectWinner && (
+              <button
+                onClick={() => onSelectWinner('BLUE_CORNER')}
+                className={`px-3 py-2 rounded-xl font-sport font-black text-xs uppercase tracking-wider transition-all flex items-center space-x-1.5 shrink-0 ${
+                  selectedWinnerSide === 'BLUE_CORNER'
+                    ? 'bg-[#2BCFCE] text-black shadow-md shadow-[#2BCFCE]/40 scale-105 font-black'
+                    : 'bg-black/5 dark:bg-white/10 text-slate-400 hover:text-white hover:bg-[#2BCFCE]/20 border border-black/10 dark:border-white/10'
+                }`}
+                title={`Predecir victoria de ${blue.participant.displayName}`}
+              >
+                {selectedWinnerSide === 'BLUE_CORNER' && <Check className="w-3.5 h-3.5 text-black" />}
+                <span>GANA</span>
+              </button>
             )}
 
             <div className="flex-1 min-w-0">
@@ -220,7 +237,7 @@ export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
                   className={`text-base sm:text-lg font-black truncate font-display uppercase tracking-wide leading-none md:text-right cursor-pointer hover:underline hover:text-[#0A8E8D] transition-colors ${
                     match.isMainEvent || match.isCoMain ? 'text-white' : 'text-[#0E1015]'
                   }`}
-                  title={`Ver historial completo de ${blue.participant.displayName}`}
+                  title={`Ver ficha e historial de ${blue.participant.displayName}`}
                 >
                   {blue.participant.displayName}
                 </h4>
@@ -252,18 +269,6 @@ export function BoutCard({ match, index, onOpenCareo }: BoutCardProps) {
               size="md"
               isWinner={blue.isWinner}
             />
-
-            {/* Mobile Blue Odd */}
-            {blue.currentOdd && (
-              <div className="text-right shrink-0 px-2 py-1 rounded bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 md:hidden">
-                <div className="text-xs font-sport font-black text-[#0A8E8D]">
-                  {blue.currentOdd.american}
-                </div>
-                <div className="text-[10px] text-[#939599] font-sport font-bold">
-                  {blue.currentOdd.decimal}x
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

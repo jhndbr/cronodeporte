@@ -1,10 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Calendar, MapPin, Trophy, Flame, Swords, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Event } from '../core/domain/types';
-import { GymBadge } from './GymBadge';
-import { FighterAvatar } from './FighterAvatar';
+import {
+  Calendar,
+  MapPin,
+  Trophy,
+  Flame,
+  Swords,
+  Layers,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
+import { Event, FighterStats } from '../core/domain/types';
 import { FighterHistoryModal } from './FighterHistoryModal';
 import { getCountryFlagUrl } from '@/utils/country-flags';
 
@@ -28,23 +35,36 @@ export function EventHero({
   onSelectEvent,
 }: EventHeroProps) {
   const [selectedFighter, setSelectedFighter] = useState<{ id: string; name: string } | null>(null);
+  const [redImgError, setRedImgError] = useState(false);
+  const [blueImgError, setBlueImgError] = useState(false);
 
-  // Buscar SIEMPRE el combate estelar principal (Main Event)
-  const mainBout = event.matches.find((m) => m.isMainEvent) || event.matches[event.matches.length - 1] || event.matches[0];
-  const red = mainBout?.participants.find((p) => p.side === 'RED_CORNER');
-  const blue = mainBout?.participants.find((p) => p.side === 'BLUE_CORNER');
+  // Buscar siempre el combate estelar oficial (Main Event)
+  const mainBout =
+    event.matches.find((m) => m.isMainEvent) ||
+    event.matches[event.matches.length - 1] ||
+    event.matches[0];
 
-  const redGym = red?.participant.affiliations[0]?.affiliation;
-  const blueGym = blue?.participant.affiliations[0]?.affiliation;
+  const redParticipant = mainBout?.participants?.find((p) => p.side === 'RED_CORNER');
+  const blueParticipant = mainBout?.participants?.find((p) => p.side === 'BLUE_CORNER');
 
-  const redStats = red?.participant.stats as import('../core/domain/types').FighterStats | undefined;
-  const blueStats = blue?.participant.stats as import('../core/domain/types').FighterStats | undefined;
+  const red = redParticipant?.participant;
+  const blue = blueParticipant?.participant;
 
+  const redGym = red?.affiliations?.[0]?.affiliation;
+  const blueGym = blue?.affiliations?.[0]?.affiliation;
+
+  const redStats = red?.stats as FighterStats | undefined;
+  const blueStats = blue?.stats as FighterStats | undefined;
+
+  const redFlag = red ? getCountryFlagUrl(red.country || redGym?.country, red.displayName) : null;
+  const blueFlag = blue ? getCountryFlagUrl(blue.country || blueGym?.country, blue.displayName) : null;
+
+  // Fecha y hora formateada
   const eventDate = new Date(event.startDate);
   const formattedDate = eventDate.toLocaleDateString('es-ES', {
-    weekday: 'short',
+    weekday: 'long',
     year: 'numeric',
-    month: 'short',
+    month: 'long',
     day: 'numeric',
   });
   const formattedTime = eventDate.toLocaleTimeString('es-ES', {
@@ -52,65 +72,131 @@ export function EventHero({
     minute: '2-digit',
   });
 
-  return (
-    <section className="relative overflow-hidden rounded-2xl bg-[#0E1015] border border-[#1E2435] shadow-2xl text-white group">
-      {/* Subtle background lighting & cage mesh */}
-      <div className="absolute -top-24 left-1/4 w-96 h-96 bg-[#EC4D25]/12 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -top-24 right-1/4 w-96 h-96 bg-[#2BCFCE]/12 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 ufc-cage-mesh opacity-15 pointer-events-none" />
+  const redAvatar =
+    red?.avatarUrl && !red.avatarUrl.includes('default.png') && !redImgError
+      ? red.avatarUrl
+      : null;
 
-      {/* 1. Flechas Flotantes Laterales del Carrusel de Eventos */}
+  const blueAvatar =
+    blue?.avatarUrl && !blue.avatarUrl.includes('default.png') && !blueImgError
+      ? blue.avatarUrl
+      : null;
+
+  return (
+    <section className="relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#090B0E] border border-white/15 shadow-2xl text-white min-h-[510px] sm:min-h-[550px] md:min-h-[590px] lg:min-h-[630px] flex flex-col justify-between">
+      {/* ========================================================================= */}
+      {/* 1. FONDOS, VIÑETA CINEMATOGRÁFICA Y RESPLANDOR DE ARENA                  */}
+      {/* ========================================================================= */}
+      
+      {/* Imagen de Arena Octágono */}
+      <div
+        className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-25 mix-blend-screen scale-105"
+        style={{ backgroundImage: "url('/images/fondo_seccion_evento.jpeg')" }}
+      />
+
+
+      {/* Viñetas ambientales suaves para enmarcar la arena */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#090B0E] via-transparent to-[#090B0E]/50 pointer-events-none z-[4]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#090B0E]/40 via-transparent to-[#090B0E]/40 pointer-events-none z-[4]" />
+
+      {/* Iluminación suave de fondo (sin manchas duras) */}
+      <div className="absolute -top-16 -left-16 w-[450px] h-[450px] bg-[#EC4D25]/12 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute -top-16 -right-16 w-[450px] h-[450px] bg-[#2BCFCE]/12 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* ========================================================================= */}
+      {/* 2. PELEADORES AMPLIADOS A GRAN ESCALA (CARAS TOTALMENTE DESPEJADAS)       */}
+      {/* ========================================================================= */}
+
+      {/* PELEADOR ROJO (Izquierda - Extra grande con gran impacto visual) */}
+      {redAvatar && (
+        <div className="absolute bottom-0 -left-16 sm:-left-12 md:-left-10 lg:-left-8 xl:-left-6 w-[62%] sm:w-[58%] md:w-[56%] lg:w-[54%] xl:w-[52%] max-w-[950px] h-[120%] sm:h-[130%] md:h-[142%] lg:h-[155%] z-10 pointer-events-none select-none flex items-end justify-start">
+          <div className="relative w-full h-full flex items-end justify-start">
+            <img
+              src={redAvatar}
+              alt={red?.displayName || 'Peleador Esquina Roja'}
+              onError={() => setRedImgError(true)}
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-contain object-bottom origin-bottom-left scale-195 sm:scale-215 md:scale-235 lg:scale-260 xl:scale-280 filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] opacity-80 sm:opacity-90 md:opacity-95 lg:opacity-100 transition-all duration-500"
+            />
+            {/* Suave difuminado inferior para fundir el corte con la base del octágono */}
+            <div className="absolute bottom-0 inset-x-0 h-16 sm:h-24 bg-gradient-to-t from-[#090B0E] via-[#090B0E]/70 to-transparent pointer-events-none" />
+          </div>
+        </div>
+      )}
+
+      {/* PELEADOR AZUL (Derecha - Extra grande con gran impacto visual) */}
+      {blueAvatar && (
+        <div className="absolute bottom-0 -right-16 sm:-right-12 md:-right-10 lg:-right-8 xl:-right-6 w-[62%] sm:w-[58%] md:w-[56%] lg:w-[54%] xl:w-[52%] max-w-[950px] h-[120%] sm:h-[130%] md:h-[142%] lg:h-[155%] z-10 pointer-events-none select-none flex items-end justify-end">
+          <div className="relative w-full h-full flex items-end justify-end">
+            <img
+              src={blueAvatar}
+              alt={blue?.displayName || 'Peleador Esquina Azul'}
+              onError={() => setBlueImgError(true)}
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-contain object-bottom origin-bottom-right scale-195 sm:scale-215 md:scale-235 lg:scale-260 xl:scale-280 filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.85)] opacity-80 sm:opacity-90 md:opacity-95 lg:opacity-100 transition-all duration-500"
+            />
+            {/* Suave difuminado inferior para fundir el corte con la base del octágono */}
+            <div className="absolute bottom-0 inset-x-0 h-16 sm:h-24 bg-gradient-to-t from-[#090B0E] via-[#090B0E]/70 to-transparent pointer-events-none" />
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* 3. FLECHAS FLOTANTES DEL CARRUSEL DE EVENTOS                              */}
+      {/* ========================================================================= */}
       {totalEvents > 1 && onPrevEvent && (
         <button
           onClick={onPrevEvent}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/80 hover:bg-[#EC4D25] text-white border-2 border-white/20 hover:border-[#EC4D25] shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 group/btn backdrop-blur-md"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-[#EC4D25] text-white border border-white/15 hover:border-[#EC4D25] shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-105 backdrop-blur-md"
           title="Evento anterior"
           aria-label="Evento anterior"
         >
-          <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 group-hover/btn:-translate-x-0.5 transition-transform" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       )}
 
       {totalEvents > 1 && onNextEvent && (
         <button
           onClick={onNextEvent}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-black/80 hover:bg-[#EC4D25] text-white border-2 border-white/20 hover:border-[#EC4D25] shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 group/btn backdrop-blur-md"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-[#EC4D25] text-white border border-white/15 hover:border-[#EC4D25] shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-105 backdrop-blur-md"
           title="Siguiente evento"
           aria-label="Siguiente evento"
         >
-          <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover/btn:translate-x-0.5 transition-transform" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
       )}
 
-      {/* Top Header Bar con Selector de Eventos */}
-      <div className="relative z-10 px-5 sm:px-8 py-3 bg-black/40 border-b border-white/10 flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center space-x-3">
-          <span className="px-2.5 py-1 rounded bg-[#EC4D25] text-white font-sport font-black text-xs uppercase tracking-wider flex items-center space-x-1 shadow-sm">
+      {/* ========================================================================= */}
+      {/* 4. BARRA SUPERIOR (Mismo fondo glassmórfico elegante)                      */}
+      {/* ========================================================================= */}
+      <div className="relative z-20 px-4 sm:px-8 py-3 bg-black/60 backdrop-blur-md border-b border-white/15 flex flex-wrap items-center justify-between gap-2.5">
+        <div className="flex items-center space-x-2.5">
+          <span className="px-2.5 py-1 rounded bg-[#EC4D25] text-white font-sport font-black text-xs uppercase tracking-wider flex items-center space-x-1.5 shadow-sm">
             <Flame className="w-3.5 h-3.5" />
             <span>{event.shortName || 'UFC'}</span>
           </span>
 
-          <span className="text-[#CDCDCF] text-xs sm:text-sm font-sport font-semibold flex items-center space-x-1.5 uppercase tracking-wide">
+          <span className="text-slate-300 text-xs sm:text-sm font-sport font-semibold flex items-center space-x-1.5 uppercase tracking-wide">
             <Calendar className="w-3.5 h-3.5 text-[#2BCFCE]" />
             <span className="capitalize">{formattedDate} • {formattedTime} HS</span>
           </span>
         </div>
 
-        {/* Indicador de Carrusel (Eventos) */}
+        {/* Indicador de evento en el carrusel */}
         {totalEvents > 1 && (
-          <div className="flex items-center space-x-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
-            <span className="text-[11px] font-sport uppercase tracking-wider text-[#939599]">
-              Evento {currentIndex + 1} de {totalEvents}
+          <div className="hidden sm:flex items-center space-x-1.5 bg-white/10 border border-white/15 px-2.5 py-1 rounded-full">
+            <span className="text-[10px] font-sport uppercase tracking-wider text-slate-300">
+              {currentIndex + 1} de {totalEvents}
             </span>
-            <div className="flex items-center space-x-1.5">
+            <div className="flex items-center space-x-1">
               {events.map((ev, idx) => (
                 <button
                   key={ev.id}
                   onClick={() => onSelectEvent?.(ev.id)}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-1.5 rounded-full transition-all ${
                     idx === currentIndex
-                      ? 'w-5 bg-[#EC4D25]'
-                      : 'w-2 bg-white/30 hover:bg-white/60'
+                      ? 'w-4 bg-[#EC4D25]'
+                      : 'w-1.5 bg-white/30 hover:bg-white/60'
                   }`}
                   title={ev.name}
                   aria-label={`Ver ${ev.name}`}
@@ -120,131 +206,130 @@ export function EventHero({
           </div>
         )}
 
-        <div className="flex items-center space-x-1.5 text-xs sm:text-sm font-sport text-[#939599] uppercase tracking-wider">
-          <MapPin className="w-3.5 h-3.5 text-[#939599]" />
-          <span>{event.venueName || 'Arena'}, {event.city || 'Las Vegas'}</span>
+        <div className="flex items-center space-x-1.5 text-xs sm:text-sm font-sport text-slate-300 uppercase tracking-wider">
+          <MapPin className="w-3.5 h-3.5 text-[#EC4D25]" />
+          <span>{event.venueName || 'T-Mobile Arena'}, {event.city || 'Las Vegas'}</span>
         </div>
       </div>
 
-      <div className="relative z-10 px-6 sm:px-12 lg:px-16 py-8 sm:py-10">
-        {/* Event Title */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight font-display leading-none">
+      {/* ========================================================================= */}
+      {/* 5. CONTENIDO CENTRAL: TÍTULO, BOTONES CENTRADOS Y CUADRO ANCHO INFERIOR  */}
+      {/* ========================================================================= */}
+      <div className="relative z-20 px-4 sm:px-6 md:px-8 py-5 sm:py-6 text-center max-w-5xl mx-auto flex flex-col items-center justify-between flex-1 w-full">
+        
+        {/* PARTE SUPERIOR: Título y Categoría */}
+        <div className="space-y-1.5 pt-1 max-w-xl mx-auto">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight font-display leading-[0.95] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
             {event.name}
           </h1>
 
           {mainBout?.isTitleFight ? (
-            <div className="mt-3 inline-flex items-center space-x-2 px-3.5 py-1 rounded-md bg-[#E5A93C]/15 border border-[#E5A93C]/40 text-[#E5A93C] text-xs font-sport font-black uppercase tracking-widest shadow-sm">
-              <Trophy className="w-3.5 h-3.5" />
-              <span>CINTURÓN MUNDIAL UFC • {mainBout.weightClass}</span>
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-lg bg-[#E5A93C]/20 border border-[#E5A93C]/50 text-[#E5A93C] text-xs font-sport font-black uppercase tracking-widest shadow-lg">
+              <Trophy className="w-3.5 h-3.5 text-[#E5A93C]" />
+              <span>CINTURÓN MUNDIAL EN JUEGO • {mainBout.weightClass}</span>
             </div>
           ) : (
-            <div className="mt-3 inline-flex items-center space-x-2 px-3.5 py-1 rounded-md bg-white/8 border border-white/15 text-[#CDCDCF] text-xs font-sport font-black uppercase tracking-widest">
-              <Flame className="w-3.5 h-3.5 text-[#EC4D25]" />
-              <span>COMBATE ESTELAR • {mainBout?.weightClass || 'Lightweight'}</span>
+            <div className="inline-flex items-center space-x-2 px-3 py-0.5 rounded-md bg-white/10 border border-white/15 text-slate-200 text-xs font-sport font-bold uppercase tracking-wider">
+              <span>COMBATE ESTELAR • {mainBout?.weightClass || 'PESO OFICIAL'}</span>
             </div>
           )}
         </div>
 
-        {/* Head-to-Head Showdown: Peleador PNG con Fondo de Bandera y Capa Oscura */}
+        {/* PARTE MEDIA: Botón de Ver Careo centrado, y abajo el botón de Ver Cartelera también centrado */}
+        <div className="flex flex-col items-center justify-center gap-2.5 my-4 sm:my-6 z-20">
+          {/* 1. Botón de Ver Careo 3D (Centrado en medio de los dos peleadores) */}
+          <a
+            href="#careo-paralax"
+            className="inline-flex items-center justify-center space-x-2 px-7 py-2.5 rounded-xl bg-[#EC4D25] hover:bg-[#d63f19] text-white font-sport font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-xl shadow-[#EC4D25]/35 hover:scale-105 active:scale-95 min-w-[210px]"
+          >
+            <Swords className="w-4 h-4" />
+            <span>Ver Careo 3D</span>
+          </a>
+
+          {/* 2. Botón de Ver Cartelera (Abajo, también centrado) */}
+          <a
+            href="#fightcard"
+            className="inline-flex items-center justify-center space-x-2 px-6 py-2.5 rounded-xl bg-black/60 hover:bg-black/80 text-white font-sport font-bold text-xs uppercase tracking-wider border border-white/15 transition-all backdrop-blur-md hover:scale-105 active:scale-95 min-w-[210px]"
+          >
+            <Layers className="w-4 h-4 text-[#2BCFCE]" />
+            <span>Ver Cartelera Oficial</span>
+          </a>
+        </div>
+
+        {/* PARTE INFERIOR: Cuadro de nombres estilizado, más bajo en altura y ancho hacia los peleadores */}
         {mainBout && red && blue && (
-          <div className="max-w-4xl mx-auto my-6 grid grid-cols-1 md:grid-cols-11 gap-6 items-center">
-            {/* Esquina Roja */}
-            <div className="md:col-span-5 flex items-center space-x-4 sm:space-x-5">
-              <FighterAvatar
-                src={red.participant.avatarUrl}
-                name={red.participant.displayName}
-                country={red.participant.country || redGym?.country}
-                side="RED_CORNER"
-                size="2xl"
-                isWinner={red.isWinner}
-                className="shadow-2xl ring-2 ring-[#EC4D25]/50 shrink-0"
-              />
-              <div className="space-y-1 min-w-0">
-                <span className="text-xs font-black tracking-widest text-[#EC4D25] font-sport uppercase block">
-                  ESQUINA ROJA
-                </span>
-                <h3
-                  onClick={() => setSelectedFighter({ id: red.participant.id, name: red.participant.displayName })}
-                  className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-none font-display uppercase tracking-wide truncate cursor-pointer hover:underline hover:text-[#EC4D25] transition-colors"
-                  title={`Ver historial completo de ${red.participant.displayName}`}
-                >
-                  {red.participant.displayName}
-                </h3>
-                {red.participant.nickname && (
-                  <p className="text-xs sm:text-sm text-[#EC4D25] font-sport font-bold italic truncate">
-                    &ldquo;{red.participant.nickname}&rdquo;
-                  </p>
-                )}
-                <p className="text-sm font-sport text-[#CDCDCF] font-bold">
-                  {redStats?.wins ?? 0}-{redStats?.losses ?? 0}-{redStats?.draws ?? 0}
-                </p>
-                <div className="pt-0.5">
-                  <GymBadge affiliation={redGym} />
+          <div className="w-full max-w-3xl md:max-w-4xl lg:max-w-5xl bg-black/60 border border-white/15 rounded-xl sm:rounded-2xl py-2 sm:py-2.5 px-3 sm:px-6 backdrop-blur-md shadow-2xl mt-auto">
+            <div className="grid grid-cols-11 items-center gap-2 sm:gap-4">
+              {/* Esquina Roja (Alineado hacia la imagen del peleador izquierdo) */}
+              <div className="col-span-5 text-left pl-1 sm:pl-3 min-w-0 flex flex-col justify-center">
+                <div className="flex items-center space-x-1.5 leading-tight">
+                  {redFlag && (
+                    <img src={redFlag} alt="" className="w-3.5 h-2.5 object-cover rounded-xs" />
+                  )}
+                  <span className="text-[9px] font-black tracking-widest text-[#EC4D25] font-sport uppercase">
+                    ROJO
+                  </span>
                 </div>
-              </div>
-            </div>
-
-            {/* VS Badge Central */}
-            <div className="md:col-span-1 text-center flex md:flex-col items-center justify-center py-2">
-              <div className="w-12 h-12 rounded-2xl bg-[#0E1015] border-2 border-white/20 shadow-2xl flex items-center justify-center transform rotate-45 group">
-                <span className="text-lg font-black text-white font-display uppercase -rotate-45 text-transparent bg-clip-text bg-gradient-to-br from-white to-[#CDCDCF]">
-                  VS
-                </span>
-              </div>
-            </div>
-
-            {/* Esquina Azul */}
-            <div className="md:col-span-5 flex items-center justify-end space-x-4 sm:space-x-5 flex-row-reverse md:flex-row text-right md:text-left">
-              <div className="space-y-1 min-w-0 md:text-right">
-                <span className="text-xs font-black tracking-widest text-[#2BCFCE] font-sport uppercase block">
-                  ESQUINA AZUL
-                </span>
-                <h3
-                  onClick={() => setSelectedFighter({ id: blue.participant.id, name: blue.participant.displayName })}
-                  className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-none font-display uppercase tracking-wide truncate cursor-pointer hover:underline hover:text-[#2BCFCE] transition-colors"
-                  title={`Ver historial completo de ${blue.participant.displayName}`}
-                >
-                  {blue.participant.displayName}
-                </h3>
-                {blue.participant.nickname && (
-                  <p className="text-xs sm:text-sm text-[#2BCFCE] font-sport font-bold italic truncate">
-                    &ldquo;{blue.participant.nickname}&rdquo;
-                  </p>
-                )}
-                <p className="text-sm font-sport text-[#CDCDCF] font-bold">
-                  {blueStats?.wins ?? 0}-{blueStats?.losses ?? 0}-{blueStats?.draws ?? 0}
+                <div className="flex items-baseline space-x-1.5 truncate">
+                  <h3
+                    onClick={() => setSelectedFighter({ id: red.id, name: red.displayName })}
+                    className="text-base sm:text-xl md:text-2xl font-black text-white font-display uppercase tracking-wide leading-tight truncate cursor-pointer hover:underline hover:text-[#EC4D25] transition-colors"
+                    title={`Ver perfil de ${red.displayName}`}
+                  >
+                    {red.displayName}
+                  </h3>
+                  {red.nickname && (
+                    <span className="text-[10px] sm:text-xs font-sport font-bold text-[#EC4D25] italic truncate hidden sm:inline">
+                      "{red.nickname}"
+                    </span>
+                  )}
+                </div>
+                <p className="text-[11px] font-sport text-slate-300 font-bold leading-tight">
+                  {redStats ? `${redStats.wins}-${redStats.losses}-${redStats.draws}` : 'Récord Oficial'}
                 </p>
-                <div className="pt-0.5 flex justify-end">
-                  <GymBadge affiliation={blueGym} />
+              </div>
+
+              {/* VS Central Compacto */}
+              <div className="col-span-1 flex items-center justify-center">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#090B0E]/90 border border-white/20 flex items-center justify-center shadow-md">
+                  <span className="text-[11px] sm:text-xs font-black font-display text-white">VS</span>
                 </div>
               </div>
 
-              <FighterAvatar
-                src={blue.participant.avatarUrl}
-                name={blue.participant.displayName}
-                country={blue.participant.country || blueGym?.country}
-                side="BLUE_CORNER"
-                size="2xl"
-                isWinner={blue.isWinner}
-                className="shadow-2xl ring-2 ring-[#2BCFCE]/50 shrink-0"
-              />
+              {/* Esquina Azul (Alineado hacia la imagen del peleador derecho) */}
+              <div className="col-span-5 text-right pr-1 sm:pr-3 min-w-0 flex flex-col justify-center">
+                <div className="flex items-center justify-end space-x-1.5 leading-tight">
+                  <span className="text-[9px] font-black tracking-widest text-[#2BCFCE] font-sport uppercase">
+                    AZUL
+                  </span>
+                  {blueFlag && (
+                    <img src={blueFlag} alt="" className="w-3.5 h-2.5 object-cover rounded-xs" />
+                  )}
+                </div>
+                <div className="flex items-baseline justify-end space-x-1.5 truncate">
+                  {blue.nickname && (
+                    <span className="text-[10px] sm:text-xs font-sport font-bold text-[#2BCFCE] italic truncate hidden sm:inline">
+                      "{blue.nickname}"
+                    </span>
+                  )}
+                  <h3
+                    onClick={() => setSelectedFighter({ id: blue.id, name: blue.displayName })}
+                    className="text-base sm:text-xl md:text-2xl font-black text-white font-display uppercase tracking-wide leading-tight truncate cursor-pointer hover:underline hover:text-[#2BCFCE] transition-colors"
+                    title={`Ver perfil de ${blue.displayName}`}
+                  >
+                    {blue.displayName}
+                  </h3>
+                </div>
+                <p className="text-[11px] font-sport text-slate-300 font-bold leading-tight">
+                  {blueStats ? `${blueStats.wins}-${blueStats.losses}-${blueStats.draws}` : 'Récord Oficial'}
+                </p>
+              </div>
             </div>
           </div>
         )}
-
-        {/* CTA to Careo */}
-        <div className="text-center mt-6">
-          <a
-            href="#careo-paralax"
-            className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#EC4D25] hover:bg-[#d63f19] text-white font-sport font-black text-xs uppercase tracking-wider transition-colors shadow-md"
-          >
-            <Swords className="w-4 h-4" />
-            <span>Ver Careo 3D & Momios</span>
-          </a>
-        </div>
       </div>
 
+      {/* Modal de Historial de Combates */}
       <FighterHistoryModal
         fighterId={selectedFighter?.id || null}
         fighterName={selectedFighter?.name}

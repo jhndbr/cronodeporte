@@ -298,7 +298,7 @@ export class FileSportRepository implements ISportRepository {
       {
         id: 'news-3',
         headline: 'Rankings Oficiales UFC: Movimientos destacados en el Libra por Libra',
-        description: 'Islam Makhachev consolida el puesto #1 del mundo seguido de cerca por Alex Pereira y Jon Jones tras la última actualización del panel oficial.',
+        description: 'El veterano panel de votantes actualiza las posiciones mundiales tras las últimas carteleras.',
         publishedAt: new Date(Date.now() - 3600000 * 12).toISOString(),
         imageUrl: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80',
         sourceUrl: 'https://www.espn.com/mma/',
@@ -306,4 +306,84 @@ export class FileSportRepository implements ISportRepository {
       }
     ];
   }
+
+  // =========================================================================
+  // USUARIOS & PREDICCIONES
+  // =========================================================================
+
+  async getUsers(): Promise<import('@/core/domain/types').UserProfile[]> {
+    return this.readJsonFile<import('@/core/domain/types').UserProfile[]>('users.json', []);
+  }
+
+  async saveUsers(users: import('@/core/domain/types').UserProfile[]): Promise<void> {
+    await this.writeJsonFile('users.json', users);
+  }
+
+  async getUserById(id: string): Promise<import('@/core/domain/types').UserProfile | null> {
+    const users = await this.getUsers();
+    return users.find((u) => u.id === id) || null;
+  }
+
+  async saveUser(user: import('@/core/domain/types').UserProfile): Promise<void> {
+    const users = await this.getUsers();
+    const idx = users.findIndex((u) => u.id === user.id);
+    if (idx >= 0) {
+      users[idx] = user;
+    } else {
+      users.push(user);
+    }
+    await this.saveUsers(users);
+  }
+
+  async getPredictionTickets(): Promise<import('@/core/domain/types').PredictionTicket[]> {
+    return this.readJsonFile<import('@/core/domain/types').PredictionTicket[]>('prediction-tickets.json', []);
+  }
+
+  async savePredictionTickets(tickets: import('@/core/domain/types').PredictionTicket[]): Promise<void> {
+    await this.writeJsonFile('prediction-tickets.json', tickets);
+  }
+
+  async getTicketsByUserId(userId: string): Promise<import('@/core/domain/types').PredictionTicket[]> {
+    const tickets = await this.getPredictionTickets();
+    return tickets.filter((t) => t.userId === userId).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  }
+
+  async savePredictionTicket(ticket: import('@/core/domain/types').PredictionTicket): Promise<void> {
+    const tickets = await this.getPredictionTickets();
+    tickets.unshift(ticket);
+    await this.savePredictionTickets(tickets);
+  }
+
+  // =========================================================================
+  // ANÁLISIS DE IA "¿CÓMO LLEGA A LA PELEA?" (Caché semanal persistente)
+  // =========================================================================
+
+  async getFighterPreviews(): Promise<import('@/core/domain/types').FighterFightPreview[]> {
+    return this.readJsonFile<import('@/core/domain/types').FighterFightPreview[]>('fighter-previews.json', []);
+  }
+
+  async getFighterPreview(fighterId: string, eventId: string): Promise<import('@/core/domain/types').FighterFightPreview | null> {
+    const cleanId = fighterId.replace('athlete-', '');
+    const previews = await this.getFighterPreviews();
+    const found = previews.find((p) => p.fighterId.replace('athlete-', '') === cleanId && p.eventId === eventId);
+    if (!found) return null;
+
+    // Verificar si tiene menos de 7 días de antigüedad
+    const oneWeekMs = 7 * 24 * 60 * 60 * 1000;
+    const isStillFresh = Date.now() - new Date(found.generatedAt).getTime() < oneWeekMs;
+    return isStillFresh ? found : null;
+  }
+
+  async saveFighterPreview(preview: import('@/core/domain/types').FighterFightPreview): Promise<void> {
+    const previews = await this.getFighterPreviews();
+    const cleanId = preview.fighterId.replace('athlete-', '');
+    const idx = previews.findIndex((p) => p.fighterId.replace('athlete-', '') === cleanId && p.eventId === preview.eventId);
+    if (idx >= 0) {
+      previews[idx] = preview;
+    } else {
+      previews.unshift(preview);
+    }
+    await this.writeJsonFile('fighter-previews.json', previews);
+  }
 }
+

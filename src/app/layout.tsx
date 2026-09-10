@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { UserProvider } from '@/context/UserContext';
 
 export const metadata: Metadata = {
   title: 'CRONOPORTE | UFC & Fight Center Oficial • Carteleras, Careos & Stats',
@@ -14,9 +15,12 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="bg-[#FAFAFA] text-[#1A1E24] antialiased min-h-screen flex flex-col selection:bg-[#EC4D25] selection:text-white">
-        {children}
+        <UserProvider>
+          {children}
+        </UserProvider>
       </body>
     </html>
   );
 }
+
 

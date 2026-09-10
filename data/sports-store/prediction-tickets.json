@@ -1,0 +1,192 @@
+[
+  {
+    "id": "tkt-1789074800278-x5a99",
+    "userId": "usr-1789074236703-106i0",
+    "type": "COMBO",
+    "picks": [
+      {
+        "matchId": "bout-401914462",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "RED_CORNER",
+        "selectedFighterId": "athlete-5145766",
+        "selectedFighterName": "Jean Silva",
+        "opponentFighterId": "athlete-5223435",
+        "opponentFighterName": "Jose Miguel Delgado",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401897731",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-4238229",
+        "selectedFighterName": "Joseph Morales",
+        "opponentFighterId": "athlete-3027545",
+        "opponentFighterName": "Brandon Moreno",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401908491",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "RED_CORNER",
+        "selectedFighterId": "athlete-5212849",
+        "selectedFighterName": "Tommy McMillen",
+        "opponentFighterId": "athlete-5302274",
+        "opponentFighterName": "Marwan Rahiki",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401897734",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "RED_CORNER",
+        "selectedFighterId": "athlete-3136287",
+        "selectedFighterName": "Alexa Grasso",
+        "opponentFighterId": "athlete-4608674",
+        "opponentFighterName": "Manon Fiorot",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401897733",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-4903365",
+        "selectedFighterName": "Waldo Cortes Acosta",
+        "opponentFighterId": "athlete-3922557",
+        "opponentFighterName": "Curtis Blaydes",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401905192",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-4503229",
+        "selectedFighterName": "David Martinez",
+        "opponentFighterId": "athlete-4074001",
+        "opponentFighterName": "Dan Ige",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401897732",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-5076027",
+        "selectedFighterName": "Édgar Cháirez",
+        "opponentFighterId": "athlete-2614020",
+        "opponentFighterName": "Tim Elliott",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401905193",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "RED_CORNER",
+        "selectedFighterId": "athlete-3132513",
+        "selectedFighterName": "Muslim Salikhov",
+        "opponentFighterId": "athlete-4038116",
+        "opponentFighterName": "Ignacio Bahamondes",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401914463",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-5211247",
+        "selectedFighterName": "Djorden Santos",
+        "opponentFighterId": "athlete-5149815",
+        "opponentFighterName": "Yousri Belgaroui",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401913547",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-4773371",
+        "selectedFighterName": "Rongzhu",
+        "opponentFighterId": "athlete-4690549",
+        "opponentFighterName": "Rafa Garcia",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401916463",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-5307814",
+        "selectedFighterName": "Tommy Gantt",
+        "opponentFighterId": "athlete-4079621",
+        "opponentFighterName": "Drakkar Klose",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401916464",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-5401058",
+        "selectedFighterName": "Sean King",
+        "opponentFighterId": "athlete-5387599",
+        "opponentFighterName": "Jessie Rosas",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401897736",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-5338118",
+        "selectedFighterName": "Regina Tarin",
+        "opponentFighterId": "athlete-3136289",
+        "opponentFighterName": "JJ Aldrich",
+        "status": "PENDING"
+      }
+    ],
+    "createdAt": "2026-09-10T21:13:20.278Z",
+    "status": "PENDING",
+    "pointsAwarded": 20823
+  },
+  {
+    "id": "tkt-1789074516244-gcpgm",
+    "userId": "usr-1789074236703-106i0",
+    "type": "SINGLE",
+    "picks": [
+      {
+        "matchId": "bout-401914462",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "RED_CORNER",
+        "selectedFighterId": "athlete-5145766",
+        "selectedFighterName": "Jean Silva",
+        "opponentFighterId": "athlete-5223435",
+        "opponentFighterName": "Jose Miguel Delgado",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401897731",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-4238229",
+        "selectedFighterName": "Joseph Morales",
+        "opponentFighterId": "athlete-3027545",
+        "opponentFighterName": "Brandon Moreno",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401908491",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "RED_CORNER",
+        "selectedFighterId": "athlete-5212849",
+        "selectedFighterName": "Tommy McMillen",
+        "opponentFighterId": "athlete-5302274",
+        "opponentFighterName": "Marwan Rahiki",
+        "status": "PENDING"
+      },
+      {
+        "matchId": "bout-401897734",
+        "eventName": "UFC Cartelera",
+        "selectedSide": "BLUE_CORNER",
+        "selectedFighterId": "athlete-4608674",
+        "selectedFighterName": "Manon Fiorot",
+        "opponentFighterId": "athlete-3136287",
+        "opponentFighterName": "Alexa Grasso",
+        "status": "PENDING"
+      }
+    ],
+    "createdAt": "2026-09-10T21:08:36.244Z",
+    "status": "PENDING",
+    "pointsAwarded": 40
+  }
+]
