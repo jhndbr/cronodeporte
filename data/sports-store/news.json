@@ -1,5 +1,32 @@
 [
   {
+    "id": "news-49887016",
+    "headline": "Conor Benn on cutting weight: 'It's hell'",
+    "description": "Conor Benn on cutting weight: 'It's hell'",
+    "publishedAt": "2026-09-10T01:50:14Z",
+    "imageUrl": "https://espnmedia-cdn.akamaized.net/espn/media/common/2026/0909/dm_260909_Watchfolder_ufc_rev/dm_260909_Watchfolder_ufc_rev.jpg",
+    "sourceUrl": "https://www.espn.com/video/clip/_/id/49887016/hell",
+    "category": "League Boost"
+  },
+  {
+    "id": "news-49841937",
+    "headline": "Salahdine Parnasse KO's Dan Hooker in Round 1",
+    "description": "Salahdine Parnasse lives up to the hype and finishes Dan Hooker in Round 1 in his UFC debut at UFC Paris.",
+    "publishedAt": "2026-09-06T00:19:06Z",
+    "imageUrl": "https://espnmedia-cdn.akamaized.net/espn/media/common/2026/0905/dm_260905_UFC_Highlight_Salahdine_Parnasse_KOs_Dan_Hooker_in_Round_1_20260906_AUS_ONLY/dm_260905_UFC_Highlight_Salahdine_Parnasse_KOs_Dan_Hooker_in_Round_1_20260906_AUS_ONLY.jpg",
+    "sourceUrl": "https://www.espn.com/video/clip/_/id/49841937/salahdine-parnasse-ko-dan-hooker-round-1",
+    "category": "MMA"
+  },
+  {
+    "id": "news-49839558",
+    "headline": "Shevchenko injured, vacates; Silva, Wang to vie for belt at UFC 332",
+    "description": "Natalia Silva and Wang Cong will vie for the women's flyweight title at UFC 332 after champion Valentina Shevchenko suffered an injury and vacated the belt.",
+    "publishedAt": "2026-09-05T21:32:58Z",
+    "imageUrl": "https://a.espncdn.com/photo/2026/0905/r1711964_600x400_3-2.jpg",
+    "sourceUrl": "https://www.espn.com/mma/story/_/id/49839558/shevchenko-injured-vacates-silva-wang-vie-belt-ufc-332",
+    "category": "news"
+  },
+  {
     "id": "news-21807736",
     "headline": "Song Yadong rises in divisional rankings after shocking KO",
     "description": "Here's a look at every weight class to determine the best of the best in UFC, PFL and beyond.",
@@ -30,7 +57,7 @@
     "id": "news-24067525",
     "headline": "Cris Cyborg is still going strong as a force in women's P4P top 10",
     "description": "At age 41, PFL women's featherweight champion continues win streak to secure spot in ESPN P4P top 10.",
-    "publishedAt": "2026-08-26T14:12:48Z",
+    "publishedAt": "2026-09-08T14:58:31Z",
     "imageUrl": "https://a.espncdn.com/photo/2026/0825/r1706696_608x342_16-9.jpg",
     "sourceUrl": "https://www.espn.com/mma/story/_/id/24067525/mma-pound-pound-rankings",
     "category": "MMA"
@@ -61,32 +88,5 @@
     "imageUrl": "https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=800&q=80",
     "sourceUrl": "https://www.espn.com/mma/story/_/id/49684273/holloway-delusional-mcgregor-looked-old-ufc-329-loss",
     "category": "news"
-  },
-  {
-    "id": "news-49682888",
-    "headline": "Cejudo, former 2-division UFC champ, to box influencer Sept. 26",
-    "description": "Henry Cejudo, a former two-division champion in the UFC, will make his professional boxing debut against Deen The Great on Sept. 26 in Miami.",
-    "publishedAt": "2026-08-21T18:18:59Z",
-    "imageUrl": "https://a.espncdn.com/photo/2020/0219/r668175_600x400_3-2.jpg",
-    "sourceUrl": "https://www.espn.com/boxing/story/_/id/49682888/cejudo-former-2-division-ufc-champ-box-influencer-sept-26",
-    "category": "news"
-  },
-  {
-    "id": "news-49667048",
-    "headline": "Rodriguez out of Silva bout at UFC Noche, replaced by Delgado",
-    "description": "Former interim champion Yair Rodriguez has withdrawn from his Sept. 12 UFC Noche bout against Jean Silva and will be replaced by Jose Delgado.",
-    "publishedAt": "2026-08-20T06:30:55Z",
-    "imageUrl": "https://a.espncdn.com/photo/2023/0709/r1195731_600x400_3-2.jpg",
-    "sourceUrl": "https://www.espn.com/mma/story/_/id/49667048/rodriguez-silva-bout-ufc-noche-replaced-delgado",
-    "category": "MMA"
-  },
-  {
-    "id": "news-49629312",
-    "headline": "Should Prates or Morales be next to challenge the pound-for-pound king?",
-    "description": "Two exciting welterweights, Carlos Prates and Michael Morales, have now entered the Islam Makhachev sweepstakes.",
-    "publishedAt": "2026-08-16T18:36:15Z",
-    "imageUrl": "https://a.espncdn.com/photo/2025/0817/r1532806_1296x729_16-9.jpg",
-    "sourceUrl": "https://www.espn.com/mma/story/_/id/49629312/next-islam-makhachev-mackenzie-dern-ufc-330",
-    "category": "MMA"
   }
 ]

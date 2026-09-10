@@ -1,10 +1,10 @@
 {
-  "lastSyncedAt": "2026-09-04T22:56:13.504Z",
+  "lastSyncedAt": "2026-09-10T13:43:33.093Z",
   "provider": "espn",
   "status": "SUCCESS",
   "eventCount": 1,
   "newsCount": 10,
-  "calendarCount": 18,
+  "calendarCount": 16,
   "rankingsCount": 10,
-  "nextSyncDue": "2026-09-06T22:56:13.504Z"
+  "nextSyncDue": "2026-09-12T13:43:33.093Z"
 }

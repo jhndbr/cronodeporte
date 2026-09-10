@@ -1,26 +1,6 @@
 [
   {
-    "id": "cal-0-2026-09-05T19:00Z",
-    "label": "UFC Fight Night: Hooker vs. Parnasse",
-    "startDate": "2026-09-05T19:00Z",
-    "endDate": "2026-09-06T06:59Z",
-    "isPPV": false,
-    "isFightNight": true,
-    "isContenderSeries": false,
-    "location": "UFC APEX, Las Vegas"
-  },
-  {
-    "id": "cal-1-2026-09-09T02:00Z",
-    "label": "Dana White's Contender Series: Season 10, Week 5",
-    "startDate": "2026-09-09T02:00Z",
-    "endDate": "2026-09-09T06:59Z",
-    "isPPV": false,
-    "isFightNight": false,
-    "isContenderSeries": true,
-    "location": "UFC APEX, Las Vegas"
-  },
-  {
-    "id": "cal-2-2026-09-12T21:00Z",
+    "id": "cal-0-2026-09-12T21:00Z",
     "label": "Noche UFC: Silva vs. Delgado",
     "startDate": "2026-09-12T21:00Z",
     "endDate": "2026-09-13T06:59Z",
@@ -30,7 +10,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-3-2026-09-16T02:00Z",
+    "id": "cal-1-2026-09-16T02:00Z",
     "label": "Dana White's Contender Series: Season 10, Week 6",
     "startDate": "2026-09-16T02:00Z",
     "endDate": "2026-09-16T06:59Z",
@@ -40,7 +20,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-4-2026-09-20T00:00Z",
+    "id": "cal-2-2026-09-20T00:00Z",
     "label": "UFC 331: Van vs. Pantoja 2",
     "startDate": "2026-09-20T00:00Z",
     "endDate": "2026-09-20T06:59Z",
@@ -50,7 +30,7 @@
     "location": "T-Mobile Arena, Las Vegas"
   },
   {
-    "id": "cal-5-2026-09-23T02:00Z",
+    "id": "cal-3-2026-09-23T02:00Z",
     "label": "Dana White's Contender Series: Season 10, Week 7",
     "startDate": "2026-09-23T02:00Z",
     "endDate": "2026-09-23T06:59Z",
@@ -60,7 +40,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-6-2026-09-26T22:00Z",
+    "id": "cal-4-2026-09-26T22:00Z",
     "label": "UFC Fight Night: Rosas Jr. vs. Barcelos",
     "startDate": "2026-09-26T22:00Z",
     "endDate": "2026-09-27T06:59Z",
@@ -70,7 +50,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-7-2026-09-30T02:00Z",
+    "id": "cal-5-2026-09-30T02:00Z",
     "label": "Dana White's Contender Series: Season 10, Week 8",
     "startDate": "2026-09-30T02:00Z",
     "endDate": "2026-09-30T06:59Z",
@@ -80,8 +60,8 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-8-2026-10-04T00:00Z",
-    "label": "UFC 332",
+    "id": "cal-6-2026-10-04T00:00Z",
+    "label": "UFC 332: Silva vs. Wang",
     "startDate": "2026-10-04T00:00Z",
     "endDate": "2026-10-04T06:59Z",
     "isPPV": true,
@@ -90,7 +70,7 @@
     "location": "T-Mobile Arena, Las Vegas"
   },
   {
-    "id": "cal-9-2026-10-07T02:00Z",
+    "id": "cal-7-2026-10-07T02:00Z",
     "label": "Dana White's Contender Series: Season 10, Week 9",
     "startDate": "2026-10-07T02:00Z",
     "endDate": "2026-10-07T06:59Z",
@@ -100,7 +80,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-10-2026-10-11T00:00Z",
+    "id": "cal-8-2026-10-11T00:00Z",
     "label": "UFC Fight Night: Allen vs. Duncan",
     "startDate": "2026-10-11T00:00Z",
     "endDate": "2026-10-11T06:59Z",
@@ -110,7 +90,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-11-2026-10-14T02:00Z",
+    "id": "cal-9-2026-10-14T02:00Z",
     "label": "Dana White's Contender Series: Season 10, Week 10",
     "startDate": "2026-10-14T02:00Z",
     "endDate": "2026-10-14T06:59Z",
@@ -120,7 +100,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-12-2026-10-18T00:00Z",
+    "id": "cal-10-2026-10-18T00:00Z",
     "label": "UFC Fight Night: Buckley vs. Malott",
     "startDate": "2026-10-18T00:00Z",
     "endDate": "2026-10-18T06:59Z",
@@ -130,7 +110,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-13-2026-10-24T17:00Z",
+    "id": "cal-11-2026-10-24T17:00Z",
     "label": "UFC 333: Volkanovski vs. Evloev",
     "startDate": "2026-10-24T17:00Z",
     "endDate": "2026-10-25T06:59Z",
@@ -140,7 +120,7 @@
     "location": "T-Mobile Arena, Las Vegas"
   },
   {
-    "id": "cal-14-2026-11-01T00:00Z",
+    "id": "cal-12-2026-11-01T00:00Z",
     "label": "UFC Fight Night: Las Vegas",
     "startDate": "2026-11-01T00:00Z",
     "endDate": "2026-11-01T06:59Z",
@@ -150,7 +130,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-15-2026-11-08T01:00Z",
+    "id": "cal-13-2026-11-08T01:00Z",
     "label": "UFC Fight Night: Bonfim vs. Brady",
     "startDate": "2026-11-08T01:00Z",
     "endDate": "2026-11-08T07:59Z",
@@ -160,7 +140,7 @@
     "location": "UFC APEX, Las Vegas"
   },
   {
-    "id": "cal-16-2026-11-15T01:00Z",
+    "id": "cal-14-2026-11-15T01:00Z",
     "label": "UFC 334",
     "startDate": "2026-11-15T01:00Z",
     "endDate": "2026-11-15T07:59Z",
@@ -170,7 +150,7 @@
     "location": "T-Mobile Arena, Las Vegas"
   },
   {
-    "id": "cal-17-2026-12-13T01:00Z",
+    "id": "cal-15-2026-12-13T01:00Z",
     "label": "UFC 335",
     "startDate": "2026-12-13T01:00Z",
     "endDate": "2026-12-13T07:59Z",

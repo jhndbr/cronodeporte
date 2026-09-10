@@ -1,0 +1,100 @@
+{
+  "id": "5401058",
+  "displayName": "Sean King",
+  "nickname": "The King of New Orleans",
+  "avatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5401058.png",
+  "country": "USA",
+  "countryFlagCode": "country-flag",
+  "weightClass": "Featherweight",
+  "gender": "MALE",
+  "height": "6' 0\"",
+  "weight": "145 lbs",
+  "stance": "Orthodox",
+  "age": 22,
+  "gym": "",
+  "record": {
+    "wins": 6,
+    "losses": 0,
+    "draws": 0,
+    "koWins": 3,
+    "koLosses": 0,
+    "subWins": 1,
+    "subLosses": 0,
+    "decWins": 2,
+    "decLosses": 0
+  },
+  "recentFights": [
+    {
+      "id": "past-fight-401917204",
+      "eventName": "Fury Fighting Championship 122",
+      "eventDate": "2026-07-24T04:00Z",
+      "opponentId": "4033449",
+      "opponentName": "Dimitre Ivy",
+      "opponentAvatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/4033449.png",
+      "isWinner": true,
+      "method": "KO/TKO",
+      "round": 2,
+      "time": "4:09"
+    },
+    {
+      "id": "past-fight-401917203",
+      "eventName": "Fury Fighting Championship 118",
+      "eventDate": "2026-04-12T04:00Z",
+      "opponentId": "5213181",
+      "opponentName": "Cristian Lopez",
+      "opponentAvatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5213181.png",
+      "isWinner": true,
+      "method": "Submission (Arm Triangle)",
+      "round": 2,
+      "time": "1:40"
+    },
+    {
+      "id": "past-fight-401917202",
+      "eventName": "Fury Fighting Championship 115",
+      "eventDate": "2026-02-06T05:00Z",
+      "opponentId": "5044369",
+      "opponentName": "Dumar Roa",
+      "opponentAvatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5044369.png",
+      "isWinner": true,
+      "method": "KO/TKO",
+      "round": 1,
+      "time": "4:54"
+    },
+    {
+      "id": "past-fight-401917201",
+      "eventName": "Fury Fighting Championship 111",
+      "eventDate": "2025-11-09T05:00Z",
+      "opponentId": "5293264",
+      "opponentName": "Tony Toro",
+      "opponentAvatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5293264.png",
+      "isWinner": true,
+      "method": "Decision - Unanimous",
+      "round": 3,
+      "time": "5:00"
+    },
+    {
+      "id": "past-fight-401917200",
+      "eventName": "Fury Fighting Championship 106",
+      "eventDate": "2025-07-18T04:00Z",
+      "opponentId": "5449389",
+      "opponentName": "Christian Hightower",
+      "opponentAvatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5449389.png",
+      "isWinner": true,
+      "method": "Decision - Unanimous",
+      "round": 3,
+      "time": "5:00"
+    },
+    {
+      "id": "past-fight-401917199",
+      "eventName": "Empire FC 30",
+      "eventDate": "2025-04-11T04:00Z",
+      "opponentId": "5449388",
+      "opponentName": "Angel Martinez",
+      "opponentAvatarUrl": "https://a.espncdn.com/i/headshots/mma/players/full/5449388.png",
+      "isWinner": true,
+      "method": "KO/TKO",
+      "round": 1,
+      "time": "0:32"
+    }
+  ]
+}
