@@ -1,20 +1,22 @@
-import { FileSportRepository } from '@/infra/storage/file-sport-repository';
+import { IPredictionRepository } from '@/core/ports/prediction-repository.port';
+import { PrismaPredictionRepository } from '@/infra/repositories/prisma/prisma-prediction.repository';
 import { PredictionTicket, BoutPick, TicketType } from '@/core/domain/types';
 import { UserService } from '../users/user.service';
+import { PredictionCalculator } from './prediction-calculator';
 
 export class PredictionService {
   private static instance: PredictionService;
-  private repo: FileSportRepository;
-  private userService: UserService;
+  private readonly repo: IPredictionRepository;
+  private readonly userService: UserService;
 
-  private constructor() {
-    this.repo = FileSportRepository.getInstance();
-    this.userService = UserService.getInstance();
+  constructor(repo?: IPredictionRepository, userService?: UserService) {
+    this.repo = repo || new PrismaPredictionRepository();
+    this.userService = userService || UserService.getInstance();
   }
 
-  public static getInstance(): PredictionService {
-    if (!PredictionService.instance) {
-      PredictionService.instance = new PredictionService();
+  public static getInstance(repo?: IPredictionRepository, userService?: UserService): PredictionService {
+    if (!PredictionService.instance || repo || userService) {
+      PredictionService.instance = new PredictionService(repo, userService);
     }
     return PredictionService.instance;
   }
@@ -34,7 +36,7 @@ export class PredictionService {
       opponentFighterName: string;
     }>;
   }): Promise<PredictionTicket> {
-    if (!params.picks.length) {
+    if (!params.picks || !params.picks.length) {
       throw new Error('Debes incluir al menos una predicción.');
     }
 
@@ -43,10 +45,7 @@ export class PredictionService {
       status: 'PENDING',
     }));
 
-    // Si es combo, multiplicador de puntos exponencial (ej: 2 peleas = 30 pts, 3 = 60 pts, 4 = 120 pts)
-    const points = params.type === 'COMBO'
-      ? Math.round(10 * Math.pow(1.8, params.picks.length))
-      : 10 * params.picks.length;
+    const points = PredictionCalculator.calculatePoints(params.type, params.picks.length);
 
     const ticket: PredictionTicket = {
       id: 'tkt-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7),
@@ -58,10 +57,11 @@ export class PredictionService {
       pointsAwarded: points,
     };
 
-    await this.repo.savePredictionTicket(ticket);
-    await this.userService.updateUserStats(params.userId);
+    const savedTicket = await this.repo.createTicket(ticket);
+    const userTickets = await this.repo.getTicketsByUserId(params.userId);
+    await this.userService.recalculateUserStatsFromTickets(params.userId, userTickets);
 
-    return ticket;
+    return savedTicket;
   }
 
   async getUserTickets(userId: string): Promise<PredictionTicket[]> {
@@ -69,56 +69,39 @@ export class PredictionService {
   }
 
   /**
-   * Liquidación automática de predicciones cotejando con el resultado oficial del evento
+   * Liquidación automática de combates y boletos pendientes
    */
-  async resolveTicketsForMatch(matchId: string, winnerFighterId: string): Promise<void> {
-    const tickets = await this.repo.getPredictionTickets();
-    let changed = false;
+  async resolveTicketsForMatch(matchId: string, winnerFighterId: string): Promise<{ resolvedCount: number }> {
+    const pendingTickets = await this.repo.getPendingTickets();
+    const cleanWinner = winnerFighterId.replace('athlete-', '').toLowerCase();
+    const affectedUserIds = new Set<string>();
+    let resolvedCount = 0;
 
-    for (const ticket of tickets) {
-      if (ticket.status !== 'PENDING') continue;
-
+    for (const ticket of pendingTickets) {
       let matchFound = false;
-      let allResolved = true;
-      let hasLoss = false;
 
       for (const pick of ticket.picks) {
         if (pick.matchId === matchId && pick.status === 'PENDING') {
           matchFound = true;
-          const cleanWinner = winnerFighterId.replace('athlete-', '');
-          const cleanPick = pick.selectedFighterId.replace('athlete-', '');
-
-          if (cleanWinner === cleanPick) {
-            pick.status = 'CORRECT';
-          } else {
-            pick.status = 'INCORRECT';
-          }
+          const cleanPick = pick.selectedFighterId.replace('athlete-', '').toLowerCase();
+          pick.status = cleanWinner === cleanPick ? 'CORRECT' : 'INCORRECT';
         }
-
-        if (pick.status === 'PENDING') allResolved = false;
-        if (pick.status === 'INCORRECT') hasLoss = true;
       }
 
       if (matchFound) {
-        changed = true;
-        if (ticket.type === 'SINGLE') {
-          // En individual, si tiene un solo pick resuelto
-          const singlePick = ticket.picks[0];
-          if (singlePick.status === 'CORRECT') ticket.status = 'WON';
-          else if (singlePick.status === 'INCORRECT') ticket.status = 'LOST';
-        } else {
-          // En combo / parlay: si falla una sola, el combo está perdido
-          if (hasLoss) {
-            ticket.status = 'LOST';
-          } else if (allResolved) {
-            ticket.status = 'WON';
-          }
-        }
+        ticket.status = PredictionCalculator.evaluateTicketStatus(ticket.type, ticket.picks);
+        await this.repo.updateTicket(ticket);
+        affectedUserIds.add(ticket.userId);
+        resolvedCount++;
       }
     }
 
-    if (changed) {
-      await this.repo.savePredictionTickets(tickets);
+    // Recalcular estadísticas de los usuarios afectados
+    for (const userId of affectedUserIds) {
+      const tickets = await this.repo.getTicketsByUserId(userId);
+      await this.userService.recalculateUserStatsFromTickets(userId, tickets);
     }
+
+    return { resolvedCount };
   }
 }

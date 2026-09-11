@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Calendar,
   MapPin,
@@ -23,6 +23,125 @@ interface EventHeroProps {
   onPrevEvent?: () => void;
   onNextEvent?: () => void;
   onSelectEvent?: (eventId: string) => void;
+}
+
+function EventCountdown({ targetDate }: { targetDate: string }) {
+  const [timeLeft, setTimeLeft] = useState<{
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+    isPast: boolean;
+    isLive: boolean;
+  } | null>(null);
+
+  useEffect(() => {
+    const calculate = () => {
+      const now = new Date().getTime();
+      const target = new Date(targetDate).getTime();
+      const diff = target - now;
+
+      if (isNaN(target)) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0, isPast: false, isLive: false };
+      }
+
+      if (diff <= 0) {
+        if (diff > -6 * 3600 * 1000) {
+          return { days: 0, hours: 0, minutes: 0, seconds: 0, isPast: false, isLive: true };
+        }
+        return { days: 0, hours: 0, minutes: 0, seconds: 0, isPast: true, isLive: false };
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      return { days, hours, minutes, seconds, isPast: false, isLive: false };
+    };
+
+    setTimeLeft(calculate());
+    const interval = setInterval(() => {
+      setTimeLeft(calculate());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  if (!timeLeft) {
+    return (
+      <div className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl bg-[#090B0E]/90 border border-white/20 shadow-md backdrop-blur-md flex items-center justify-center">
+        <span className="text-[10px] sm:text-xs font-black font-sport text-white tracking-widest animate-pulse">
+          --:--:--
+        </span>
+      </div>
+    );
+  }
+
+  if (timeLeft.isLive) {
+    return (
+      <div className="flex flex-col items-center justify-center px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl bg-red-600/30 border border-red-500/50 shadow-lg shadow-red-500/20 backdrop-blur-md animate-pulse">
+        <span className="text-[8px] sm:text-[9px] font-sport font-black text-red-300 uppercase tracking-widest flex items-center gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+          EN VIVO
+        </span>
+        <span className="text-[10px] sm:text-xs font-sport font-black text-white uppercase tracking-wider">
+          OCTÁGONO
+        </span>
+      </div>
+    );
+  }
+
+  if (timeLeft.isPast) {
+    return (
+      <div className="flex flex-col items-center justify-center px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl bg-[#090B0E]/90 border border-white/20 shadow-md backdrop-blur-md">
+        <span className="text-[8px] font-sport font-bold text-slate-400 uppercase tracking-wider">
+          EVENTO
+        </span>
+        <span className="text-[10px] sm:text-xs font-black font-sport text-slate-200 uppercase">
+          FINALIZADO
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col items-center justify-center px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg sm:rounded-xl bg-[#090B0E]/90 border border-white/20 shadow-md backdrop-blur-md select-none">
+      <div className="flex items-center space-x-1 text-[7px] sm:text-[8px] font-sport font-black tracking-widest text-[#E5A93C] uppercase mb-0.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#EC4D25] animate-pulse" />
+        <span>INICIA EN</span>
+      </div>
+      <div className="flex items-center gap-1 sm:gap-1.5 font-sport text-white">
+        <div className="flex flex-col items-center">
+          <span className="text-[11px] sm:text-xs md:text-sm font-black text-white leading-none tabular-nums">
+            {String(timeLeft.days).padStart(2, '0')}
+          </span>
+          <span className="text-[6px] sm:text-[7px] text-slate-400 font-bold uppercase leading-none mt-0.5">DÍAS</span>
+        </div>
+        <span className="text-[9px] sm:text-[10px] text-white/30 font-bold leading-none -mt-1">:</span>
+        <div className="flex flex-col items-center">
+          <span className="text-[11px] sm:text-xs md:text-sm font-black text-white leading-none tabular-nums">
+            {String(timeLeft.hours).padStart(2, '0')}
+          </span>
+          <span className="text-[6px] sm:text-[7px] text-slate-400 font-bold uppercase leading-none mt-0.5">HRS</span>
+        </div>
+        <span className="text-[9px] sm:text-[10px] text-white/30 font-bold leading-none -mt-1">:</span>
+        <div className="flex flex-col items-center">
+          <span className="text-[11px] sm:text-xs md:text-sm font-black text-white leading-none tabular-nums">
+            {String(timeLeft.minutes).padStart(2, '0')}
+          </span>
+          <span className="text-[6px] sm:text-[7px] text-slate-400 font-bold uppercase leading-none mt-0.5">MIN</span>
+        </div>
+        <span className="text-[9px] sm:text-[10px] text-white/30 font-bold leading-none -mt-1">:</span>
+        <div className="flex flex-col items-center">
+          <span className="text-[11px] sm:text-xs md:text-sm font-black text-[#EC4D25] leading-none tabular-nums">
+            {String(timeLeft.seconds).padStart(2, '0')}
+          </span>
+          <span className="text-[6px] sm:text-[7px] text-[#EC4D25] font-bold uppercase leading-none mt-0.5">SEG</span>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function EventHero({
@@ -259,9 +378,9 @@ export function EventHero({
         {/* PARTE INFERIOR: Cuadro de nombres estilizado, más bajo en altura y ancho hacia los peleadores */}
         {mainBout && red && blue && (
           <div className="w-full max-w-3xl md:max-w-4xl lg:max-w-5xl bg-black/60 border border-white/15 rounded-xl sm:rounded-2xl py-2 sm:py-2.5 px-3 sm:px-6 backdrop-blur-md shadow-2xl mt-auto">
-            <div className="grid grid-cols-11 items-center gap-2 sm:gap-4">
+            <div className="grid grid-cols-12 items-center gap-2 sm:gap-4">
               {/* Esquina Roja (Alineado hacia la imagen del peleador izquierdo) */}
-              <div className="col-span-5 text-left pl-1 sm:pl-3 min-w-0 flex flex-col justify-center">
+              <div className="col-span-4 sm:col-span-4 text-left pl-1 sm:pl-3 min-w-0 flex flex-col justify-center">
                 <div className="flex items-center space-x-1.5 leading-tight">
                   {redFlag && (
                     <img src={redFlag} alt="" className="w-3.5 h-2.5 object-cover rounded-xs" />
@@ -289,15 +408,13 @@ export function EventHero({
                 </p>
               </div>
 
-              {/* VS Central Compacto */}
-              <div className="col-span-1 flex items-center justify-center">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#090B0E]/90 border border-white/20 flex items-center justify-center shadow-md">
-                  <span className="text-[11px] sm:text-xs font-black font-display text-white">VS</span>
-                </div>
+              {/* Contador del Evento Central (reemplaza al cuadrito VS) */}
+              <div className="col-span-4 sm:col-span-4 flex items-center justify-center min-w-0">
+                <EventCountdown targetDate={event.startDate} />
               </div>
 
               {/* Esquina Azul (Alineado hacia la imagen del peleador derecho) */}
-              <div className="col-span-5 text-right pr-1 sm:pr-3 min-w-0 flex flex-col justify-center">
+              <div className="col-span-4 sm:col-span-4 text-right pr-1 sm:pr-3 min-w-0 flex flex-col justify-center">
                 <div className="flex items-center justify-end space-x-1.5 leading-tight">
                   <span className="text-[9px] font-black tracking-widest text-[#2BCFCE] font-sport uppercase">
                     AZUL

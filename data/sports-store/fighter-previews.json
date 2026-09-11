@@ -1,0 +1,25 @@
+[
+  {
+    "id": "prev-1789093995155",
+    "fighterId": "5145766",
+    "eventId": "current",
+    "fighterName": "Jean Silva",
+    "opponentName": "Jose Miguel Delgado",
+    "generatedAt": "2026-09-11T02:33:15.155Z",
+    "sourceModel": "gemini-ai-expert-engine",
+    "summaryText": "Jean Silva se presenta a este compromiso en Noche UFC: Silva vs. Delgado ante Jose Miguel Delgado con un récord de 17-3. Con una efectividad de definición del 88%, llega con campamento estructurado para capitalizar sus fortalezas y dominar la distancia.",
+    "bullets": [
+      "Peligro de finalización: Acumula 12 nocauts y 3 sumisiones en su historial profesional.",
+      "Estado de actividad: Activo en los últimos 6 meses, sosteniendo consistencia competitiva.",
+      "Enfoque táctico: Preparación orientada a neutralizar el alcance de Jose Miguel Delgado e imponer el ritmo."
+    ],
+    "readinessScore": 93,
+    "keyFactors": {
+      "inactivityTime": "Activo en los últimos 6 meses",
+      "campStatus": "Campamento en Fighting Nerds",
+      "isShortNotice": false,
+      "recentStreak": "Racha positiva en la división",
+      "physicalCondition": "Acondicionamiento físico óptimo para los asaltos reglamentarios"
+    }
+  }
+]

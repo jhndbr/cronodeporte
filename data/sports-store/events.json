@@ -80,8 +80,8 @@
             "isWinner": false,
             "isFavorite": false,
             "currentOdd": {
-              "american": "+230",
-              "decimal": 3.3
+              "american": "+225",
+              "decimal": 3.25
             }
           },
           {
@@ -128,8 +128,8 @@
             "isWinner": false,
             "isFavorite": true,
             "currentOdd": {
-              "american": "-285",
-              "decimal": 1.35
+              "american": "-278",
+              "decimal": 1.36
             }
           }
         ]
@@ -399,8 +399,8 @@
             "isWinner": false,
             "isFavorite": false,
             "currentOdd": {
-              "american": "+330",
-              "decimal": 4.3
+              "american": "+320",
+              "decimal": 4.2
             }
           },
           {
@@ -446,7 +446,7 @@
             "isWinner": false,
             "isFavorite": true,
             "currentOdd": {
-              "american": "-425",
+              "american": "-410",
               "decimal": 1.24
             }
           }
@@ -510,8 +510,8 @@
             "isWinner": false,
             "isFavorite": true,
             "currentOdd": {
-              "american": "-800",
-              "decimal": 1.13
+              "american": "-850",
+              "decimal": 1.12
             }
           },
           {
@@ -558,8 +558,8 @@
             "isWinner": false,
             "isFavorite": false,
             "currentOdd": {
-              "american": "+550",
-              "decimal": 6.5
+              "american": "+575",
+              "decimal": 6.75
             }
           }
         ]
@@ -734,8 +734,8 @@
             "isWinner": false,
             "isFavorite": false,
             "currentOdd": {
-              "american": "+170",
-              "decimal": 2.7
+              "american": "+180",
+              "decimal": 2.8
             }
           },
           {
@@ -781,8 +781,8 @@
             "isWinner": false,
             "isFavorite": true,
             "currentOdd": {
-              "american": "-205",
-              "decimal": 1.49
+              "american": "-218",
+              "decimal": 1.46
             }
           }
         ]
@@ -846,8 +846,8 @@
             "isWinner": false,
             "isFavorite": false,
             "currentOdd": {
-              "american": "+340",
-              "decimal": 4.4
+              "american": "+350",
+              "decimal": 4.5
             }
           },
           {
@@ -893,8 +893,8 @@
             "isWinner": false,
             "isFavorite": true,
             "currentOdd": {
-              "american": "-440",
-              "decimal": 1.23
+              "american": "-455",
+              "decimal": 1.22
             }
           }
         ]
@@ -1070,8 +1070,8 @@
             "isWinner": false,
             "isFavorite": false,
             "currentOdd": {
-              "american": "+210",
-              "decimal": 3.1
+              "american": "+205",
+              "decimal": 3.05
             }
           },
           {
@@ -1118,8 +1118,8 @@
             "isWinner": false,
             "isFavorite": true,
             "currentOdd": {
-              "american": "-258",
-              "decimal": 1.39
+              "american": "-250",
+              "decimal": 1.4
             }
           }
         ]
@@ -1294,8 +1294,8 @@
             "isWinner": false,
             "isFavorite": false,
             "currentOdd": {
-              "american": "+100",
-              "decimal": 2
+              "american": "-102",
+              "decimal": 1.98
             }
           },
           {
@@ -1342,8 +1342,8 @@
             "isWinner": false,
             "isFavorite": true,
             "currentOdd": {
-              "american": "-120",
-              "decimal": 1.83
+              "american": "-118",
+              "decimal": 1.85
             }
           }
         ]
@@ -1407,7 +1407,7 @@
             "isWinner": false,
             "isFavorite": true,
             "currentOdd": {
-              "american": "-410",
+              "american": "-425",
               "decimal": 1.24
             }
           },
@@ -1454,8 +1454,8 @@
             "isWinner": false,
             "isFavorite": false,
             "currentOdd": {
-              "american": "+320",
-              "decimal": 4.2
+              "american": "+330",
+              "decimal": 4.3
             }
           }
         ]
@@ -1464,7 +1464,7 @@
     "externalSource": {
       "provider": "espn",
       "externalId": "600060772",
-      "lastSyncedAt": "2026-09-10T13:43:40.800Z"
+      "lastSyncedAt": "2026-09-11T14:46:13.842Z"
     }
   }
 ]

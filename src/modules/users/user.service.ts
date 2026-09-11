@@ -1,17 +1,18 @@
-import { FileSportRepository } from '@/infra/storage/file-sport-repository';
-import { UserProfile, UserStats } from '@/core/domain/types';
+import { IUserRepository } from '@/core/ports/user-repository.port';
+import { PrismaUserRepository } from '@/infra/repositories/prisma/prisma-user.repository';
+import { UserProfile, UserStats, PredictionTicket } from '@/core/domain/types';
 
 export class UserService {
   private static instance: UserService;
-  private repo: FileSportRepository;
+  private readonly repo: IUserRepository;
 
-  private constructor() {
-    this.repo = FileSportRepository.getInstance();
+  constructor(repo?: IUserRepository) {
+    this.repo = repo || new PrismaUserRepository();
   }
 
-  public static getInstance(): UserService {
-    if (!UserService.instance) {
-      UserService.instance = new UserService();
+  public static getInstance(repo?: IUserRepository): UserService {
+    if (!UserService.instance || repo) {
+      UserService.instance = new UserService(repo);
     }
     return UserService.instance;
   }
@@ -34,19 +35,17 @@ export class UserService {
     avatarUrl?: string;
     provider?: 'google' | 'guest' | 'credentials';
   }): Promise<UserProfile> {
-    const users = await this.repo.getUsers();
-
     if (params.id) {
-      const existing = users.find((u) => u.id === params.id);
+      const existing = await this.repo.findById(params.id);
       if (existing) return existing;
     }
 
     if (params.email) {
-      const existingByEmail = users.find((u) => u.email === params.email);
+      const existingByEmail = await this.repo.findByEmail(params.email);
       if (existingByEmail) return existingByEmail;
     }
 
-    const newUser: UserProfile = {
+    const newUser = await this.repo.create({
       id: params.id || 'usr-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7),
       name: params.name || 'Aficionado UFC',
       email: params.email,
@@ -54,23 +53,23 @@ export class UserService {
         params.avatarUrl ||
         'https://api.dicebear.com/7.x/bottts/svg?seed=' + encodeURIComponent(params.name || 'UFC'),
       provider: params.provider || 'guest',
-      createdAt: new Date().toISOString(),
       stats: this.getDefaultStats(),
-    };
+    });
 
-    await this.repo.saveUser(newUser);
     return newUser;
   }
 
   async getUser(id: string): Promise<UserProfile | null> {
-    return this.repo.getUserById(id);
+    return this.repo.findById(id);
   }
 
-  async updateUserStats(userId: string): Promise<UserProfile | null> {
-    const user = await this.repo.getUserById(userId);
+  /**
+   * Recalcula estadísticas a partir de una lista de boletos y actualiza en persistencia
+   */
+  async recalculateUserStatsFromTickets(userId: string, tickets: PredictionTicket[]): Promise<UserStats | null> {
+    const user = await this.repo.findById(userId);
     if (!user) return null;
 
-    const tickets = await this.repo.getTicketsByUserId(userId);
     let totalPicks = 0;
     let correct = 0;
     let incorrect = 0;
@@ -92,7 +91,7 @@ export class UserService {
     const resolvedCount = correct + incorrect;
     const accuracyRate = resolvedCount > 0 ? Math.round((correct / resolvedCount) * 100) : 0;
 
-    user.stats = {
+    const newStats: UserStats = {
       totalPredictions: totalPicks,
       correct,
       incorrect,
@@ -101,7 +100,6 @@ export class UserService {
       totalPoints,
     };
 
-    await this.repo.saveUser(user);
-    return user;
+    return this.repo.updateStats(userId, newStats);
   }
 }

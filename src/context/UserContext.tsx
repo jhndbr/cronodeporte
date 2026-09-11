@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { UserProfile, PredictionTicket, PlatformNotification, BoutPick } from '@/core/domain/types';
 
 interface UserContextType {
@@ -9,9 +9,11 @@ interface UserContextType {
   tickets: PredictionTicket[];
   notifications: PlatformNotification[];
   unreadNotifsCount: number;
+  loginWithCredentials: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  registerWithCredentials: (email: string, password: string, name: string) => Promise<{ success: boolean; error?: string }>;
   loginWithGoogle: () => Promise<void>;
   loginAsGuest: (name?: string) => Promise<void>;
-  logout: () => void;
+  logout: () => Promise<void>;
   submitPredictionTicket: (type: 'SINGLE' | 'COMBO', picks: Omit<BoutPick, 'status'>[]) => Promise<boolean>;
   refreshUserData: () => Promise<void>;
   markNotificationsAsRead: () => void;
@@ -25,41 +27,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const [tickets, setTickets] = useState<PredictionTicket[]>([]);
   const [notifications, setNotifications] = useState<PlatformNotification[]>([]);
 
-  // Cargar usuario y notificaciones al iniciar
-  useEffect(() => {
-    const savedUserId = typeof window !== 'undefined' ? localStorage.getItem('crono_user_id') : null;
-
-    if (savedUserId) {
-      fetch('/api/auth', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'get_user', userId: savedUserId }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success && data.data) {
-            setUser(data.data);
-            loadTickets(data.data.id);
-          }
-        })
-        .catch(console.error)
-        .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
-    }
-
-    // Cargar notificaciones
-    fetch('/api/notifications')
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success && data.data) {
-          setNotifications(data.data);
-        }
-      })
-      .catch(console.error);
-  }, []);
-
-  const loadTickets = async (userId: string) => {
+  const loadTickets = useCallback(async (userId: string) => {
     try {
       const res = await fetch(`/api/predictions?userId=${userId}`);
       const data = await res.json();
@@ -67,14 +35,128 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         setTickets(data.data);
       }
     } catch (e) {
-      console.error(e);
+      console.error('Error cargando boletos:', e);
+    }
+  }, []);
+
+  const loadNotifications = useCallback(async (userId?: string) => {
+    try {
+      const url = userId ? `/api/notifications?userId=${userId}` : '/api/notifications';
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data.success && data.data) {
+        setNotifications(data.data);
+      }
+    } catch (e) {
+      console.error('Error cargando notificaciones:', e);
+    }
+  }, []);
+
+  // Cargar sesión inicial al montar el componente
+  useEffect(() => {
+    const initAuth = async () => {
+      setLoading(true);
+      try {
+        // 1. Intentar validar cookie de sesión vía GET /api/auth
+        const res = await fetch('/api/auth');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && data.data) {
+            setUser(data.data);
+            await Promise.all([loadTickets(data.data.id), loadNotifications(data.data.id)]);
+            setLoading(false);
+            return;
+          }
+        }
+
+        // 2. Fallback con localStorage si existía ID previo
+        const savedUserId = typeof window !== 'undefined' ? localStorage.getItem('crono_user_id') : null;
+        if (savedUserId) {
+          const fallbackRes = await fetch('/api/auth', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'get_user', userId: savedUserId }),
+          });
+          const data = await fallbackRes.json();
+          if (data.success && data.data) {
+            setUser(data.data);
+            await Promise.all([loadTickets(data.data.id), loadNotifications(data.data.id)]);
+          }
+        } else {
+          await loadNotifications();
+        }
+      } catch (err) {
+        console.error('Error verificando sesión inicial:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initAuth();
+  }, [loadTickets, loadNotifications]);
+
+  const loginWithCredentials = async (email: string, password: string) => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'login',
+          email,
+          password,
+        }),
+      });
+      const data = await res.json();
+      if (data.success && data.data) {
+        setUser(data.data);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('crono_user_id', data.data.id);
+        }
+        await Promise.all([loadTickets(data.data.id), loadNotifications(data.data.id)]);
+        return { success: true };
+      }
+      return { success: false, error: data.error || 'Credenciales inválidas' };
+    } catch {
+      return { success: false, error: 'Error al conectar con el servidor' };
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const registerWithCredentials = async (email: string, password: string, name: string) => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'register',
+          email,
+          password,
+          name,
+        }),
+      });
+      const data = await res.json();
+      if (data.success && data.data) {
+        setUser(data.data);
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('crono_user_id', data.data.id);
+        }
+        await Promise.all([loadTickets(data.data.id), loadNotifications(data.data.id)]);
+        return { success: true };
+      }
+      return { success: false, error: data.error || 'Error al registrar usuario' };
+    } catch {
+      return { success: false, error: 'Error al conectar con el servidor' };
+    } finally {
+      setLoading(false);
     }
   };
 
   const loginWithGoogle = async () => {
     setLoading(true);
     try {
-      // Simulación de OAuth con Google Profile estándar (listo para conectar con Google ClientID)
       const mockGoogleName = 'Fanático UFC';
       const mockGoogleEmail = 'user.ufc@gmail.com';
       const mockAvatar = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80';
@@ -87,7 +169,6 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
           name: mockGoogleName,
           email: mockGoogleEmail,
           avatarUrl: mockAvatar,
-          provider: 'google',
         }),
       });
       const data = await res.json();
@@ -96,7 +177,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         if (typeof window !== 'undefined') {
           localStorage.setItem('crono_user_id', data.data.id);
         }
-        await loadTickets(data.data.id);
+        await Promise.all([loadTickets(data.data.id), loadNotifications(data.data.id)]);
       }
     } finally {
       setLoading(false);
@@ -106,14 +187,12 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const loginAsGuest = async (name?: string) => {
     setLoading(true);
     try {
-      const chosenName = name?.trim() || 'Peleador_' + Math.floor(1000 + Math.random() * 9000);
       const res = await fetch('/api/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          action: 'login',
-          name: chosenName,
-          provider: 'guest',
+          action: 'guest',
+          name: name?.trim() || undefined,
         }),
       });
       const data = await res.json();
@@ -122,19 +201,28 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         if (typeof window !== 'undefined') {
           localStorage.setItem('crono_user_id', data.data.id);
         }
-        await loadTickets(data.data.id);
+        await Promise.all([loadTickets(data.data.id), loadNotifications(data.data.id)]);
       }
     } finally {
       setLoading(false);
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'logout' }),
+      });
+    } catch {}
+
     setUser(null);
     setTickets([]);
     if (typeof window !== 'undefined') {
       localStorage.removeItem('crono_user_id');
     }
+    await loadNotifications();
   };
 
   const submitPredictionTicket = async (
@@ -180,8 +268,15 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const markNotificationsAsRead = () => {
+  const markNotificationsAsRead = async () => {
     setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
+    try {
+      await fetch('/api/notifications', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'mark_all_read', userId: user?.id }),
+      });
+    } catch {}
   };
 
   const unreadNotifsCount = notifications.filter((n) => !n.read).length;
@@ -194,6 +289,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
         tickets,
         notifications,
         unreadNotifsCount,
+        loginWithCredentials,
+        registerWithCredentials,
         loginWithGoogle,
         loginAsGuest,
         logout,

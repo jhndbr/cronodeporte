@@ -1,0 +1,106 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String             @id @default(cuid())
+  name         String
+  email        String?            @unique
+  passwordHash String?
+  avatarUrl    String?
+  provider     String             @default("guest") // credentials, guest, google
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  stats        UserStats?
+  tickets      PredictionTicket[]
+  notifications Notification[]
+
+  @@map("users")
+}
+
+model UserStats {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  totalPredictions Int      @default(0)
+  correct          Int      @default(0)
+  incorrect        Int      @default(0)
+  pending          Int      @default(0)
+  accuracyRate     Int      @default(0)
+  totalPoints      Int      @default(0)
+  updatedAt        DateTime @updatedAt
+
+  @@map("user_stats")
+}
+
+model PredictionTicket {
+  id            String     @id @default(cuid())
+  userId        String
+  user          User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type          String     @default("SINGLE") // SINGLE | COMBO
+  status        String     @default("PENDING") // PENDING | WON | LOST
+  pointsAwarded Int        @default(10)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  picks         BoutPick[]
+
+  @@index([userId])
+  @@map("prediction_tickets")
+}
+
+model BoutPick {
+  id                  String           @id @default(cuid())
+  ticketId            String
+  ticket              PredictionTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  matchId             String
+  eventName           String
+  eventDate           String?
+  weightClass         String?
+  selectedSide        String           // RED_CORNER | BLUE_CORNER
+  selectedFighterId   String
+  selectedFighterName String
+  opponentFighterId   String
+  opponentFighterName String
+  status              String           @default("PENDING") // PENDING | CORRECT | INCORRECT
+
+  @@index([ticketId])
+  @@index([matchId])
+  @@map("bout_picks")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  linkUrl   String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@map("notifications")
+}
+
+model FighterPreview {
+  id             String   @id @default(cuid())
+  fighterId      String
+  eventId        String
+  fighterName    String
+  opponentName   String
+  generatedAt    DateTime @default(now())
+  sourceModel    String
+  summaryText    String
+  bulletsJson    String
+  readinessScore Int
+  keyFactorsJson String
+
+  @@unique([fighterId, eventId])
+  @@map("fighter_previews")
+}
